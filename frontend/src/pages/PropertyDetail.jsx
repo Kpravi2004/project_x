@@ -1,14 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { AuthContext } from '../context/AuthContext';
 
 const PropertyDetail = () => {
   const { id } = useParams();
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(true);
   const [prediction, setPrediction] = useState(null);
 
   useEffect(() => {
+    if (!user) {
+      navigate('/signin');
+      return;
+    }
     const fetchProp = async () => {
       try {
         const res = await axios.get(`http://localhost:5000/api/properties/${id}`);

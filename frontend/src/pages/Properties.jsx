@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { AuthContext } from '../context/AuthContext';
 
 const Properties = () => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
@@ -31,6 +34,12 @@ const Properties = () => {
   };
 
   const handleFilterChange = (e) => {
+    if (!user) {
+      if (window.confirm("You must login to use filters. Go to login page?")) {
+        navigate('/signin');
+      }
+      return;
+    }
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
 
@@ -44,11 +53,23 @@ const Properties = () => {
     <div className="bg-gray-100 min-h-screen pt-24 pb-20 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header and Filter Bar */}
-        <div className="bg-white rounded-[3rem] p-10 mb-12 shadow-sm border border-gray-100">
+        <div className="bg-white rounded-[3rem] p-10 mb-12 shadow-sm border border-gray-100 relative overflow-hidden">
+          {!user && (
+            <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px] z-10 flex items-center justify-center">
+              <div className="bg-gray-900 border border-white/20 text-white px-8 py-4 rounded-3xl shadow-2xl flex items-center space-x-4">
+                <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                <div className="text-left">
+                  <p className="font-black uppercase tracking-widest text-[10px] text-blue-400">Restricted Access</p>
+                  <p className="font-bold text-sm">Login to unlock powerful filtering tools.</p>
+                </div>
+                <Link to="/signin" className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-black px-6 py-2.5 rounded-xl transition-all uppercase tracking-widest shadow-lg shadow-blue-500/30">Login</Link>
+              </div>
+            </div>
+          )}
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             <div className="border-l-8 border-blue-600 pl-6">
-              <h2 className="text-4xl font-black text-gray-900 tracking-tight">Prime Opportunities</h2>
-              <p className="text-gray-500 font-medium tracking-wide">Hand-picked land listings across South Tamil Nadu.</p>
+              <h2 className="text-4xl font-black text-gray-900 tracking-tight uppercase">Inventory</h2>
+              <p className="text-gray-500 font-medium tracking-wide">Elite land listings across South Tamil Nadu.</p>
             </div>
             
             <div className="flex flex-wrap gap-4">
@@ -63,25 +84,6 @@ const Properties = () => {
                   <option value="1">Agricultural</option>
                   <option value="2">Residential</option>
                 </select>
-              </div>
-              <div className="w-40">
-                <label className="block text-[10px] font-black text-gray-400 uppercase mb-2 ml-1">District</label>
-                <select name="district" value={filters.district} onChange={handleFilterChange} className="w-full px-4 py-3 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-blue-500 font-bold appearance-none cursor-pointer">
-                  <option value="">All Districts</option>
-                  <option value="Madurai">Madurai</option>
-                  <option value="Theni">Theni</option>
-                  <option value="Dindigul">Dindigul</option>
-                </select>
-              </div>
-              <div className="flex gap-2">
-                <div className="w-32">
-                  <label className="block text-[10px] font-black text-gray-400 uppercase mb-2 ml-1">Min Price</label>
-                  <input type="number" name="minPrice" value={filters.minPrice} onChange={handleFilterChange} className="w-full px-4 py-3 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-blue-500 font-bold" placeholder="Min" />
-                </div>
-                <div className="w-32">
-                  <label className="block text-[10px] font-black text-gray-400 uppercase mb-2 ml-1">Max Price</label>
-                  <input type="number" name="maxPrice" value={filters.maxPrice} onChange={handleFilterChange} className="w-full px-4 py-3 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-blue-500 font-bold" placeholder="Max" />
-                </div>
               </div>
             </div>
           </div>
@@ -119,16 +121,18 @@ const Properties = () => {
                       <svg className="w-4 h-4 mr-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
                       {p.district}
                     </div>
-                    <div className="flex items-center text-gray-400 text-xs font-black uppercase tracking-widest">
-                      <svg className="w-4 h-4 mr-1 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
-                      {p.area} {p.land_type_id === 1 ? 'Acres' : 'Sq Ft'}
-                    </div>
                   </div>
-                  <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 italic mb-8 flex-grow">"{p.description || "No description provided for this listing."}"</p>
+                  <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 italic mb-8 flex-grow">"{p.description || "The seller has listed this prime asset for review."}"</p>
                   
-                  <Link to={`/properties/${p.id}`} className="w-full bg-gray-900 hover:bg-blue-600 text-white font-black py-4 rounded-2xl text-center transition-all shadow-lg hover:shadow-blue-600/30 active:scale-95 uppercase tracking-widest text-xs">
-                    View Full Inventory Report &rarr;
-                  </Link>
+                  {user ? (
+                    <Link to={`/properties/${p.id}`} className="w-full bg-gray-900 hover:bg-blue-600 text-white font-black py-4 rounded-2xl text-center transition-all shadow-lg hover:shadow-blue-600/30 active:scale-95 uppercase tracking-widest text-xs">
+                      View Full Inventory Report &rarr;
+                    </Link>
+                  ) : (
+                    <button onClick={() => navigate('/signin')} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-2xl text-center transition-all shadow-lg shadow-blue-500/30 active:scale-95 uppercase tracking-widest text-xs">
+                      Login to See More Details &rarr;
+                    </button>
+                  )}
                 </div>
               </div>
             ))

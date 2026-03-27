@@ -77,7 +77,9 @@ exports.createProperty = async (req, res) => {
   try {
     const {
       title, description, land_type_id, price, area, address, 
-      city, district, state, patta_number, survey_number, village, taluk,
+      city, district, state, patta_number, survey_number, subdivision_number, village, taluk,
+      // Contact Details
+      contact_person_name, contact_phone, contact_email, contact_address,
       // Residential
       plot_shape, road_width, facing, water_connection, electricity_connection, approval_status,
       approval_number, gated_community, corner_plot, landmarks,
@@ -94,20 +96,22 @@ exports.createProperty = async (req, res) => {
       INSERT INTO properties (
         title, description, land_type_id, owner_id, status_id, 
         price, area, address, city, district, state, 
-        patta_number, survey_number, village, taluk,
+        patta_number, survey_number, subdivision_number, village, taluk,
+        contact_person_name, contact_phone, contact_email, contact_address,
         plot_shape, road_width, facing, water_connection, electricity_connection, approval_status,
         soil_type, water_availability, irrigation_type, electricity_available, tree_type, tree_stage,
         soil_depth, road_access_type, distance_from_highway, fencing_details,
         approval_number, gated_community, corner_plot, landmarks
       ) VALUES (
-        $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, 
-        $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34, $35
+        $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16,
+        $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34, $35, $36, $37, $38, $39, $40
       ) RETURNING id
     `;
     const values = [
       title, description, land_type_id, owner_id, status_id, 
       sanitize(price), sanitize(area), address, city, district, state, 
-      patta_number, survey_number, village, taluk,
+      patta_number, survey_number, subdivision_number, village, taluk,
+      contact_person_name, contact_phone, contact_email, contact_address,
       plot_shape, sanitize(road_width), facing, sanitize(water_connection), sanitize(electricity_connection), approval_status,
       soil_type, sanitize(water_availability), irrigation_type, sanitize(electricity_available), tree_type, tree_stage,
       sanitize(soil_depth), road_access_type, sanitize(distance_from_highway), fencing_details,

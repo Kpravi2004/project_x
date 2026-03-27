@@ -7,7 +7,9 @@ const AddProperty = () => {
   const [formData, setFormData] = useState({
     title: '', description: '', land_type_id: 1, price: '', area: '', 
     address: '', city: '', district: '', state: 'Tamil Nadu', 
-    patta_number: '', survey_number: '', village: '', taluk: '',
+    patta_number: '', survey_number: '', subdivision_number: '', village: '', taluk: '',
+    // Contact Details
+    contact_person_name: '', contact_phone: '', contact_email: '', contact_address: '',
     // Residential fields
     plot_shape: '', road_width: '', facing: '', water_connection: false, electricity_connection: false, approval_status: '',
     approval_number: '', gated_community: false, corner_plot: false, landmarks: '',
@@ -60,12 +62,12 @@ const AddProperty = () => {
 
   const renderStepper = () => (
     <div className="flex items-center justify-center mb-12">
-      {[1, 2, 3].map((s) => (
+      {[1, 2, 3, 4, 5].map((s) => (
         <React.Fragment key={s}>
-          <div className={`w-10 h-10 rounded-full flex items-center justify-center font-black transition-all ${step >= s ? 'bg-blue-600 text-white shadow-lg scale-110' : 'bg-gray-200 text-gray-400'}`}>
-            {s}
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center font-black transition-all ${step >= s ? 'bg-blue-600 text-white shadow-lg scale-110' : 'bg-gray-200 text-gray-400'}`}>
+            <span className="text-[10px]">{s}</span>
           </div>
-          {s < 3 && <div className={`h-1 w-16 mx-2 transition-all ${step > s ? 'bg-blue-600' : 'bg-gray-200'}`}></div>}
+          {s < 5 && <div className={`h-1 w-8 mx-1 transition-all ${step > s ? 'bg-blue-600' : 'bg-gray-200'}`}></div>}
         </React.Fragment>
       ))}
     </div>
@@ -76,16 +78,24 @@ const AddProperty = () => {
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-[3rem] shadow-2xl p-10 md:p-16 border border-gray-100 overflow-hidden relative">
           <div className="absolute top-0 left-0 w-full h-2 bg-gray-100">
-             <div className="h-full bg-blue-600 transition-all duration-500" style={{ width: `${(step / 3) * 100}%` }}></div>
+             <div className="h-full bg-blue-600 transition-all duration-500" style={{ width: `${(step / 5) * 100}%` }}></div>
           </div>
           
           <div className="mb-10 text-center">
-            <h2 className="text-4xl font-black text-gray-900 mb-3 tracking-tight">
-              {step === 1 && "Common Property Data"}
-              {step === 2 && (formData.land_type_id === 1 ? "Agricultural Details" : "Residential Details")}
-              {step === 3 && "Media & Final Submission"}
+            <h2 className="text-4xl font-black text-gray-900 mb-2 tracking-tight">
+              {step === 1 && "Basic Details"}
+              {step === 2 && "Location & Survey"}
+              {step === 3 && "Contact Details"}
+              {step === 4 && (formData.land_type_id === 1 ? "Agricultural Features" : "Residential Features")}
+              {step === 5 && "Media Upload"}
             </h2>
-            <p className="text-gray-500 font-medium">Phase {step} of 3: Provide high-fidelity information.</p>
+            <p className="text-gray-500 font-medium text-sm">Phase {step} of 5: {
+              step === 1 ? "Start with the fundamentals." :
+              step === 2 ? "Specify where the land is located." :
+              step === 3 ? "How should buyers reach you?" :
+              step === 4 ? "Detailed characteristics of the land." :
+              "Showcase your property visually."
+            }</p>
           </div>
 
           {renderStepper()}
@@ -95,10 +105,14 @@ const AddProperty = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <div className="col-span-1 md:col-span-2">
                   <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Listing Title</label>
-                  <input name="title" value={formData.title} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="e.g., Highway-Facing Commercial Plot" onChange={handleChange} />
+                  <input name="title" value={formData.title} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="e.g., 2 Acre Coconut Farm in Madurai" onChange={handleChange} />
+                </div>
+                <div className="col-span-1 md:col-span-2">
+                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Detailed Description</label>
+                  <textarea name="description" value={formData.description} rows="4" required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-medium" placeholder="Land use, access, water, utilities, etc." onChange={handleChange}></textarea>
                 </div>
                 <div>
-                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Category</label>
+                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Land Type</label>
                   <select name="land_type_id" value={formData.land_type_id} className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold appearance-none cursor-pointer" onChange={handleChange}>
                     <option value={1}>Agricultural</option>
                     <option value={2}>Residential</option>
@@ -109,114 +123,164 @@ const AddProperty = () => {
                   <input type="number" name="price" value={formData.price} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="5000000" onChange={handleChange} />
                 </div>
                 <div>
-                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Area ({formData.land_type_id === 1 ? 'Acres' : 'Sq Ft'})</label>
+                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Area ({formData.land_type_id === 1 ? 'Acres' : 'Sq Ft / Cents'})</label>
                   <input type="number" step="0.01" name="area" value={formData.area} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="2.5" onChange={handleChange} />
-                </div>
-                <div>
-                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Survey Number</label>
-                  <input name="survey_number" value={formData.survey_number} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="123/4" onChange={handleChange} />
-                </div>
-                <div>
-                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Village</label>
-                  <input name="village" value={formData.village} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange} />
-                </div>
-                <div>
-                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Taluk</label>
-                  <input name="taluk" value={formData.taluk} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange} />
-                </div>
-                <div>
-                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">District</label>
-                  <input name="district" value={formData.district} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange} />
                 </div>
               </div>
             )}
 
             {step === 2 && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div>
+                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">District</label>
+                  <input name="district" value={formData.district} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="e.g., Madurai" onChange={handleChange} />
+                </div>
+                <div>
+                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Taluk</label>
+                  <input name="taluk" value={formData.taluk} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="e.g., Palayamkottai" onChange={handleChange} />
+                </div>
+                <div>
+                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Village</label>
+                  <input name="village" value={formData.village} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="e.g., Anna Nagar" onChange={handleChange} />
+                </div>
+                <div>
+                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Address (Optional)</label>
+                  <input name="address" value={formData.address} className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange} />
+                </div>
+                <div>
+                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Survey Number</label>
+                  <input name="survey_number" value={formData.survey_number} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="e.g., 123/45" onChange={handleChange} />
+                </div>
+                <div>
+                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Subdivision Number (Optional)</label>
+                  <input name="subdivision_number" value={formData.subdivision_number} className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="e.g., 45" onChange={handleChange} />
+                </div>
+              </div>
+            )}
+
+            {step === 3 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div className="col-span-1 md:col-span-2">
+                   <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Contact Person Name</label>
+                   <input name="contact_person_name" value={formData.contact_person_name} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="e.g., K. Rajendran" onChange={handleChange} />
+                </div>
+                <div>
+                   <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Contact Phone</label>
+                   <input name="contact_phone" value={formData.contact_phone} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="9876543210" onChange={handleChange} />
+                </div>
+                <div>
+                   <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Contact Email</label>
+                   <input type="email" name="contact_email" value={formData.contact_email} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="rajendran@example.com" onChange={handleChange} />
+                </div>
+                <div className="col-span-1 md:col-span-2">
+                   <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Contact Address (Optional)</label>
+                   <textarea name="contact_address" value={formData.contact_address} rows="3" className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-medium" onChange={handleChange}></textarea>
+                </div>
+              </div>
+            )}
+
+            {step === 4 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 {formData.land_type_id === 2 ? (
                   <>
                     <div>
-                       <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Plot Shape</label>
-                       <select name="plot_shape" value={formData.plot_shape} className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold shadow-sm" onChange={handleChange}>
-                         <option value="">Select Shape</option>
-                         <option value="Square">Square</option>
-                         <option value="Rectangle">Rectangle</option>
-                         <option value="L-Shape">L-Shape</option>
-                       </select>
-                    </div>
-                    <div>
-                       <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Approval Number</label>
-                       <input name="approval_number" value={formData.approval_number} className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="DTCP/CMDA #" onChange={handleChange} />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Road Width (ft)</label>
-                      <input type="number" name="road_width" value={formData.road_width} className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold shadow-sm" placeholder="30" onChange={handleChange} />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Facing Direction</label>
-                      <select name="facing" value={formData.facing} className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold shadow-sm" onChange={handleChange}>
-                        <option value="">Select Facing</option>
-                        <option value="North">North</option>
-                        <option value="South">South</option>
-                        <option value="East">East</option>
-                        <option value="West">West</option>
+                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Plot Shape</label>
+                      <select name="plot_shape" value={formData.plot_shape} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange}>
+                        <option value="">Select Shape</option>
+                        <option value="regular">Regular</option>
+                        <option value="irregular">Irregular</option>
+                        <option value="corner">Corner</option>
                       </select>
                     </div>
-                    <div className="flex items-center space-x-4 p-5 bg-blue-50 rounded-[2rem] border border-blue-100">
-                      <input type="checkbox" name="corner_plot" checked={formData.corner_plot} className="w-6 h-6 rounded accent-blue-600" onChange={handleChange} />
-                      <label className="text-xs font-black text-blue-900 uppercase">Corner Plot</label>
+                    <div>
+                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Road Width (feet)</label>
+                      <input type="number" name="road_width" value={formData.road_width} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="30" onChange={handleChange} />
                     </div>
-                    <div className="flex items-center space-x-4 p-5 bg-emerald-50 rounded-[2rem] border border-emerald-100">
-                      <input type="checkbox" name="gated_community" checked={formData.gated_community} className="w-6 h-6 rounded accent-emerald-600" onChange={handleChange} />
-                      <label className="text-xs font-black text-emerald-900 uppercase">Gated Community</label>
+                    <div>
+                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Facing</label>
+                      <select name="facing" value={formData.facing} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange}>
+                        <option value="">Select Direction</option>
+                        <option value="north">North</option>
+                        <option value="south">South</option>
+                        <option value="east">East</option>
+                        <option value="west">West</option>
+                      </select>
                     </div>
-                    <div className="col-span-1 md:col-span-2">
-                       <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Nearby Landmarks</label>
-                       <input name="landmarks" value={formData.landmarks} className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="e.g., Near Apollo Hospital, 2km from Metro" onChange={handleChange} />
+                    <div>
+                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Approval Status</label>
+                      <select name="approval_status" value={formData.approval_status} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange}>
+                        <option value="">Select Type</option>
+                        <option value="approved">Approved</option>
+                        <option value="unapproved">Unapproved</option>
+                        <option value="dtcp">DTCP</option>
+                        <option value="cmda">CMDA</option>
+                      </select>
+                    </div>
+                    <div className="flex items-center space-x-4 p-5 bg-blue-50 rounded-2xl border border-blue-100">
+                      <input type="checkbox" name="water_connection" checked={formData.water_connection} className="w-6 h-6 rounded accent-blue-600" onChange={handleChange} />
+                      <label className="text-xs font-black text-blue-900 uppercase">Water Connection</label>
+                    </div>
+                    <div className="flex items-center space-x-4 p-5 bg-emerald-50 rounded-2xl border border-emerald-100">
+                      <input type="checkbox" name="electricity_connection" checked={formData.electricity_connection} className="w-6 h-6 rounded accent-emerald-600" onChange={handleChange} />
+                      <label className="text-xs font-black text-emerald-900 uppercase">Electricity Connection</label>
                     </div>
                   </>
                 ) : (
                   <>
                     <div>
                       <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Soil Type</label>
-                      <select name="soil_type" value={formData.soil_type} className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold shadow-sm" onChange={handleChange}>
+                      <select name="soil_type" value={formData.soil_type} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange}>
                         <option value="">Select Soil</option>
-                        <option value="Red Soil">Red Soil</option>
-                        <option value="Black Soil">Black Soil</option>
-                        <option value="Clay">Clay</option>
+                        <option value="black">Black</option>
+                        <option value="red">Red</option>
+                        <option value="sandy">Sandy</option>
+                        <option value="loamy">Loamy</option>
+                        <option value="clay">Clay</option>
                       </select>
                     </div>
                     <div>
-                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Soil Depth (ft)</label>
-                      <input type="number" name="soil_depth" value={formData.soil_depth} className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="5" onChange={handleChange} />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Road Access</label>
-                      <select name="road_access_type" value={formData.road_access_type} className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold shadow-sm" onChange={handleChange}>
-                        <option value="">Select Road Type</option>
-                        <option value="Tar Road">Tar Road</option>
-                        <option value="Gravel Road">Gravel Road</option>
-                        <option value="Mud Road">Mud Road</option>
+                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Irrigation Type</label>
+                      <select name="irrigation_type" value={formData.irrigation_type} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange}>
+                        <option value="">Select Type</option>
+                        <option value="canal">Canal</option>
+                        <option value="borewell">Borewell</option>
+                        <option value="well">Well</option>
+                        <option value="rainfed">Rainfed</option>
+                        <option value="drip">Drip</option>
                       </select>
                     </div>
                     <div>
-                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Highway Distance (km)</label>
-                      <input type="number" name="distance_from_highway" value={formData.distance_from_highway} className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold shadow-sm" placeholder="2.5" onChange={handleChange} />
+                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Tree Type (Optional)</label>
+                      <select name="tree_type" value={formData.tree_type} className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange}>
+                        <option value="">None</option>
+                        <option value="coconut">Coconut</option>
+                        <option value="mango">Mango</option>
+                        <option value="mixed">Mixed</option>
+                      </select>
                     </div>
-                    <div className="col-span-1 md:col-span-2">
-                       <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Fencing Details</label>
-                       <input name="fencing_details" value={formData.fencing_details} className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="e.g., Stone fence, Barbed wire" onChange={handleChange} />
+                    <div>
+                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Tree Stage (Optional)</label>
+                      <select name="tree_stage" value={formData.tree_stage} className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange}>
+                        <option value="none">None</option>
+                        <option value="young">Young</option>
+                        <option value="half_grown">Half Grown</option>
+                        <option value="full_grown">Full Grown</option>
+                      </select>
+                    </div>
+                    <div className="flex items-center space-x-4 p-5 bg-blue-50 rounded-2xl border border-blue-100">
+                      <input type="checkbox" name="water_availability" checked={formData.water_availability} className="w-6 h-6 rounded accent-blue-600" onChange={handleChange} />
+                      <label className="text-xs font-black text-blue-900 uppercase">Water Available</label>
+                    </div>
+                    <div className="flex items-center space-x-4 p-5 bg-emerald-50 rounded-2xl border border-emerald-100">
+                      <input type="checkbox" name="electricity_available" checked={formData.electricity_available} className="w-6 h-6 rounded accent-emerald-600" onChange={handleChange} />
+                      <label className="text-xs font-black text-emerald-900 uppercase">Electricity Available</label>
                     </div>
                   </>
                 )}
-                <div className="col-span-1 md:col-span-2">
-                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Narrative Description</label>
-                  <textarea name="description" value={formData.description} rows="4" required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-medium" placeholder="Describe unique features..." onChange={handleChange}></textarea>
-                </div>
               </div>
             )}
 
-            {step === 3 && (
+            {step === 5 && (
               <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <div className="border-4 border-dashed border-gray-100 rounded-[3rem] p-12 text-center bg-gray-50/50 hover:bg-white hover:border-blue-200 transition-all group relative">
                   <input type="file" multiple accept="image/*,video/*" onChange={handleMediaChange} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
@@ -224,19 +288,14 @@ const AddProperty = () => {
                     <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                   </div>
                   <h3 className="text-2xl font-black text-gray-900 mb-2">Upload Visual Assets</h3>
-                  <p className="text-gray-500 font-medium">Drag and drop high-quality photos or property walkthrough videos.</p>
-                  <p className="mt-4 text-[10px] font-black uppercase text-blue-600 tracking-widest bg-blue-50 inline-block px-4 py-1 rounded-full">MAX 10 FILES • JPG/PNG/MP4</p>
+                  <p className="text-gray-500 font-medium">Drag and drop photos or videos (max 10).</p>
                 </div>
 
                 {media.length > 0 && (
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {media.map((m, i) => (
-                      <div key={i} className="relative aspect-square rounded-2xl overflow-hidden border border-gray-100 shadow-sm group">
-                        {m.type === 'video' ? (
-                          <video src={m.preview} className="w-full h-full object-cover" />
-                        ) : (
-                          <img src={m.preview} alt="Upload" className="w-full h-full object-cover" />
-                        )}
+                      <div key={i} className="relative aspect-square rounded-2xl overflow-hidden border border-gray-100 group">
+                        {m.type === 'video' ? <video src={m.preview} className="w-full h-full object-cover" /> : <img src={m.preview} alt="Upload" className="w-full h-full object-cover" />}
                         <button type="button" onClick={() => removeMedia(i)} className="absolute top-2 right-2 bg-red-600 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
@@ -244,26 +303,21 @@ const AddProperty = () => {
                     ))}
                   </div>
                 )}
-                
-                <div className="bg-blue-600 p-8 rounded-[2rem] text-white">
-                   <h4 className="font-black uppercase tracking-widest text-xs mb-2 text-blue-200">Final Confirmation</h4>
-                   <p className="font-medium">By submitting, you represent that all data provided including the {media.length} visual asset(s) are accurate representations of the land.</p>
-                </div>
               </div>
             )}
 
             <div className="flex gap-4 pt-8">
               {step > 1 && (
-                <button type="button" onClick={prevStep} className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-900 font-black py-5 rounded-2xl transition-all uppercase tracking-widest text-xs">
+                <button type="button" onClick={prevStep} className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-900 font-black py-5 rounded-2xl uppercase tracking-widest text-xs">
                   Back
                 </button>
               )}
-              {step < 3 ? (
-                <button type="button" onClick={nextStep} className="flex-[2] bg-blue-600 hover:bg-blue-700 text-white font-black py-5 rounded-2xl shadow-2xl shadow-blue-500/30 transition-all hover:-translate-y-1 active:scale-95 uppercase tracking-widest text-xs">
+              {step < 5 ? (
+                <button type="button" onClick={nextStep} className="flex-[2] bg-blue-600 hover:bg-blue-700 text-white font-black py-5 rounded-2xl shadow-2xl transition-all hover:-translate-y-1 uppercase tracking-widest text-xs">
                   Continue &rarr;
                 </button>
               ) : (
-                <button type="submit" className="flex-[2] bg-emerald-600 hover:bg-emerald-700 text-white font-black py-5 rounded-2xl shadow-2xl shadow-emerald-500/30 transition-all hover:-translate-y-1 active:scale-95 uppercase tracking-widest text-xs">
+                <button type="submit" className="flex-[2] bg-emerald-600 hover:bg-emerald-700 text-white font-black py-5 rounded-2xl shadow-2xl transition-all hover:-translate-y-1 uppercase tracking-widest text-xs">
                   Complete Listing
                 </button>
               )}

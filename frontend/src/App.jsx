@@ -1,4 +1,4 @@
-import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
 import Home from './pages/Home';
@@ -18,7 +18,15 @@ import AmenitiesFallbackForm from './pages/AmenitiesFallbackForm';
 function App() {
   const { user, logout } = useContext(AuthContext);
   const location = useLocation();
+  const navigate = useNavigate();
   const isDashboardRoute = location.pathname.startsWith('/admin') || location.pathname.startsWith('/dashboard');
+
+  const handleLogout = () => {
+    if (window.confirm("Are you sure you want to logout?")) {
+      logout();
+      navigate('/');
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-gray-50 text-gray-900">
@@ -29,28 +37,23 @@ function App() {
               <Link to="/" className="text-2xl font-extrabold text-blue-600 tracking-tight">Real Estate TN</Link>
             </div>
             <div className="flex items-center space-x-4">
-              {!user && (
-                <>
-                  <div className="hidden md:flex space-x-4">
-                    <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md">Home</Link>
-                    <a href="/#about" className="text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md">About</a>
-                    <Link to="/properties" className="text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md">Browse</Link>
-                  </div>
-                  <div className="border-l border-gray-200 h-6 mx-2 hidden md:block"></div>
-                </>
-              )}
-              {user ? (
-                <>
+              <div className="hidden md:flex space-x-4">
+                <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md">Home</Link>
+                <a href="/#about" className="text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md">About</a>
+                {!user && (
+                  <>
+                    <Link to="/signin" className="text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md">User Login</Link>
+                    <Link to="/admin/login" className="text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md">Admin Login</Link>
+                  </>
+                )}
+              </div>
+              {user && (
+                <div className="flex items-center space-x-4 border-l pl-4 border-gray-100">
                   {!isDashboardRoute && (
                     <Link to={user.role === 'admin' ? '/admin' : '/dashboard'} className="btn-secondary">Dashboard</Link>
                   )}
-                  <button onClick={logout} className="text-red-500 hover:text-red-700 font-medium px-3 transition-colors">Logout</button>
-                </>
-              ) : (
-                <>
-                  <Link to="/signin" className="text-gray-700 hover:text-blue-600 font-medium px-3 py-2">Sign In</Link>
-                  <Link to="/signup" className="btn-primary ml-2">Sign Up</Link>
-                </>
+                  <button onClick={handleLogout} className="text-red-500 hover:text-red-700 font-medium px-3 transition-colors">Logout</button>
+                </div>
               )}
             </div>
           </div>

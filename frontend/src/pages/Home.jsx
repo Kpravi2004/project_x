@@ -18,9 +18,6 @@ const Home = () => {
             Smart property valuation using Geospatial AI and ML-driven price predictions.
           </p>
           <div className="mt-12 flex justify-center gap-6">
-            <Link to="/properties" className="btn-primary text-xl px-10 py-4 rounded-full shadow-2xl hover:scale-105 transition-transform">
-              Browse Properties
-            </Link>
             <a href="#about" className="btn-secondary text-xl px-10 py-4 rounded-full shadow-2xl hover:scale-105 transition-transform bg-white/20 text-white backdrop-blur-md border-white/30">
               Learn More
             </a>
