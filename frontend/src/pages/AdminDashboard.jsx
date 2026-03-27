@@ -43,9 +43,12 @@ const AdminDashboard = () => {
       setVerifying(true);
       const res = await axios.post(`http://localhost:5000/api/admin/verify-property/${id}`, { approved });
       if (approved && res.data.prediction) {
-        alert(`Property Approved! Predicted Price: ₹${Math.round(res.data.prediction.predicted_price).toLocaleString()}`);
+        const p = res.data.prediction;
+        alert(`✅ Property Approved!\n\nOriginal Price: ₹${Math.round(parseFloat(p.original_price)).toLocaleString()}\nAmenity Bonus: ₹${Math.round(p.amenity_bonus).toLocaleString()}\nPredicted Price: ₹${Math.round(p.predicted_price).toLocaleString()}\n\nBreakdown:\n${Object.entries(p.breakdown || {}).map(([k,v]) => `  ${k}: ₹${Math.round(v).toLocaleString()}`).join('\n')}`);
+      } else if (approved) {
+        alert('Property Approved');
       } else {
-        alert(approved ? 'Property Approved' : 'Property Rejected');
+        alert('Property Rejected');
       }
       setSelectedProp(null);
       setComparison(null);
@@ -145,9 +148,27 @@ const AdminDashboard = () => {
                               <div className="w-12 h-12 bg-red-600 rounded-2xl flex items-center justify-center text-white font-black text-xl">!</div>
                               <div>
                                  <h4 className="text-red-900 font-black">No Registry Match</h4>
-                                 <p className="text-red-700 text-sm font-medium">Verification failed. Details do not match the mock Patta records.</p>
+                                 <p className="text-red-700 text-sm font-medium">Survey number not found in the official Patta registry. Admin can still approve with manual amenities.</p>
                               </div>
                            </div>
+                        )}
+
+                        {/* Show coordinates if patta match found */}
+                        {comparison.match && comparison.coordinates && (
+                          <div className="bg-blue-50 border border-blue-100 p-6 rounded-[2rem] mb-10">
+                            <h5 className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-3">Official Coordinates (from Patta)</h5>
+                            <div className="flex gap-8">
+                              <div>
+                                <span className="block text-[8px] font-black text-gray-400 uppercase">Latitude</span>
+                                <span className="text-lg font-black text-blue-900 font-mono">{comparison.coordinates.latitude}</span>
+                              </div>
+                              <div>
+                                <span className="block text-[8px] font-black text-gray-400 uppercase">Longitude</span>
+                                <span className="text-lg font-black text-blue-900 font-mono">{comparison.coordinates.longitude}</span>
+                              </div>
+                            </div>
+                            <p className="text-xs text-blue-600 mt-3 font-medium">These coordinates will be used to fetch nearby amenities for price prediction.</p>
+                          </div>
                         )}
 
                         <div className="grid grid-cols-2 gap-10">
@@ -185,11 +206,9 @@ const AdminDashboard = () => {
                             <button onClick={() => handleVerify(selectedProp.id, true)} disabled={verifying} className="flex-1 min-w-[200px] bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-2xl shadow-2xl transition-all active:scale-95 disabled:opacity-50">
                                {verifying ? 'PROCESSING...' : 'CONFIRM & APPROVE'}
                             </button>
-                            {!comparison.match && (
-                               <button onClick={() => handleRequestAmenities(selectedProp.id)} disabled={verifying} className="flex-1 min-w-[200px] bg-amber-500 hover:bg-amber-600 text-white font-black py-4 rounded-2xl shadow-lg transition-all active:scale-95 disabled:opacity-50">
-                                  REQUEST MANUAL DETAILS
-                               </button>
-                            )}
+                            <button onClick={() => handleRequestAmenities(selectedProp.id)} disabled={verifying} className="flex-1 min-w-[200px] bg-amber-500 hover:bg-amber-600 text-white font-black py-4 rounded-2xl shadow-lg transition-all active:scale-95 disabled:opacity-50">
+                               REQUEST MANUAL DETAILS
+                            </button>
                             <button onClick={() => handleVerify(selectedProp.id, false)} disabled={verifying} className="flex-1 min-w-[200px] bg-red-50 text-red-600 font-black py-4 rounded-2xl hover:bg-red-100 transition-all">
                                REJECT SUBMISSION
                             </button>

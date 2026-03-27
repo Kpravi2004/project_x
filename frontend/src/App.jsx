@@ -37,16 +37,14 @@ function App() {
               <Link to="/" className="text-2xl font-extrabold text-blue-600 tracking-tight">Real Estate TN</Link>
             </div>
             <div className="flex items-center space-x-4">
-              <div className="hidden md:flex space-x-4">
-                <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md">Home</Link>
-                <a href="/#about" className="text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md">About</a>
-                {!user && (
-                  <>
-                    <Link to="/signin" className="text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md">User Login</Link>
-                    <Link to="/admin/login" className="text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md">Admin Login</Link>
-                  </>
-                )}
-              </div>
+              {!user && (
+                <div className="hidden md:flex space-x-4">
+                  <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md">Home</Link>
+                  <a href="/#about" className="text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md">About</a>
+                  <Link to="/signin" className="text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md">User Login</Link>
+                  <Link to="/admin/login" className="text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md">Admin Login</Link>
+                </div>
+              )}
               {user && (
                 <div className="flex items-center space-x-4 border-l pl-4 border-gray-100">
                   {!isDashboardRoute && (

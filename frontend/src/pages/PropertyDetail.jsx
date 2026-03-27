@@ -195,23 +195,48 @@ const PropertyDetail = () => {
 
               <section className="bg-gray-900 p-12 rounded-[3.5rem] shadow-2xl relative overflow-hidden">
                 <div className="absolute inset-0 bg-blue-600 opacity-5 mix-blend-overlay"></div>
-                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between">
-                  <div>
-                    <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-2">Automated Appraisal</h3>
-                    <p className="text-blue-200 font-medium max-w-sm">Evaluate market potential using our amenity credit-based prediction engine.</p>
+                <div className="relative z-10">
+                  <div className="flex flex-col md:flex-row items-center justify-between mb-8">
+                    <div>
+                      <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-2">Automated Appraisal</h3>
+                      <p className="text-blue-200 font-medium max-w-sm">Market valuation powered by amenity credit-based prediction engine.</p>
+                    </div>
+                    <div className="mt-8 md:mt-0 text-right">
+                      {property.predicted_price ? (
+                        <div>
+                          <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-2">AI Predicted Valuation</p>
+                          <p className="text-5xl font-black text-white tracking-widest">₹{parseFloat(property.predicted_price).toLocaleString('en-IN')}</p>
+                          <p className="text-xs text-blue-300 mt-2 font-medium">Base: ₹{parseFloat(property.price).toLocaleString('en-IN')} + Amenity Credits</p>
+                        </div>
+                      ) : prediction ? (
+                        <div>
+                          <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-2">Confidence-Driven Valuation</p>
+                          <p className="text-5xl font-black text-white tracking-widest">₹{parseFloat(prediction).toLocaleString('en-IN')}</p>
+                        </div>
+                      ) : (
+                        <button onClick={handlePredict} className="bg-blue-600 hover:bg-blue-700 text-white font-black px-12 py-5 rounded-3xl transition-all shadow-2xl shadow-blue-600/30 hover:scale-105 active:scale-95 uppercase tracking-widest text-sm">
+                          Calculate Prediction
+                        </button>
+                      )}
+                    </div>
                   </div>
-                  <div className="mt-8 md:mt-0">
-                    {prediction ? (
-                      <div className="text-right">
-                        <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-2">Confidence-Driven Valuation</p>
-                        <p className="text-5xl font-black text-white tracking-widest">₹{parseFloat(prediction).toLocaleString('en-IN')}</p>
+
+                  {/* Amenity Credit Breakdown */}
+                  {property.amenity_credits && Object.keys(property.amenity_credits).length > 0 && (
+                    <div className="border-t border-white/10 pt-8">
+                      <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-4">Amenity Credit Breakdown</p>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        {Object.entries(property.amenity_credits).map(([key, value]) => (
+                          <div key={key} className="bg-white/5 backdrop-blur-sm border border-white/10 p-4 rounded-2xl">
+                            <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1">{key}</p>
+                            <p className={`text-lg font-black ${value > 0 ? 'text-emerald-400' : 'text-gray-500'}`}>
+                              {value > 0 ? `+₹${Math.round(value).toLocaleString('en-IN')}` : '₹0'}
+                            </p>
+                          </div>
+                        ))}
                       </div>
-                    ) : (
-                      <button onClick={handlePredict} className="bg-blue-600 hover:bg-blue-700 text-white font-black px-12 py-5 rounded-3xl transition-all shadow-2xl shadow-blue-600/30 hover:scale-105 active:scale-95 uppercase tracking-widest text-sm">
-                        Calculate Prediction
-                      </button>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
               </section>
             </div>

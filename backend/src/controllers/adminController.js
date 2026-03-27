@@ -64,11 +64,18 @@ exports.verifyProperty = async (req, res) => {
           UPDATE properties SET 
             amenities_data = $1,
             amenity_credits = $2,
-            status_id = $3,
+            predicted_price = $3,
+            status_id = $4,
             verified_at = NOW(),
-            verified_by = $4
-          WHERE id = $5
-        `, [JSON.stringify(amenities), JSON.stringify(prediction.breakdown || {}), approvedStatus.rows[0].id, req.user.id, id]);
+            verified_by = $5
+          WHERE id = $6
+        `, [JSON.stringify(amenities), JSON.stringify(prediction.breakdown || {}), prediction.predicted_price, approvedStatus.rows[0].id, req.user.id, id]);
+
+        // Record in price_history
+        await db.query(`
+          INSERT INTO price_history (property_id, price, predicted_price, amenity_credits, source)
+          VALUES ($1, $2, $3, $4, 'user_amenities')
+        `, [id, property.price, prediction.predicted_price, JSON.stringify(prediction.breakdown || {})]);
 
         return res.json({ 
           message: 'Property verified using user-provided amenities',
@@ -108,20 +115,29 @@ exports.verifyProperty = async (req, res) => {
         location = ST_SetSRID(ST_MakePoint($1, $2), 4326),
         amenities_data = $3,
         amenity_credits = $4,
-        status_id = $5,
+        predicted_price = $5,
+        status_id = $6,
         verified_at = NOW(),
-        verified_by = $6
-      WHERE id = $7
+        verified_by = $7
+      WHERE id = $8
     `;
 
     const values = [
       pattaInfo.longitude, pattaInfo.latitude,
       JSON.stringify(amenities),
       JSON.stringify(prediction.breakdown || {}),
+      prediction.predicted_price,
       approvedStatus.rows[0].id, req.user.id, id
     ];
 
     await db.query(updateQuery, values);
+
+    // Record in price_history
+    await db.query(`
+      INSERT INTO price_history (property_id, price, predicted_price, amenity_credits, source)
+      VALUES ($1, $2, $3, $4, 'patta_verified')
+    `, [id, property.price, prediction.predicted_price, JSON.stringify(prediction.breakdown || {})]);
+
     res.json({ 
       message: 'Property verified and approved successfully',
       prediction: prediction
@@ -236,7 +252,13 @@ exports.checkMatch = async (req, res) => {
       return res.json({ match: false, property });
     }
     
-    res.json({ match: true, property, patta: pattaRes.rows[0] });
+    const patta = pattaRes.rows[0];
+    res.json({ 
+      match: true, 
+      property, 
+      patta,
+      coordinates: { latitude: patta.latitude, longitude: patta.longitude }
+    });
   } catch (err) {
     console.error(err);
     res.status(500).send('Server Error');
