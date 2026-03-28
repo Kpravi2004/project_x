@@ -37,7 +37,7 @@ const PropertyDetail = () => {
       setPrediction(res.data.predicted_price);
     } catch (err) {
       console.error(err);
-      alert('Error running AI price prediction');
+      alert('Error running price prediction');
     }
   };
 
@@ -54,8 +54,10 @@ const PropertyDetail = () => {
     }
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center text-3xl font-black text-blue-600 animate-pulse">Analyzing Property Data...</div>;
-  if (!property) return <div className="min-h-screen flex items-center justify-center text-xl font-bold text-gray-400 uppercase tracking-widest">Inventory record not found</div>;
+  if (loading) return <div className="min-h-screen flex items-center justify-center text-3xl font-black text-blue-600 animate-pulse">Loading property details...</div>;
+  if (!property) return <div className="min-h-screen flex items-center justify-center text-xl font-bold text-gray-400 uppercase tracking-widest">Property not found</div>;
+
+  const canViewFull = property.is_owner || property.is_admin;
 
   return (
     <div className="bg-white min-h-screen pb-24">
@@ -119,8 +121,8 @@ const PropertyDetail = () => {
               </div>
             )}
 
-            {/* Official Documents */}
-            {(property.patta_document_url || property.fmb_sketch_url) && (
+            {/* Official Documents – only for owner/admin */}
+            {canViewFull && (property.patta_document_url || property.fmb_sketch_url) && (
               <div className="mt-8 p-4 bg-gray-50 rounded-2xl">
                 <h3 className="text-lg font-black mb-2">Official Documents</h3>
                 {property.patta_document_url && (
@@ -140,7 +142,7 @@ const PropertyDetail = () => {
                 </p>
               </section>
 
-              {/* Technical Specs – same as before */}
+              {/* Technical Specs */}
               <section>
                 <h3 className="text-3xl font-black text-gray-900 border-l-8 border-indigo-600 pl-6 mb-8 uppercase tracking-tighter">Technical Specifications</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -206,7 +208,7 @@ const PropertyDetail = () => {
               <section>
                 <div className="flex items-center justify-between mb-8">
                   <h3 className="text-3xl font-black text-gray-900 border-l-8 border-emerald-500 pl-6 uppercase tracking-tighter">Geospatial Intelligence</h3>
-                  <span className="bg-emerald-100 text-emerald-700 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">Live API Data</span>
+                  <span className="bg-emerald-100 text-emerald-700 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">Live Data</span>
                 </div>
                 
                 {property.amenities_data && (
@@ -240,25 +242,25 @@ const PropertyDetail = () => {
                 </div>
               </section>
 
-              {/* Current Prediction & Credits */}
+              {/* Price Prediction & Credits */}
               <section className="bg-gray-900 p-12 rounded-[3.5rem] shadow-2xl relative overflow-hidden">
                 <div className="absolute inset-0 bg-blue-600 opacity-5 mix-blend-overlay"></div>
                 <div className="relative z-10">
                   <div className="flex flex-col md:flex-row items-center justify-between mb-8">
                     <div>
-                      <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-2">Automated Appraisal</h3>
+                      <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-2">Price Prediction</h3>
                       <p className="text-blue-200 font-medium max-w-sm">Market valuation powered by amenity credit-based prediction engine.</p>
                     </div>
                     <div className="mt-8 md:mt-0 text-right">
                       {property.predicted_price ? (
                         <div>
-                          <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-2">AI Predicted Valuation</p>
+                          <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-2">Market Valuation</p>
                           <p className="text-5xl font-black text-white tracking-widest">₹{parseFloat(property.predicted_price).toLocaleString('en-IN')}</p>
                           <p className="text-xs text-blue-300 mt-2 font-medium">Base: ₹{parseFloat(property.price).toLocaleString('en-IN')} + Amenity Credits</p>
                         </div>
                       ) : prediction ? (
                         <div>
-                          <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-2">Confidence-Driven Valuation</p>
+                          <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-2">Estimated Price</p>
                           <p className="text-5xl font-black text-white tracking-widest">₹{parseFloat(prediction).toLocaleString('en-IN')}</p>
                         </div>
                       ) : (
@@ -330,27 +332,33 @@ const PropertyDetail = () => {
           
           <div className="lg:col-span-4">
             <div className="sticky top-24 space-y-8">
-              <div className="bg-gray-50 p-10 rounded-[3rem] border border-gray-100">
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">Official Documentation</p>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center py-4 border-b border-gray-200">
-                    <span className="text-gray-500 font-bold uppercase text-xs">Patta ID</span>
-                    <span className="text-gray-900 font-black font-mono">{property.patta_number || 'TR-2024-X'}</span>
-                  </div>
-                  <div className="flex justify-between items-center py-4 border-b border-gray-200">
-                    <span className="text-gray-500 font-bold uppercase text-xs">Survey No</span>
-                    <span className="text-gray-900 font-black font-mono">{property.survey_number}</span>
-                  </div>
-                  <div className="flex justify-between items-center py-4 border-b border-gray-200">
-                    <span className="text-gray-500 font-bold uppercase text-xs">Village</span>
-                    <span className="text-gray-900 font-black uppercase text-xs">{property.village}</span>
-                  </div>
-                  <div className="flex justify-between items-center py-4">
-                    <span className="text-gray-500 font-bold uppercase text-xs">Taluk</span>
-                    <span className="text-gray-900 font-black uppercase text-xs">{property.taluk}</span>
+              {canViewFull ? (
+                <div className="bg-gray-50 p-10 rounded-[3rem] border border-gray-100">
+                  <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">Official Documentation</p>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center py-4 border-b border-gray-200">
+                      <span className="text-gray-500 font-bold uppercase text-xs">Patta ID</span>
+                      <span className="text-gray-900 font-black font-mono">{property.patta_number || 'Not Available'}</span>
+                    </div>
+                    <div className="flex justify-between items-center py-4 border-b border-gray-200">
+                      <span className="text-gray-500 font-bold uppercase text-xs">Survey No</span>
+                      <span className="text-gray-900 font-black font-mono">{property.survey_number || 'Not Available'}</span>
+                    </div>
+                    <div className="flex justify-between items-center py-4 border-b border-gray-200">
+                      <span className="text-gray-500 font-bold uppercase text-xs">Village</span>
+                      <span className="text-gray-900 font-black uppercase text-xs">{property.village}</span>
+                    </div>
+                    <div className="flex justify-between items-center py-4">
+                      <span className="text-gray-500 font-bold uppercase text-xs">Taluk</span>
+                      <span className="text-gray-900 font-black uppercase text-xs">{property.taluk}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                <div className="bg-gray-50 p-10 rounded-[3rem] border border-gray-100 text-center">
+                  <p className="text-gray-500 text-sm">Official details are private to the owner. For any inquiries, please use the button below.</p>
+                </div>
+              )}
 
               <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-6 rounded-[2rem] shadow-2xl shadow-blue-500/30 transition-all hover:-translate-y-1 active:scale-95 uppercase tracking-widest text-lg">
                 Secure Inquiry &rarr;
