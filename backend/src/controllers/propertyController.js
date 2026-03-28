@@ -1,3 +1,4 @@
+// src/controllers/propertyController.js
 const db = require('../config/database');
 
 // Helper to get status ID by name
@@ -14,7 +15,9 @@ const sanitizeNumber = (value) => {
   return isNaN(num) ? null : num;
 };
 
-// POST /api/properties – create or update a draft
+// ========================
+// 1. Create or update a draft property (phase saving)
+// ========================
 exports.createOrUpdateDraft = async (req, res) => {
   const { propertyId, ...fields } = req.body;
   const owner_id = req.user.id;
@@ -103,7 +106,9 @@ exports.createOrUpdateDraft = async (req, res) => {
   }
 };
 
-// POST /api/properties/finalize – final submit with media
+// ========================
+// 2. Finalize draft: change status to pending and save media
+// ========================
 exports.finalizeProperty = async (req, res) => {
   const { propertyId } = req.body;
   const owner_id = req.user.id;
@@ -140,12 +145,16 @@ exports.finalizeProperty = async (req, res) => {
   }
 };
 
-// GET /api/properties – list approved properties (public)
+// ========================
+// 3. List approved properties (public view)
+// ========================
 exports.getProperties = async (req, res) => {
   try {
     const { land_type_id, district, minPrice, maxPrice, minArea, maxArea, search } = req.query;
     let query = `
-      SELECT p.*, l.name as land_type_name 
+      SELECT p.id, p.title, p.description, p.price, p.area, p.district, p.village,
+             p.land_type_id, l.name as land_type_name,
+             p.created_at, p.updated_at
       FROM properties p
       JOIN land_types l ON p.land_type_id = l.id
       WHERE p.status_id = (SELECT id FROM property_status WHERE status = 'approved')
@@ -191,7 +200,9 @@ exports.getProperties = async (req, res) => {
   }
 };
 
-// GET /api/properties/:id – get single property
+// ========================
+// 4. Get single property by ID (with access control)
+// ========================
 exports.getPropertyById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -203,17 +214,46 @@ exports.getPropertyById = async (req, res) => {
       WHERE p.id = $1
     `, [id]);
     
-    if (result.rows.length === 0) {
-      return res.status(404).json({ message: 'Property not found' });
+    if (result.rows.length === 0) return res.status(404).json({ message: 'Property not found' });
+    const property = result.rows[0];
+
+    // Fetch media
+    const mediaRes = await db.query(
+      'SELECT id, url, type, is_primary FROM media WHERE property_id = $1 ORDER BY is_primary DESC, created_at',
+      [id]
+    );
+    property.media = mediaRes.rows;
+
+    // Determine access level
+    const isOwner = req.user && (req.user.id === property.owner_id);
+    const isAdmin = req.user && req.user.role === 'admin';
+    property.is_owner = isOwner;
+    property.is_admin = isAdmin;
+
+    // Remove sensitive fields for non‑owner / non‑admin
+    if (!isOwner && !isAdmin) {
+      const sensitiveFields = [
+        'contact_person_name', 'contact_phone', 'contact_email', 'contact_address',
+        'patta_number', 'survey_number', 'subdivision_number',
+        'patta_document_url', 'fmb_sketch_url',
+        'owner_phone', 'owner_name',
+        'verified_at', 'verified_by', 'owner_id'
+      ];
+      for (const field of sensitiveFields) {
+        delete property[field];
+      }
     }
-    res.json(result.rows[0]);
+
+    res.json(property);
   } catch (err) {
     console.error('getPropertyById error:', err);
     res.status(500).json({ message: 'Server error' });
   }
 };
 
-// GET /api/properties/my-properties – user's own properties
+// ========================
+// 5. Get user's own properties
+// ========================
 exports.getMyProperties = async (req, res) => {
   try {
     const owner_id = req.user.id;
@@ -232,7 +272,9 @@ exports.getMyProperties = async (req, res) => {
   }
 };
 
-// POST /api/properties/:id/submit-amenities – user submits manual amenities
+// ========================
+// 6. User submits manual amenities (fallback)
+// ========================
 exports.submitAmenities = async (req, res) => {
   const { id } = req.params;
   const { amenities } = req.body; // Expecting { counts: {...}, distances: {...} }

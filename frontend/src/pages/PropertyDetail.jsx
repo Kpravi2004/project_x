@@ -1,4 +1,3 @@
-// src/pages/PropertyDetail.jsx
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -60,7 +59,7 @@ const PropertyDetail = () => {
 
   return (
     <div className="bg-white min-h-screen pb-24">
-      {/* Cinematic Hero Header */}
+      {/* Hero Header */}
       <div className="relative h-[60vh] bg-gray-900 overflow-hidden">
         <div className="absolute inset-0 bg-blue-900/20 z-10"></div>
         <img src="/hero-bg.png" alt="Property Header" className="w-full h-full object-cover opacity-60 scale-105" />
@@ -82,7 +81,7 @@ const PropertyDetail = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           <div className="lg:col-span-8">
-            {/* Core Stats Chips */}
+            {/* Core Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
               <div className="bg-gray-50 p-6 rounded-[2rem] border border-gray-100 flex flex-col justify-center">
                  <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Market Price</p>
@@ -102,6 +101,37 @@ const PropertyDetail = () => {
               </div>
             </div>
 
+            {/* Media Gallery */}
+            {property.media && property.media.length > 0 && (
+              <div className="mb-8">
+                <h3 className="text-2xl font-black mb-4">Visual Assets</h3>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {property.media.map(m => (
+                    <div key={m.id} className="relative aspect-square rounded-xl overflow-hidden">
+                      {m.type === 'video' ? (
+                        <video src={m.url} controls className="w-full h-full object-cover" />
+                      ) : (
+                        <img src={m.url} alt="Property" className="w-full h-full object-cover" />
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Official Documents */}
+            {(property.patta_document_url || property.fmb_sketch_url) && (
+              <div className="mt-8 p-4 bg-gray-50 rounded-2xl">
+                <h3 className="text-lg font-black mb-2">Official Documents</h3>
+                {property.patta_document_url && (
+                  <a href={property.patta_document_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline block mb-1">View Patta Document</a>
+                )}
+                {property.fmb_sketch_url && (
+                  <a href={property.fmb_sketch_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline block">View FMB Sketch</a>
+                )}
+              </div>
+            )}
+
             <div className="space-y-12">
               <section>
                 <h3 className="text-3xl font-black text-gray-900 border-l-8 border-blue-600 pl-6 mb-8 uppercase tracking-tighter">Sales Narrative</h3>
@@ -110,7 +140,7 @@ const PropertyDetail = () => {
                 </p>
               </section>
 
-              {/* Technical Specifications Section */}
+              {/* Technical Specs – same as before */}
               <section>
                 <h3 className="text-3xl font-black text-gray-900 border-l-8 border-indigo-600 pl-6 mb-8 uppercase tracking-tighter">Technical Specifications</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -172,6 +202,7 @@ const PropertyDetail = () => {
                 </div>
               </section>
 
+              {/* Geospatial Intelligence */}
               <section>
                 <div className="flex items-center justify-between mb-8">
                   <h3 className="text-3xl font-black text-gray-900 border-l-8 border-emerald-500 pl-6 uppercase tracking-tighter">Geospatial Intelligence</h3>
@@ -209,7 +240,7 @@ const PropertyDetail = () => {
                 </div>
               </section>
 
-              {/* Current Prediction Section */}
+              {/* Current Prediction & Credits */}
               <section className="bg-gray-900 p-12 rounded-[3.5rem] shadow-2xl relative overflow-hidden">
                 <div className="absolute inset-0 bg-blue-600 opacity-5 mix-blend-overlay"></div>
                 <div className="relative z-10">
@@ -289,11 +320,6 @@ const PropertyDetail = () => {
                       <p className="text-xs text-gray-500 mt-3 flex items-center gap-2">
                         <span className="inline-block w-2 h-2 bg-emerald-500 rounded-full"></span>
                         Based on annual growth rate of {(futurePrediction.annual_growth_rate * 100).toFixed(1)}%
-                      </p>
-                    )}
-                    {futurePrediction.model_used === 'credit_with_appreciation' && (
-                      <p className="text-[10px] text-gray-400 mt-2 italic">
-                        * Using credit‑based prediction + market appreciation
                       </p>
                     )}
                   </div>
