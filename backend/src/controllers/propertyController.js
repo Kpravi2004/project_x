@@ -1,4 +1,3 @@
-// src/controllers/propertyController.js
 const db = require('../config/database');
 
 // Helper to get status ID by name
@@ -25,6 +24,20 @@ exports.createOrUpdateDraft = async (req, res) => {
   try {
     // If no propertyId, create a new draft
     if (!propertyId) {
+      // --- VALIDATE AREA BEFORE INSERT ---
+      const area = sanitizeNumber(fields.area);
+      if (area !== null) {
+        if (fields.land_type_id === 1) { // agricultural
+          if (area < 0.5) {
+            return res.status(400).json({ message: 'Agricultural land area must be at least 0.5 acres' });
+          }
+        } else { // residential
+          if (area < 100) {
+            return res.status(400).json({ message: 'Residential land area must be at least 100 sq ft' });
+          }
+        }
+      }
+
       const draftStatusId = await getStatusId('draft');
       const insertQuery = `
         INSERT INTO properties (
@@ -273,21 +286,33 @@ exports.getMyProperties = async (req, res) => {
 };
 
 // ========================
-// 6. User submits manual amenities (fallback)
+// 6. User submits manual amenities (fallback) – MERGES with existing
 // ========================
 exports.submitAmenities = async (req, res) => {
   const { id } = req.params;
-  const { amenities } = req.body; // Expecting { counts: {...}, distances: {...} }
+  const { amenities } = req.body; // { counts: {...}, distances: {...} }
   const owner_id = req.user.id;
 
   try {
+    // Fetch existing user_provided_amenities
+    const propRes = await db.query('SELECT user_provided_amenities FROM properties WHERE id = $1 AND owner_id = $2', [id, owner_id]);
+    if (propRes.rows.length === 0) return res.status(404).json({ message: 'Property not found' });
+    let existing = propRes.rows[0].user_provided_amenities || { counts: {}, distances: {} };
+    
+    // Merge new data with existing
+    const merged = {
+      counts: { ...existing.counts, ...amenities.counts },
+      distances: { ...existing.distances, ...amenities.distances }
+    };
+    
     const pendingStatus = await db.query("SELECT id FROM property_status WHERE status = 'pending'");
     await db.query(`
       UPDATE properties SET 
         user_provided_amenities = $1,
-        status_id = $2
+        status_id = $2,
+        missing_amenities = NULL
       WHERE id = $3 AND owner_id = $4
-    `, [JSON.stringify(amenities), pendingStatus.rows[0].id, id, owner_id]);
+    `, [JSON.stringify(merged), pendingStatus.rows[0].id, id, owner_id]);
 
     res.json({ message: 'Amenities submitted and property returned to pending status' });
   } catch (err) {

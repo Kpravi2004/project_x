@@ -6,7 +6,6 @@ const multer = require('multer');
 const path = require('path');
 const crypto = require('crypto');
 
-// Configure multer to keep file extension
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'uploads/');
@@ -17,6 +16,7 @@ const storage = multer.diskStorage({
     cb(null, `${hash}${ext}`);
   }
 });
+
 const upload = multer({ storage, limits: { fileSize: 10 * 1024 * 1024 } });
 
 router.get('/', propertyController.getProperties);

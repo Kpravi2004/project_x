@@ -10,6 +10,7 @@ const AdminDashboard = () => {
   const [selectedProp, setSelectedProp] = useState(null);
   const [comparison, setComparison] = useState(null);
   const [verifying, setVerifying] = useState(false);
+  const [fetchedAmenities, setFetchedAmenities] = useState(null);
 
   useEffect(() => {
     fetchPending();
@@ -30,6 +31,7 @@ const AdminDashboard = () => {
     try {
       setSelectedProp(prop);
       setComparison(null);
+      setFetchedAmenities(null);
       const res = await axios.get(`http://localhost:5000/api/admin/check-match/${prop.id}`);
       setComparison(res.data);
     } catch (err) {
@@ -52,6 +54,7 @@ const AdminDashboard = () => {
       }
       setSelectedProp(null);
       setComparison(null);
+      setFetchedAmenities(null);
       fetchPending();
     } catch (err) {
       console.error(err);
@@ -62,19 +65,45 @@ const AdminDashboard = () => {
   };
 
   const handleRequestAmenities = async (id) => {
-    const note = prompt("Enter a brief note for the user (e.g., 'Please provide approximate distances to nearest school and hospital'):");
-    if (note === null) return;
+    // Determine missing categories from fetchedAmenities (or from property data)
+    let missing = [];
+    if (fetchedAmenities) {
+      const am = fetchedAmenities;
+      if (!am.distances?.nearest_bus_m) missing.push('bus_stop');
+      if (!am.distances?.nearest_school_m) missing.push('school');
+      if (!am.distances?.nearest_hospital_m) missing.push('hospital');
+      if (!am.distances?.nearest_bank_m) missing.push('bank');
+      if (!am.distances?.nearest_supermarket_m) missing.push('supermarket');
+      if (!am.distances?.nearest_park_m) missing.push('park');
+    }
+    const note = prompt("Enter a brief note for the user", missing.length ? `Missing: ${missing.join(', ')}` : 'Please provide approximate distances to nearest amenities.');
+    if (!note) return;
 
     try {
-      setVerifying(true);
-      await axios.post(`http://localhost:5000/api/admin/request-amenities/${id}`, { note });
+      await axios.post(`http://localhost:5000/api/admin/request-amenities/${id}`, { note, missingCategories: missing });
       alert('Request sent to user');
       setSelectedProp(null);
       setComparison(null);
+      setFetchedAmenities(null);
       fetchPending();
     } catch (err) {
       console.error(err);
       alert('Failed to send request');
+    }
+  };
+
+  const handleFetchAmenities = async (id) => {
+    try {
+      setVerifying(true);
+      const res = await axios.post(`http://localhost:5000/api/admin/fetch-amenities/${id}`);
+      alert('Amenities fetched and stored. You can now review them before approval.');
+      setFetchedAmenities(res.data.amenities);
+      // Refresh comparison to show updated property data (amenities_data is now stored)
+      const comparisonRes = await axios.get(`http://localhost:5000/api/admin/check-match/${id}`);
+      setComparison(comparisonRes.data);
+    } catch (err) {
+      console.error(err);
+      alert('Error fetching amenities: ' + (err.response?.data?.message || err.message));
     } finally {
       setVerifying(false);
     }
@@ -202,14 +231,34 @@ const AdminDashboard = () => {
                            </div>
                         </div>
 
+                         {/* Display fetched amenities if any */}
+                         {fetchedAmenities && (
+                           <div className="mt-8 p-6 bg-gray-50 rounded-2xl border border-gray-200">
+                             <h4 className="text-lg font-black mb-2">Fetched Amenities (Geoapify)</h4>
+                             <div className="grid grid-cols-2 gap-4">
+                               <div>
+                                 <strong>Counts:</strong>
+                                 <pre className="text-xs mt-1">{JSON.stringify(fetchedAmenities.counts, null, 2)}</pre>
+                               </div>
+                               <div>
+                                 <strong>Distances (m):</strong>
+                                 <pre className="text-xs mt-1">{JSON.stringify(fetchedAmenities.distances, null, 2)}</pre>
+                               </div>
+                             </div>
+                           </div>
+                         )}
+
                          <div className="mt-12 pt-10 border-t flex flex-wrap gap-4">
-                            <button onClick={() => handleVerify(selectedProp.id, true)} disabled={verifying} className="flex-1 min-w-[200px] bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-2xl shadow-2xl transition-all active:scale-95 disabled:opacity-50">
+                            <button onClick={() => handleFetchAmenities(selectedProp.id)} disabled={verifying} className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-black py-4 rounded-2xl shadow-2xl transition-all active:scale-95 disabled:opacity-50">
+                               {verifying ? 'PROCESSING...' : 'GET AMENITIES'}
+                            </button>
+                            <button onClick={() => handleVerify(selectedProp.id, true)} disabled={verifying} className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-2xl shadow-2xl transition-all active:scale-95 disabled:opacity-50">
                                {verifying ? 'PROCESSING...' : 'CONFIRM & APPROVE'}
                             </button>
-                            <button onClick={() => handleRequestAmenities(selectedProp.id)} disabled={verifying} className="flex-1 min-w-[200px] bg-amber-500 hover:bg-amber-600 text-white font-black py-4 rounded-2xl shadow-lg transition-all active:scale-95 disabled:opacity-50">
+                            <button onClick={() => handleRequestAmenities(selectedProp.id)} disabled={verifying} className="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-black py-4 rounded-2xl shadow-lg transition-all active:scale-95 disabled:opacity-50">
                                REQUEST MANUAL DETAILS
                             </button>
-                            <button onClick={() => handleVerify(selectedProp.id, false)} disabled={verifying} className="flex-1 min-w-[200px] bg-red-50 text-red-600 font-black py-4 rounded-2xl hover:bg-red-100 transition-all">
+                            <button onClick={() => handleVerify(selectedProp.id, false)} disabled={verifying} className="flex-1 bg-red-50 text-red-600 font-black py-4 rounded-2xl hover:bg-red-100 transition-all">
                                REJECT SUBMISSION
                             </button>
                          </div>

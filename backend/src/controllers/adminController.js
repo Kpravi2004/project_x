@@ -15,6 +15,7 @@ const internalPredict = async (propertyId, amenitiesData) => {
   return result;
 };
 
+// GET /api/admin/pending-properties
 exports.getPendingProperties = async (req, res) => {
   try {
     const result = await db.query(`
@@ -32,6 +33,7 @@ exports.getPendingProperties = async (req, res) => {
   }
 };
 
+// POST /api/admin/verify-property/:id
 exports.verifyProperty = async (req, res) => {
   const { id } = req.params;
   const { approved } = req.body;
@@ -89,19 +91,23 @@ exports.verifyProperty = async (req, res) => {
     }
     const pattaInfo = pattaRes.rows[0];
 
-    // 2. Fetch Amenities from Geoapify
+    // 2. Use existing amenities if already fetched, otherwise fetch new
     let amenities;
-    try {
-      amenities = await geoapifyService.fetchAmenities(pattaInfo.latitude, pattaInfo.longitude);
-    } catch (apiErr) {
-      console.error('Geoapify failed:', apiErr);
-      if (property.user_provided_amenities) {
+    if (property.amenities_data && Object.keys(property.amenities_data.counts || {}).length > 0) {
+      amenities = property.amenities_data;
+    } else {
+      try {
+        amenities = await geoapifyService.fetchAmenities(pattaInfo.latitude, pattaInfo.longitude);
+      } catch (apiErr) {
+        console.error('Geoapify failed:', apiErr);
+        if (property.user_provided_amenities) {
           amenities = property.user_provided_amenities;
-      } else {
+        } else {
           return res.status(400).json({ 
-              message: 'Failed to fetch automatic amenities and no manual data available.',
-              allow_manual_request: true
+            message: 'Failed to fetch automatic amenities and no manual data available.',
+            allow_manual_request: true
           });
+        }
       }
     }
 
@@ -110,20 +116,25 @@ exports.verifyProperty = async (req, res) => {
 
     const approvedStatus = await db.query("SELECT id FROM property_status WHERE status = 'approved'");
 
+    // --- UPDATE includes patta fields from mock record ---
     const updateQuery = `
       UPDATE properties SET 
         location = ST_SetSRID(ST_MakePoint($1, $2), 4326),
-        amenities_data = $3,
-        amenity_credits = $4,
-        predicted_price = $5,
-        status_id = $6,
+        patta_number = $3,
+        survey_number = $4,
+        subdivision_number = $5,
+        amenities_data = $6,
+        amenity_credits = $7,
+        predicted_price = $8,
+        status_id = $9,
         verified_at = NOW(),
-        verified_by = $7
-      WHERE id = $8
+        verified_by = $10
+      WHERE id = $11
     `;
 
     const values = [
       pattaInfo.longitude, pattaInfo.latitude,
+      pattaInfo.patta_number, pattaInfo.survey_number, pattaInfo.subdivision_number,
       JSON.stringify(amenities),
       JSON.stringify(prediction.breakdown || {}),
       prediction.predicted_price,
@@ -148,9 +159,10 @@ exports.verifyProperty = async (req, res) => {
   }
 };
 
+// POST /api/admin/request-amenities/:id
 exports.requestAmenities = async (req, res) => {
   const { id } = req.params;
-  const { note } = req.body;
+  const { note, missingCategories } = req.body; // missingCategories is an array
 
   try {
     const statusRes = await db.query("SELECT id FROM property_status WHERE status = 'amenities_requested'");
@@ -159,9 +171,10 @@ exports.requestAmenities = async (req, res) => {
     await db.query(`
       UPDATE properties SET 
         status_id = $1,
-        amenities_request_note = $2
-      WHERE id = $3
-    `, [statusRes.rows[0].id, note, id]);
+        amenities_request_note = $2,
+        missing_amenities = $3
+      WHERE id = $4
+    `, [statusRes.rows[0].id, note, JSON.stringify(missingCategories), id]);
 
     res.json({ message: 'Requested amenities from user' });
   } catch (err) {
@@ -170,6 +183,53 @@ exports.requestAmenities = async (req, res) => {
   }
 };
 
+// POST /api/admin/fetch-amenities/:id
+exports.fetchAmenitiesForProperty = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const propRes = await db.query('SELECT * FROM properties WHERE id = $1', [id]);
+    if (propRes.rows.length === 0) return res.status(404).json({ message: 'Property not found' });
+    const property = propRes.rows[0];
+
+    // Get coordinates: either from property.location or mock_patta
+    let lat, lng;
+    if (property.location) {
+      const locRes = await db.query('SELECT ST_Y(location) as lat, ST_X(location) as lng FROM properties WHERE id = $1', [id]);
+      lat = locRes.rows[0].lat;
+      lng = locRes.rows[0].lng;
+    } else {
+      const pattaRes = await db.query(`
+        SELECT * FROM mock_patta 
+        WHERE survey_number = $1 AND village = $2 AND taluk = $3 AND district = $4
+      `, [property.survey_number, property.village, property.taluk, property.district]);
+      if (pattaRes.rows.length === 0) {
+        return res.status(400).json({ message: 'No coordinates available. Please request manual amenities.' });
+      }
+      lat = pattaRes.rows[0].latitude;
+      lng = pattaRes.rows[0].longitude;
+    }
+
+    // Fetch amenities
+    const amenities = await geoapifyService.fetchAmenities(lat, lng);
+    const prediction = await internalPredict(id, amenities);
+
+    // Update property with amenities and prediction, keep status unchanged
+    await db.query(`
+      UPDATE properties SET 
+        amenities_data = $1,
+        amenity_credits = $2,
+        predicted_price = $3
+      WHERE id = $4
+    `, [JSON.stringify(amenities), JSON.stringify(prediction.breakdown || {}), prediction.predicted_price, id]);
+
+    res.json({ message: 'Amenities fetched and stored', amenities, prediction });
+  } catch (err) {
+    console.error('fetchAmenitiesForProperty error:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+// GET /api/admin/properties
 exports.getAllProperties = async (req, res) => {
   try {
     const { land_type_id, status, search } = req.query;
@@ -206,6 +266,7 @@ exports.getAllProperties = async (req, res) => {
   }
 };
 
+// PUT /api/admin/properties/:id
 exports.updateProperty = async (req, res) => {
   const { id } = req.params;
   const fields = ['title', 'price', 'area', 'description', 'address', 'district', 'city', 'state', 'patta_number', 'survey_number', 'village', 'taluk'];
@@ -236,6 +297,7 @@ exports.updateProperty = async (req, res) => {
   }
 };
 
+// GET /api/admin/check-match/:id
 exports.checkMatch = async (req, res) => {
   const { id } = req.params;
   try {
@@ -265,6 +327,7 @@ exports.checkMatch = async (req, res) => {
   }
 };
 
+// DELETE /api/admin/properties/:id
 exports.deleteProperty = async (req, res) => {
   const { id } = req.params;
   try {

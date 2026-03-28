@@ -1,4 +1,3 @@
-// src/controllers/predictionController.js
 const db = require('../config/database');
 const MLR = require('ml-regression-multivariate-linear');
 
@@ -53,7 +52,7 @@ function computeCreditPrediction(property, amenitiesData) {
   };
 }
 
-// Helper: Get annual appreciation from price history
+// Helper: Get annual appreciation from price history (non‑linear because used in compound growth)
 async function getAnnualAppreciation(propertyId, district = null) {
   const ownHistory = await db.query(`
     SELECT recorded_date, price FROM price_history
@@ -127,7 +126,7 @@ exports.predictPrice = async (req, res) => {
       return res.json(creditPred);
     }
 
-    // Future year projection using appreciation rate
+    // Future year projection using compound growth (non‑linear)
     const annualRate = await getAnnualAppreciation(property_id, property.district);
     const currentYear = new Date().getFullYear();
     const years = target_year - currentYear;
@@ -149,6 +148,5 @@ exports.predictPrice = async (req, res) => {
 
 // Admin endpoint: train MLR model (optional)
 exports.trainPriceModel = async (req, res) => {
-  // ... (implementation from previous messages)
   res.status(200).json({ message: 'Model training not implemented in this version' });
 };
