@@ -3,13 +3,22 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
 
+// Map technical keys to user‑friendly names and icons
+const amenityKeys = [
+  { key: 'schools', label: 'Schools', icon: '🏫', countCol: 'schools_1km_count', distCol: 'nearest_school_distance_m' },
+  { key: 'hospitals', label: 'Hospitals', icon: '🏥', countCol: 'hospitals_2km_count', distCol: 'nearest_hospital_distance_m' },
+  { key: 'bus_stops', label: 'Bus Stops', icon: '🚌', countCol: 'bus_stops_1km_count', distCol: 'nearest_bus_stop_distance_m' },
+  { key: 'supermarkets', label: 'Supermarkets', icon: '🛒', countCol: 'supermarkets_1km_count', distCol: 'nearest_supermarket_distance_m' },
+  { key: 'parks', label: 'Parks', icon: '🌳', countCol: 'parks_1km_count', distCol: 'nearest_park_distance_m' },
+  { key: 'banks', label: 'Banks', icon: '🏦', countCol: 'banks_1km_count', distCol: 'nearest_bank_distance_m' }
+];
+
 const PropertyDetail = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [prediction, setPrediction] = useState(null);
   const [targetYear, setTargetYear] = useState(new Date().getFullYear());
   const [futurePrediction, setFuturePrediction] = useState(null);
 
@@ -31,16 +40,6 @@ const PropertyDetail = () => {
     fetchProp();
   }, [id, user, navigate]);
 
-  const handlePredict = async () => {
-    try {
-      const res = await axios.post('http://localhost:5000/api/predict', { property_id: id });
-      setPrediction(res.data.predicted_price);
-    } catch (err) {
-      console.error(err);
-      alert('Error running price prediction');
-    }
-  };
-
   const handleFuturePredict = async () => {
     try {
       const res = await axios.post('http://localhost:5000/api/predict', {
@@ -58,6 +57,7 @@ const PropertyDetail = () => {
   if (!property) return <div className="min-h-screen flex items-center justify-center text-xl font-bold text-gray-400 uppercase tracking-widest">Property not found</div>;
 
   const canViewFull = property.is_owner || property.is_admin;
+  const credits = property.amenity_credits || {};
 
   return (
     <div className="bg-white min-h-screen pb-24">
@@ -69,12 +69,12 @@ const PropertyDetail = () => {
         <div className="absolute bottom-0 left-0 w-full p-12 z-30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <span className={`px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${property.land_type_id === 1 ? 'bg-emerald-500 text-white' : 'bg-blue-600 text-white'}`}>
-              {property.land_type_name} Catalog Entry
+              {property.land_type_name}
             </span>
             <h1 className="text-5xl md:text-7xl font-black text-gray-900 mt-4 tracking-tighter uppercase leading-none">{property.title}</h1>
             <div className="flex items-center mt-6 text-gray-500 font-bold uppercase tracking-widest text-sm">
-               <svg className="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
-               {property.village}, {property.taluk}, {property.district}
+              <svg className="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+              {property.village}, {property.taluk}, {property.district}
             </div>
           </div>
         </div>
@@ -86,20 +86,20 @@ const PropertyDetail = () => {
             {/* Core Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
               <div className="bg-gray-50 p-6 rounded-[2rem] border border-gray-100 flex flex-col justify-center">
-                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Market Price</p>
-                 <p className="text-2xl font-black text-blue-600 uppercase">₹{parseFloat(property.price).toLocaleString('en-IN')}</p>
+                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Market Price</p>
+                <p className="text-2xl font-black text-blue-600 uppercase">₹{parseFloat(property.price).toLocaleString('en-IN')}</p>
               </div>
               <div className="bg-gray-50 p-6 rounded-[2rem] border border-gray-100 flex flex-col justify-center">
-                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Total Scale</p>
-                 <p className="text-2xl font-black text-gray-900 uppercase">{property.area} {property.land_type_id === 1 ? 'Acres' : 'Sq Ft'}</p>
+                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Total Scale</p>
+                <p className="text-2xl font-black text-gray-900 uppercase">{property.area} {property.land_type_id === 1 ? 'Acres' : 'Sq Ft'}</p>
               </div>
               <div className="bg-gray-50 p-6 rounded-[2rem] border border-gray-100 flex flex-col justify-center">
-                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Type</p>
-                 <p className="text-2xl font-black text-gray-900 uppercase">{property.land_type_name}</p>
+                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Type</p>
+                <p className="text-2xl font-black text-gray-900 uppercase">{property.land_type_name}</p>
               </div>
               <div className="bg-gray-50 p-6 rounded-[2rem] border border-gray-100 flex flex-col justify-center">
-                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Verification</p>
-                 <p className="text-2xl font-black text-emerald-600 uppercase">Authentic</p>
+                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Verification</p>
+                <p className="text-2xl font-black text-emerald-600 uppercase">Authentic</p>
               </div>
             </div>
 
@@ -121,20 +121,8 @@ const PropertyDetail = () => {
               </div>
             )}
 
-            {/* Official Documents – only for owner/admin */}
-            {canViewFull && (property.patta_document_url || property.fmb_sketch_url) && (
-              <div className="mt-8 p-4 bg-gray-50 rounded-2xl">
-                <h3 className="text-lg font-black mb-2">Official Documents</h3>
-                {property.patta_document_url && (
-                  <a href={property.patta_document_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline block mb-1">View Patta Document</a>
-                )}
-                {property.fmb_sketch_url && (
-                  <a href={property.fmb_sketch_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline block">View FMB Sketch</a>
-                )}
-              </div>
-            )}
-
             <div className="space-y-12">
+              {/* Sales Narrative */}
               <section>
                 <h3 className="text-3xl font-black text-gray-900 border-l-8 border-blue-600 pl-6 mb-8 uppercase tracking-tighter">Sales Narrative</h3>
                 <p className="text-xl text-gray-600 leading-relaxed font-medium bg-gray-50 p-10 rounded-[2.5rem] italic whitespace-pre-wrap">
@@ -142,7 +130,7 @@ const PropertyDetail = () => {
                 </p>
               </section>
 
-              {/* Technical Specs */}
+              {/* Technical Specifications */}
               <section>
                 <h3 className="text-3xl font-black text-gray-900 border-l-8 border-indigo-600 pl-6 mb-8 uppercase tracking-tighter">Technical Specifications</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -204,41 +192,50 @@ const PropertyDetail = () => {
                 </div>
               </section>
 
-              {/* Geospatial Intelligence */}
+              {/* Geospatial Intelligence – Professional Table */}
               <section>
-                <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-3xl font-black text-gray-900 border-l-8 border-emerald-500 pl-6 uppercase tracking-tighter">Geospatial Intelligence</h3>
-                  <span className="bg-emerald-100 text-emerald-700 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">Live Data</span>
-                </div>
-                
-                {property.amenities_data && (
-                  <div className="grid grid-cols-2 lg:grid-cols-6 gap-2 mb-8">
-                    {Object.entries(property.amenities_data.counts || {}).map(([key, count]) => (
-                      <div key={key} className="bg-white border border-gray-100 p-4 rounded-2xl shadow-sm text-center">
-                        <p className="text-[10px] font-black text-gray-400 uppercase mb-1">{key}</p>
-                        <p className="text-xl font-black text-gray-900">{count}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                   <div className="p-8 rounded-[2rem] bg-indigo-50 border border-indigo-100">
-                     <p className="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-1">Center City Access</p>
-                     <p className="text-2xl font-black text-indigo-900">{property.distance_to_cbd_km || '5.2'} KM</p>
-                   </div>
-                   <div className="p-8 rounded-[2rem] bg-amber-50 border border-amber-100">
-                     <p className="text-[10px] font-black text-amber-500 uppercase tracking-widest mb-1">Education Proximity</p>
-                     <p className="text-2xl font-black text-amber-900">
-                       {property.amenities_data?.distances?.nearest_school_m ? (property.amenities_data.distances.nearest_school_m / 1000).toFixed(1) : '1.2'} KM
-                     </p>
-                   </div>
-                   <div className="p-8 rounded-[2rem] bg-rose-50 border border-rose-100">
-                     <p className="text-[10px] font-black text-rose-400 uppercase tracking-widest mb-1">Healthcare Centers</p>
-                     <p className="text-2xl font-black text-rose-900">
-                       {property.amenities_data?.distances?.nearest_hospital_m ? (property.amenities_data.distances.nearest_hospital_m / 1000).toFixed(1) : '0.8'} KM
-                     </p>
-                   </div>
+                <h3 className="text-3xl font-black text-gray-900 border-l-8 border-emerald-500 pl-6 mb-8 uppercase tracking-tighter">Nearby Amenities</h3>
+                <div className="overflow-x-auto">
+                  <table className="min-w-full bg-white border border-gray-200 rounded-xl">
+                    <thead className="bg-gray-100">
+                      <tr>
+                        <th className="px-6 py-3 text-left text-xs font-black text-gray-500 uppercase tracking-wider">Amenity</th>
+                        <th className="px-6 py-3 text-left text-xs font-black text-gray-500 uppercase tracking-wider">Count (within 1‑2km)</th>
+                        <th className="px-6 py-3 text-left text-xs font-black text-gray-500 uppercase tracking-wider">Nearest Distance</th>
+                        <th className="px-6 py-3 text-left text-xs font-black text-gray-500 uppercase tracking-wider">Credit Added</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200">
+                      {amenityKeys.map(({ key, label, icon, countCol, distCol }) => {
+                        const count = property[countCol];
+                        const distance = property[distCol];
+                        // Only show if at least one of count or distance is not null
+                        if (count === undefined && distance === undefined) return null;
+                        const credit = credits[key] || 0;
+                        return (
+                          <tr key={key} className="hover:bg-gray-50">
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <div className="flex items-center">
+                                <span className="text-xl mr-2">{icon}</span>
+                                <span className="font-bold text-gray-900">{label}</span>
+                              </div>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-gray-700">{count !== undefined ? count : '—'}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-gray-700">
+                              {distance ? `${Math.round(distance)} m` : 'Not available'}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              {credit > 0 ? (
+                                <span className="text-emerald-600 font-black">+₹{Math.round(credit).toLocaleString()}</span>
+                              ) : (
+                                <span className="text-gray-400">—</span>
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
                 </div>
               </section>
 
@@ -258,13 +255,8 @@ const PropertyDetail = () => {
                           <p className="text-5xl font-black text-white tracking-widest">₹{parseFloat(property.predicted_price).toLocaleString('en-IN')}</p>
                           <p className="text-xs text-blue-300 mt-2 font-medium">Base: ₹{parseFloat(property.price).toLocaleString('en-IN')} + Amenity Credits</p>
                         </div>
-                      ) : prediction ? (
-                        <div>
-                          <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-2">Estimated Price</p>
-                          <p className="text-5xl font-black text-white tracking-widest">₹{parseFloat(prediction).toLocaleString('en-IN')}</p>
-                        </div>
                       ) : (
-                        <button onClick={handlePredict} className="bg-blue-600 hover:bg-blue-700 text-white font-black px-12 py-5 rounded-3xl transition-all shadow-2xl shadow-blue-600/30 hover:scale-105 active:scale-95 uppercase tracking-widest text-sm">
+                        <button className="bg-blue-600 hover:bg-blue-700 text-white font-black px-12 py-5 rounded-3xl transition-all shadow-2xl shadow-blue-600/30 hover:scale-105 active:scale-95 uppercase tracking-widest text-sm">
                           Calculate Prediction
                         </button>
                       )}
@@ -272,11 +264,11 @@ const PropertyDetail = () => {
                   </div>
 
                   {/* Amenity Credit Breakdown */}
-                  {property.amenity_credits && Object.keys(property.amenity_credits).length > 0 && (
+                  {Object.keys(credits).length > 0 && (
                     <div className="border-t border-white/10 pt-8">
                       <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-4">Amenity Credit Breakdown</p>
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        {Object.entries(property.amenity_credits).map(([key, value]) => (
+                        {Object.entries(credits).map(([key, value]) => (
                           <div key={key} className="bg-white/5 backdrop-blur-sm border border-white/10 p-4 rounded-2xl">
                             <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1">{key}</p>
                             <p className={`text-lg font-black ${value > 0 ? 'text-emerald-400' : 'text-gray-500'}`}>
@@ -290,7 +282,7 @@ const PropertyDetail = () => {
                 </div>
               </section>
 
-              {/* Future Prediction Section */}
+              {/* Future Prediction Section – Non‑linear (compound growth) */}
               <section className="bg-white border-2 border-gray-100 p-8 rounded-[3rem] shadow-sm">
                 <h3 className="text-2xl font-black text-gray-900 mb-4">Predict Future Value</h3>
                 <div className="flex flex-wrap items-end gap-6">
@@ -324,12 +316,15 @@ const PropertyDetail = () => {
                         Based on annual growth rate of {(futurePrediction.annual_growth_rate * 100).toFixed(1)}%
                       </p>
                     )}
+                    <p className="text-[10px] text-gray-400 mt-2 italic">
+                      * Future growth is non‑linear (compound). New amenities added later will adjust the prediction.
+                    </p>
                   </div>
                 )}
               </section>
             </div>
           </div>
-          
+
           <div className="lg:col-span-4">
             <div className="sticky top-24 space-y-8">
               {canViewFull ? (

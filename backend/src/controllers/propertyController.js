@@ -288,15 +288,25 @@ exports.getMyProperties = async (req, res) => {
 // ========================
 // 6. User submits manual amenities (fallback) – MERGES with existing
 // ========================
+// Only the `submitAmenities` function is changed; the rest of the file remains the same.
+
+// ========================
+// 6. User submits manual amenities (fallback) – MERGES with existing and updates columns
+// ========================
 exports.submitAmenities = async (req, res) => {
   const { id } = req.params;
   const { amenities } = req.body; // { counts: {...}, distances: {...} }
   const owner_id = req.user.id;
 
+  console.log('submitAmenities called', { id, owner_id, amenities });
+
   try {
     // Fetch existing user_provided_amenities
     const propRes = await db.query('SELECT user_provided_amenities FROM properties WHERE id = $1 AND owner_id = $2', [id, owner_id]);
-    if (propRes.rows.length === 0) return res.status(404).json({ message: 'Property not found' });
+    if (propRes.rows.length === 0) {
+      console.log('Property not found or not owned by user');
+      return res.status(404).json({ message: 'Property not found' });
+    }
     let existing = propRes.rows[0].user_provided_amenities || { counts: {}, distances: {} };
     
     // Merge new data with existing
@@ -306,17 +316,49 @@ exports.submitAmenities = async (req, res) => {
     };
     
     const pendingStatus = await db.query("SELECT id FROM property_status WHERE status = 'pending'");
+    if (pendingStatus.rows.length === 0) throw new Error('pending status not found');
+    
+    // Update JSON and columns
     await db.query(`
       UPDATE properties SET 
         user_provided_amenities = $1,
         status_id = $2,
-        missing_amenities = NULL
-      WHERE id = $3 AND owner_id = $4
-    `, [JSON.stringify(merged), pendingStatus.rows[0].id, id, owner_id]);
-
+        missing_amenities = NULL,
+        schools_1km_count = $3,
+        hospitals_2km_count = $4,
+        bus_stops_1km_count = $5,
+        supermarkets_1km_count = $6,
+        parks_1km_count = $7,
+        banks_1km_count = $8,
+        nearest_school_distance_m = $9,
+        nearest_hospital_distance_m = $10,
+        nearest_bus_stop_distance_m = $11,
+        nearest_supermarket_distance_m = $12,
+        nearest_park_distance_m = $13,
+        nearest_bank_distance_m = $14
+      WHERE id = $15 AND owner_id = $16
+    `, [
+      JSON.stringify(merged),
+      pendingStatus.rows[0].id,
+      merged.counts.schools || 0,
+      merged.counts.hospitals || 0,
+      merged.counts.bus_stops || 0,
+      merged.counts.supermarkets || 0,
+      merged.counts.parks || 0,
+      merged.counts.banks || 0,
+      merged.distances.nearest_school_m || null,
+      merged.distances.nearest_hospital_m || null,
+      merged.distances.nearest_bus_m || null,
+      merged.distances.nearest_supermarket_m || null,
+      merged.distances.nearest_park_m || null,
+      merged.distances.nearest_bank_m || null,
+      id, owner_id
+    ]);
+    
+    console.log('Amenities merged and columns updated');
     res.json({ message: 'Amenities submitted and property returned to pending status' });
   } catch (err) {
-    console.error(err);
+    console.error('submitAmenities error:', err);
     res.status(500).json({ message: 'Server error' });
   }
 };

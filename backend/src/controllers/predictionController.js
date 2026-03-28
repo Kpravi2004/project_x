@@ -21,15 +21,31 @@ async function loadModel(landTypeId) {
   return MLR.load(res.rows[0].model_data);
 }
 
-// Helper: Compute credit‑based price
-function computeCreditPrediction(property, amenitiesData) {
-  const counts = amenitiesData?.counts || {};
-  const distances = amenitiesData?.distances || {};
+// Helper: Compute credit‑based price using property's columns
+function computeCreditPrediction(property) {
+  // Extract counts and distances from columns
+  const counts = {
+    schools: property.schools_1km_count || 0,
+    hospitals: property.hospitals_2km_count || 0,
+    bus_stops: property.bus_stops_1km_count || 0,
+    supermarkets: property.supermarkets_1km_count || 0,
+    parks: property.parks_1km_count || 0,
+    banks: property.banks_1km_count || 0
+  };
+  const distances = {
+    nearest_school_m: property.nearest_school_distance_m,
+    nearest_hospital_m: property.nearest_hospital_distance_m,
+    nearest_bus_m: property.nearest_bus_stop_distance_m,
+    nearest_supermarket_m: property.nearest_supermarket_distance_m,
+    nearest_park_m: property.nearest_park_distance_m,
+    nearest_bank_m: property.nearest_bank_distance_m
+  };
+
   let totalBonus = 0;
   const breakdown = {};
 
   for (const [key, config] of Object.entries(AMENITY_CREDITS)) {
-    const count = counts[key + 's'] || 0; // e.g., schools, hospitals, bus_stops, etc.
+    const count = counts[key + 's'] || 0;
     let distance = Infinity;
     if (key === 'school') distance = distances.nearest_school_m || config.max_dist;
     else if (key === 'hospital') distance = distances.nearest_hospital_m || config.max_dist;
@@ -52,7 +68,7 @@ function computeCreditPrediction(property, amenitiesData) {
   };
 }
 
-// Helper: Get annual appreciation from price history (non‑linear because used in compound growth)
+// Helper: Get annual appreciation from price history
 async function getAnnualAppreciation(propertyId, district = null) {
   const ownHistory = await db.query(`
     SELECT recorded_date, price FROM price_history
@@ -96,7 +112,6 @@ exports.predictPrice = async (req, res) => {
     const propRes = await db.query('SELECT * FROM properties WHERE id = $1', [property_id]);
     if (propRes.rows.length === 0) return res.status(404).json({ message: 'Property not found' });
     const property = propRes.rows[0];
-    const amenitiesData = property.amenities_data || property.user_provided_amenities;
 
     // If target_year is given and an MLR model exists, use it (optional)
     if (target_year) {
@@ -120,8 +135,8 @@ exports.predictPrice = async (req, res) => {
       }
     }
 
-    // Fallback to credit‑based prediction
-    const creditPred = computeCreditPrediction(property, amenitiesData);
+    // Fallback to credit‑based prediction using columns
+    const creditPred = computeCreditPrediction(property);
     if (!target_year) {
       return res.json(creditPred);
     }

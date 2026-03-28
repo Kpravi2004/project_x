@@ -58,26 +58,14 @@ exports.verifyProperty = async (req, res) => {
       // Check if user has provided manual amenities
       if (property.user_provided_amenities) {
         console.log('No Patta match, but user provided manual amenities. Proceeding with manual data.');
+        // Use manual amenities directly
         const amenities = property.user_provided_amenities;
         const prediction = await internalPredict(id, amenities);
         const approvedStatus = await db.query("SELECT id FROM property_status WHERE status = 'approved'");
         
-        await db.query(`
-          UPDATE properties SET 
-            amenities_data = $1,
-            amenity_credits = $2,
-            predicted_price = $3,
-            status_id = $4,
-            verified_at = NOW(),
-            verified_by = $5
-          WHERE id = $6
-        `, [JSON.stringify(amenities), JSON.stringify(prediction.breakdown || {}), prediction.predicted_price, approvedStatus.rows[0].id, req.user.id, id]);
-
-        // Record in price_history
-        await db.query(`
-          INSERT INTO price_history (property_id, price, predicted_price, amenity_credits, source)
-          VALUES ($1, $2, $3, $4, 'user_amenities')
-        `, [id, property.price, prediction.predicted_price, JSON.stringify(prediction.breakdown || {})]);
+        // Update columns with manual data
+        await updateAmenityColumns(id, amenities, approvedStatus.rows[0].id, req.user.id);
+        await recordPriceHistory(id, property.price, prediction.predicted_price, prediction.breakdown, 'user_amenities');
 
         return res.json({ 
           message: 'Property verified using user-provided amenities',
@@ -91,7 +79,7 @@ exports.verifyProperty = async (req, res) => {
     }
     const pattaInfo = pattaRes.rows[0];
 
-    // 2. Use existing amenities if already fetched, otherwise fetch new
+    // 2. Get amenities: use existing amenities_data if present, else fetch new
     let amenities;
     if (property.amenities_data && Object.keys(property.amenities_data.counts || {}).length > 0) {
       amenities = property.amenities_data;
@@ -111,12 +99,23 @@ exports.verifyProperty = async (req, res) => {
       }
     }
 
-    // 3. Predict Price
-    const prediction = await internalPredict(id, amenities);
+    // 3. Merge with manual amenities if any (manual overrides API)
+    let finalAmenities = amenities;
+    if (property.user_provided_amenities) {
+      const manual = property.user_provided_amenities;
+      finalAmenities = {
+        counts: { ...amenities.counts, ...manual.counts },
+        distances: { ...amenities.distances, ...manual.distances }
+      };
+      console.log('Merged amenities:', finalAmenities);
+    }
+
+    // 4. Predict Price
+    const prediction = await internalPredict(id, finalAmenities);
 
     const approvedStatus = await db.query("SELECT id FROM property_status WHERE status = 'approved'");
 
-    // --- UPDATE includes patta fields from mock record ---
+    // 5. Update property with patta fields, location, and amenity columns
     const updateQuery = `
       UPDATE properties SET 
         location = ST_SetSRID(ST_MakePoint($1, $2), 4326),
@@ -131,23 +130,21 @@ exports.verifyProperty = async (req, res) => {
         verified_by = $10
       WHERE id = $11
     `;
-
     const values = [
       pattaInfo.longitude, pattaInfo.latitude,
       pattaInfo.patta_number, pattaInfo.survey_number, pattaInfo.subdivision_number,
-      JSON.stringify(amenities),
+      JSON.stringify(finalAmenities),
       JSON.stringify(prediction.breakdown || {}),
       prediction.predicted_price,
       approvedStatus.rows[0].id, req.user.id, id
     ];
-
     await db.query(updateQuery, values);
 
+    // Update dedicated columns
+    await updateAmenityColumns(id, finalAmenities, approvedStatus.rows[0].id, req.user.id);
+
     // Record in price_history
-    await db.query(`
-      INSERT INTO price_history (property_id, price, predicted_price, amenity_credits, source)
-      VALUES ($1, $2, $3, $4, 'patta_verified')
-    `, [id, property.price, prediction.predicted_price, JSON.stringify(prediction.breakdown || {})]);
+    await recordPriceHistory(id, property.price, prediction.predicted_price, prediction.breakdown, 'patta_verified');
 
     res.json({ 
       message: 'Property verified and approved successfully',
@@ -159,10 +156,64 @@ exports.verifyProperty = async (req, res) => {
   }
 };
 
+// Helper: Update amenity columns from counts/distances object
+// Helper: Update amenity columns from counts/distances object
+async function updateAmenityColumns(propertyId, amenities, statusId, adminId) {
+  const counts = amenities.counts || {};
+  const distances = amenities.distances || {};
+
+  // Round distances to nearest integer
+  const nearestSchool = distances.nearest_school_m !== null ? Math.round(distances.nearest_school_m) : null;
+  const nearestHospital = distances.nearest_hospital_m !== null ? Math.round(distances.nearest_hospital_m) : null;
+  const nearestBus = distances.nearest_bus_m !== null ? Math.round(distances.nearest_bus_m) : null;
+  const nearestSupermarket = distances.nearest_supermarket_m !== null ? Math.round(distances.nearest_supermarket_m) : null;
+  const nearestPark = distances.nearest_park_m !== null ? Math.round(distances.nearest_park_m) : null;
+  const nearestBank = distances.nearest_bank_m !== null ? Math.round(distances.nearest_bank_m) : null;
+
+  await db.query(`
+    UPDATE properties SET
+      schools_1km_count = $1,
+      hospitals_2km_count = $2,
+      bus_stops_1km_count = $3,
+      supermarkets_1km_count = $4,
+      parks_1km_count = $5,
+      banks_1km_count = $6,
+      nearest_school_distance_m = $7,
+      nearest_hospital_distance_m = $8,
+      nearest_bus_stop_distance_m = $9,
+      nearest_supermarket_distance_m = $10,
+      nearest_park_distance_m = $11,
+      nearest_bank_distance_m = $12
+    WHERE id = $13
+  `, [
+    counts.schools || 0,
+    counts.hospitals || 0,
+    counts.bus_stops || 0,
+    counts.supermarkets || 0,
+    counts.parks || 0,
+    counts.banks || 0,
+    nearestSchool,
+    nearestHospital,
+    nearestBus,
+    nearestSupermarket,
+    nearestPark,
+    nearestBank,
+    propertyId
+  ]);
+}
+
+// Helper: Record price history
+async function recordPriceHistory(propertyId, price, predictedPrice, breakdown, source) {
+  await db.query(`
+    INSERT INTO price_history (property_id, price, predicted_price, amenity_credits, source)
+    VALUES ($1, $2, $3, $4, $5)
+  `, [propertyId, price, predictedPrice, JSON.stringify(breakdown), source]);
+}
+
 // POST /api/admin/request-amenities/:id
 exports.requestAmenities = async (req, res) => {
   const { id } = req.params;
-  const { note, missingCategories } = req.body; // missingCategories is an array
+  const { note, missingCategories } = req.body;
 
   try {
     const statusRes = await db.query("SELECT id FROM property_status WHERE status = 'amenities_requested'");
@@ -221,6 +272,9 @@ exports.fetchAmenitiesForProperty = async (req, res) => {
         predicted_price = $3
       WHERE id = $4
     `, [JSON.stringify(amenities), JSON.stringify(prediction.breakdown || {}), prediction.predicted_price, id]);
+
+    // Also update columns
+    await updateAmenityColumns(id, amenities, property.status_id, req.user.id);
 
     res.json({ message: 'Amenities fetched and stored', amenities, prediction });
   } catch (err) {

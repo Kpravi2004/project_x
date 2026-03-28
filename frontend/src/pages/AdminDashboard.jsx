@@ -65,17 +65,16 @@ const AdminDashboard = () => {
   };
 
   const handleRequestAmenities = async (id) => {
-    // Determine missing categories from fetchedAmenities (or from property data)
+    // Use the selected property's column values to determine missing categories
+    const prop = selectedProp;
     let missing = [];
-    if (fetchedAmenities) {
-      const am = fetchedAmenities;
-      if (!am.distances?.nearest_bus_m) missing.push('bus_stop');
-      if (!am.distances?.nearest_school_m) missing.push('school');
-      if (!am.distances?.nearest_hospital_m) missing.push('hospital');
-      if (!am.distances?.nearest_bank_m) missing.push('bank');
-      if (!am.distances?.nearest_supermarket_m) missing.push('supermarket');
-      if (!am.distances?.nearest_park_m) missing.push('park');
-    }
+    if (!prop.nearest_bus_stop_distance_m && prop.bus_stops_1km_count === 0) missing.push('bus_stop');
+    if (!prop.nearest_school_distance_m && prop.schools_1km_count === 0) missing.push('school');
+    if (!prop.nearest_hospital_distance_m && prop.hospitals_2km_count === 0) missing.push('hospital');
+    if (!prop.nearest_bank_distance_m && prop.banks_1km_count === 0) missing.push('bank');
+    if (!prop.nearest_supermarket_distance_m && prop.supermarkets_1km_count === 0) missing.push('supermarket');
+    if (!prop.nearest_park_distance_m && prop.parks_1km_count === 0) missing.push('park');
+
     const note = prompt("Enter a brief note for the user", missing.length ? `Missing: ${missing.join(', ')}` : 'Please provide approximate distances to nearest amenities.');
     if (!note) return;
 
