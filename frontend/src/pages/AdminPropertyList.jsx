@@ -175,62 +175,88 @@ const AdminPropertyList = () => {
 
       {/* Edit Modal */}
       {modalOpen && selectedProperty && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl font-bold">Edit Property #{selectedProperty.id}</h2>
-              <button onClick={() => setModalOpen(false)} className="text-gray-500 hover:text-gray-700">&times;</button>
-            </div>
-            <form onSubmit={saveEdit}>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-1">Title</label>
-                  <input name="title" value={editForm.title || ''} onChange={handleEditChange} className="border rounded w-full p-2" />
-                </div>
-                <div>
-                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-1">Price (₹)</label>
-                  <input type="number" name="price" value={editForm.price || ''} onChange={handleEditChange} className="border rounded w-full p-2" />
-                </div>
-                <div>
-                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-1">Area</label>
-                  <input type="number" step="0.01" name="area" value={editForm.area || ''} onChange={handleEditChange} className="border rounded w-full p-2" />
-                </div>
-                <div>
-                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-1">Land Type</label>
-                  <select name="land_type_id" value={editForm.land_type_id || ''} onChange={handleEditChange} className="border rounded w-full p-2">
-                    <option value="1">Agricultural</option>
-                    <option value="2">Residential</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-1">District</label>
-                  <input name="district" value={editForm.district || ''} onChange={handleEditChange} className="border rounded w-full p-2" />
-                </div>
-                <div>
-                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-1">Taluk</label>
-                  <input name="taluk" value={editForm.taluk || ''} onChange={handleEditChange} className="border rounded w-full p-2" />
-                </div>
-                <div>
-                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-1">Village</label>
-                  <input name="village" value={editForm.village || ''} onChange={handleEditChange} className="border rounded w-full p-2" />
-                </div>
-                <div>
-                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-1">Survey Number</label>
-                  <input name="survey_number" value={editForm.survey_number || ''} onChange={handleEditChange} className="border rounded w-full p-2" />
-                </div>
-                <div>
-                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-1">Patta Document URL</label>
-                  <input name="patta_document_url" value={editForm.patta_document_url || ''} onChange={handleEditChange} className="border rounded w-full p-2" />
-                </div>
-                <div>
-                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-1">FMB Sketch URL</label>
-                  <input name="fmb_sketch_url" value={editForm.fmb_sketch_url || ''} onChange={handleEditChange} className="border rounded w-full p-2" />
-                </div>
-                {/* Add more fields as needed */}
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-[2.5rem] p-10 max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-100">
+            <div className="flex justify-between items-center mb-8 pb-4 border-b border-gray-100">
+              <div>
+                <h2 className="text-3xl font-black text-gray-900 tracking-tighter uppercase">Modify Asset #{selectedProperty.id}</h2>
+                <p className="text-[10px] font-black text-blue-500 uppercase tracking-widest mt-1">Management Mode</p>
               </div>
-              <div className="flex justify-end gap-2 mt-6">
-                <button type="button" onClick={() => setModalOpen(false)} className="bg-gray-200 px-4 py-2 rounded">Cancel</button>
-                <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">Save Changes</button>
+              <button 
+                onClick={() => setModalOpen(false)} 
+                className="w-10 h-10 flex items-center justify-center bg-gray-50 hover:bg-gray-100 text-gray-400 hover:text-gray-900 rounded-full transition-all"
+              >
+                &times;
+              </button>
+            </div>
+            
+            <form onSubmit={saveEdit} className="space-y-10">
+              {/* Profile Context */}
+              <section>
+                <h3 className="text-xs font-black text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+                  <span className="w-2 h-2 bg-blue-600 rounded-full"></span> Profile Context
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="flex flex-col">
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 px-1">Asset Title</label>
+                    <input name="title" value={editForm.title || ''} onChange={handleEditChange} className="bg-gray-50 border-none rounded-2xl px-5 py-4 font-bold text-gray-900 focus:ring-2 focus:ring-blue-500 transition-all shadow-inner" placeholder="E.g. 5 Cent Residential Plot" />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 px-1">Valuation (₹)</label>
+                    <input type="number" name="price" value={editForm.price || ''} onChange={handleEditChange} className="bg-gray-50 border-none rounded-2xl px-5 py-4 font-bold text-gray-900 focus:ring-2 focus:ring-blue-500 transition-all shadow-inner font-mono" placeholder="0.00" />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 px-1">Scale (SqFt/Ac)</label>
+                    <input type="number" step="0.01" name="area" value={editForm.area || ''} onChange={handleEditChange} className="bg-gray-50 border-none rounded-2xl px-5 py-4 font-bold text-gray-900 focus:ring-2 focus:ring-blue-500 transition-all shadow-inner" placeholder="0.00" />
+                  </div>
+                </div>
+              </section>
+
+              {/* Geographical Mapping */}
+              <section>
+                <h3 className="text-xs font-black text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+                  <span className="w-2 h-2 bg-emerald-500 rounded-full"></span> Geographical Mapping
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  <div className="flex flex-col">
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 px-1">District</label>
+                    <input name="district" value={editForm.district || ''} onChange={handleEditChange} className="bg-gray-50 border-none rounded-2xl px-5 py-4 font-bold text-gray-900 focus:ring-2 focus:ring-blue-500 transition-all shadow-inner" />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 px-1">Taluk / Region</label>
+                    <input name="taluk" value={editForm.taluk || ''} onChange={handleEditChange} className="bg-gray-50 border-none rounded-2xl px-5 py-4 font-bold text-gray-900 focus:ring-2 focus:ring-blue-500 transition-all shadow-inner" />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 px-1">Village</label>
+                    <input name="village" value={editForm.village || ''} onChange={handleEditChange} className="bg-gray-50 border-none rounded-2xl px-5 py-4 font-bold text-gray-900 focus:ring-2 focus:ring-blue-500 transition-all shadow-inner" />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 px-1">Survey Identifier</label>
+                    <input name="survey_number" value={editForm.survey_number || ''} onChange={handleEditChange} className="bg-gray-50 border-none rounded-2xl px-5 py-4 font-bold text-gray-900 focus:ring-2 focus:ring-blue-500 transition-all shadow-inner font-mono" />
+                  </div>
+                </div>
+              </section>
+
+              {/* Documentary Verification */}
+              <section>
+                <h3 className="text-xs font-black text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+                  <span className="w-2 h-2 bg-amber-500 rounded-full"></span> Documentary Verification
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="flex flex-col">
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 px-1">Patta Resource (URL)</label>
+                    <input name="patta_document_url" value={editForm.patta_document_url || ''} onChange={handleEditChange} className="bg-gray-50 border-none rounded-2xl px-5 py-4 font-bold text-gray-900 focus:ring-2 focus:ring-blue-500 transition-all shadow-inner text-xs" />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 px-1">FMB Sketch Resource (URL)</label>
+                    <input name="fmb_sketch_url" value={editForm.fmb_sketch_url || ''} onChange={handleEditChange} className="bg-gray-50 border-none rounded-2xl px-5 py-4 font-bold text-gray-900 focus:ring-2 focus:ring-blue-500 transition-all shadow-inner text-xs" />
+                  </div>
+                </div>
+              </section>
+
+              <div className="flex justify-end gap-4 pt-6 mt-10 border-t border-gray-100">
+                <button type="button" onClick={() => setModalOpen(false)} className="px-8 py-4 text-xs font-black text-gray-500 uppercase tracking-widest hover:text-gray-900 transition-colors">Cancel</button>
+                <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-black px-12 py-4 rounded-2xl transition-all shadow-lg shadow-blue-500/30 active:scale-95 uppercase tracking-widest text-xs">Commit Updates</button>
               </div>
             </form>
           </div>
@@ -239,112 +265,141 @@ const AdminPropertyList = () => {
 
       {/* View Details Modal */}
       {viewModalOpen && viewProperty && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto">
-          <div className="bg-white rounded-2xl p-6 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center mb-4 sticky top-0 bg-white pb-2">
-              <h2 className="text-2xl font-bold">Property Details #{viewProperty.id}</h2>
-              <button onClick={() => setViewModalOpen(false)} className="text-gray-500 hover:text-gray-700">&times;</button>
-            </div>
-
-            {/* Basic Info */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <div><strong>Title:</strong> {viewProperty.title}</div>
-              <div><strong>Price:</strong> ₹{parseFloat(viewProperty.price).toLocaleString('en-IN')}</div>
-              <div><strong>Area:</strong> {viewProperty.area} {viewProperty.land_type_id === 1 ? 'Acres' : 'Sq Ft'}</div>
-              <div><strong>Land Type:</strong> {viewProperty.land_type_name}</div>
-              <div><strong>District:</strong> {viewProperty.district}</div>
-              <div><strong>Taluk:</strong> {viewProperty.taluk}</div>
-              <div><strong>Village:</strong> {viewProperty.village}</div>
-              <div><strong>Address:</strong> {viewProperty.address || 'N/A'}</div>
-              <div><strong>Survey Number:</strong> {viewProperty.survey_number}</div>
-              <div><strong>Subdivision Number:</strong> {viewProperty.subdivision_number || 'N/A'}</div>
-              <div><strong>Patta Number:</strong> {viewProperty.patta_number || 'N/A'}</div>
-              <div><strong>Owner:</strong> {viewProperty.owner_name}</div>
-              <div><strong>Contact Person:</strong> {viewProperty.contact_person_name}</div>
-              <div><strong>Contact Phone:</strong> {viewProperty.contact_phone}</div>
-              <div><strong>Contact Email:</strong> {viewProperty.contact_email}</div>
-            </div>
-
-            {/* Land‑Type Specific */}
-            <div className="mb-6">
-              <h3 className="text-xl font-bold mb-2">Technical Specifications</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {viewProperty.land_type_id === 1 ? (
-                  <>
-                    <div><strong>Soil Type:</strong> {viewProperty.soil_type || 'N/A'}</div>
-                    <div><strong>Soil Depth:</strong> {viewProperty.soil_depth ? `${viewProperty.soil_depth} ft` : 'N/A'}</div>
-                    <div><strong>Water Available:</strong> {viewProperty.water_availability ? 'Yes' : 'No'}</div>
-                    <div><strong>Irrigation Type:</strong> {viewProperty.irrigation_type || 'N/A'}</div>
-                    <div><strong>Electricity Available:</strong> {viewProperty.electricity_available ? 'Yes' : 'No'}</div>
-                    <div><strong>Tree Type:</strong> {viewProperty.tree_type || 'N/A'}</div>
-                    <div><strong>Tree Stage:</strong> {viewProperty.tree_stage || 'N/A'}</div>
-                    <div><strong>Road Access:</strong> {viewProperty.road_access_type || 'N/A'}</div>
-                    <div><strong>Distance from Highway:</strong> {viewProperty.distance_from_highway ? `${viewProperty.distance_from_highway} km` : 'N/A'}</div>
-                    <div><strong>Fencing Details:</strong> {viewProperty.fencing_details || 'N/A'}</div>
-                  </>
-                ) : (
-                  <>
-                    <div><strong>Plot Shape:</strong> {viewProperty.plot_shape || 'N/A'}</div>
-                    <div><strong>Road Width:</strong> {viewProperty.road_width ? `${viewProperty.road_width} ft` : 'N/A'}</div>
-                    <div><strong>Facing:</strong> {viewProperty.facing || 'N/A'}</div>
-                    <div><strong>Water Connection:</strong> {viewProperty.water_connection ? 'Yes' : 'No'}</div>
-                    <div><strong>Electricity Connection:</strong> {viewProperty.electricity_connection ? 'Yes' : 'No'}</div>
-                    <div><strong>Approval Status:</strong> {viewProperty.approval_status || 'N/A'}</div>
-                    <div><strong>Approval Number:</strong> {viewProperty.approval_number || 'N/A'}</div>
-                    <div><strong>Corner Plot:</strong> {viewProperty.corner_plot ? 'Yes' : 'No'}</div>
-                    <div><strong>Gated Community:</strong> {viewProperty.gated_community ? 'Yes' : 'No'}</div>
-                    <div><strong>Nearby Landmarks:</strong> {viewProperty.landmarks || 'N/A'}</div>
-                  </>
-                )}
-              </div>
-            </div>
-
-            {/* Amenities & Prediction */}
-            <div className="mb-6">
-              <h3 className="text-xl font-bold mb-2">Geospatial Intelligence</h3>
-              {viewProperty.amenities_data && (
-                <>
-                  <div className="mb-2"><strong>Counts:</strong> {JSON.stringify(viewProperty.amenities_data.counts)}</div>
-                  <div><strong>Nearest Distances (m):</strong> {JSON.stringify(viewProperty.amenities_data.distances)}</div>
-                </>
-              )}
-              {viewProperty.amenity_credits && (
-                <div className="mt-2">
-                  <strong>Amenity Credits:</strong>
-                  <div className="grid grid-cols-2 gap-2 mt-1">
-                    {Object.entries(viewProperty.amenity_credits).map(([key, val]) => (
-                      <div key={key} className="bg-gray-100 p-1 rounded">{key}: +₹{Math.round(val).toLocaleString()}</div>
-                    ))}
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-[3rem] p-0 max-w-5xl w-full max-h-[90vh] overflow-hidden shadow-2xl flex flex-col border border-gray-100">
+            {/* Header Area */}
+            <div className="p-8 pb-4 border-b border-gray-100 flex justify-between items-start">
+               <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="px-3 py-1 bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest rounded-full">{viewProperty.land_type_name}</span>
+                    <span className="px-3 py-1 bg-emerald-100 text-emerald-800 text-[10px] font-black uppercase tracking-widest rounded-full">{viewProperty.status}</span>
                   </div>
-                </div>
-              )}
-              {viewProperty.predicted_price && (
-                <div className="mt-3 text-lg font-bold text-blue-600">
-                  Predicted Price: ₹{parseFloat(viewProperty.predicted_price).toLocaleString('en-IN')}
-                </div>
-              )}
+                  <h2 className="text-4xl font-black text-gray-900 tracking-tighter leading-none uppercase">{viewProperty.title}</h2>
+                  <p className="text-gray-500 font-bold uppercase text-[10px] tracking-widest mt-3 flex items-center gap-2">
+                    <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                    {viewProperty.village}, {viewProperty.taluk}, {viewProperty.district}
+                  </p>
+               </div>
+               <button onClick={() => setViewModalOpen(false)} className="w-12 h-12 flex items-center justify-center bg-gray-50 hover:bg-gray-100 text-gray-400 hover:text-gray-900 rounded-2xl transition-all">&times;</button>
             </div>
 
-            {/* Media */}
-            {viewProperty.media && viewProperty.media.length > 0 && (
-              <div className="mb-6">
-                <h3 className="text-xl font-bold mb-2">Media</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {viewProperty.media.map(m => (
-                    <div key={m.id} className="relative aspect-square rounded-xl overflow-hidden">
-                      {m.type === 'video' ? (
-                        <video src={m.url} controls className="w-full h-full object-cover" />
-                      ) : (
-                        <img src={m.url} alt="Property" className="w-full h-full object-cover" />
-                      )}
+            <div className="flex-1 overflow-y-auto p-8 space-y-12">
+               {/* Valuation Intelligence */}
+               <section className="bg-gray-900 rounded-[2.5rem] p-10 text-white relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 blur-[100px] rounded-full"></div>
+                  <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <div>
+                      <p className="text-[10px] font-black text-blue-300 uppercase tracking-widest mb-2">Base Appraisal</p>
+                      <p className="text-4xl font-black font-mono">₹{parseFloat(viewProperty.price).toLocaleString('en-IN')}</p>
                     </div>
-                  ))}
-                </div>
-              </div>
-            )}
+                    <div>
+                      <p className="text-[10px] font-black text-emerald-300 uppercase tracking-widest mb-2">Amenity Credits (Capped)</p>
+                      <p className="text-4xl font-black text-emerald-400 font-mono">
+                        {viewProperty.amenity_credits ? `+₹${Math.round(Object.values(viewProperty.amenity_credits).reduce((a, b) => a + b, 0)).toLocaleString()}` : '₹0'}
+                      </p>
+                    </div>
+                    <div className="md:border-l border-gray-700 md:pl-10">
+                      <p className="text-[10px] font-black text-amber-300 uppercase tracking-widest mb-2">Fair Market Prediction</p>
+                      <p className="text-4xl font-black text-blue-400 font-mono">₹{viewProperty.predicted_price ? parseFloat(viewProperty.predicted_price).toLocaleString('en-IN') : 'N/A'}</p>
+                    </div>
+                  </div>
+               </section>
 
-            <div className="flex justify-end">
-              <button onClick={() => setViewModalOpen(false)} className="bg-blue-600 text-white px-4 py-2 rounded">Close</button>
+               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                  {/* Land Metrics */}
+                  <section>
+                    <h3 className="text-xs font-black text-gray-900 uppercase tracking-widest mb-6 flex items-center gap-2">
+                       <span className="w-2 h-2 bg-blue-600 rounded-full"></span> Land Metrics
+                    </h3>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-gray-50 p-6 rounded-3xl border border-gray-100">
+                        <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Scale</p>
+                        <p className="text-xl font-black text-gray-900">{viewProperty.area} {viewProperty.land_type_id === 1 ? 'Acres' : 'Sq Ft'}</p>
+                      </div>
+                      <div className="bg-gray-50 p-6 rounded-3xl border border-gray-100">
+                        <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Identifier</p>
+                        <p className="text-xl font-black text-gray-900 font-mono text-sm">{viewProperty.survey_number}</p>
+                      </div>
+                      <div className="bg-gray-50 p-6 rounded-3xl border border-gray-100">
+                        <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Patta Reference</p>
+                        <p className="text-xl font-black text-gray-900 font-mono text-sm">{viewProperty.patta_number || 'N/A'}</p>
+                      </div>
+                      <div className="bg-gray-50 p-6 rounded-3xl border border-gray-100">
+                        <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Owner Context</p>
+                        <p className="text-xl font-black text-gray-900 truncate text-sm">{viewProperty.owner_name}</p>
+                      </div>
+                    </div>
+                  </section>
+
+                  {/* Technical Profile */}
+                  <section>
+                    <h3 className="text-xs font-black text-gray-900 uppercase tracking-widest mb-6 flex items-center gap-2">
+                       <span className="w-2 h-2 bg-emerald-500 rounded-full"></span> Technical Profile
+                    </h3>
+                    <div className="bg-gray-50 p-8 rounded-[2rem] border border-gray-100 space-y-4">
+                       {viewProperty.land_type_id === 1 ? (
+                         <div className="grid grid-cols-2 gap-x-8 gap-y-4 text-sm">
+                            <div className="flex flex-col"><span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Soil Type</span><span className="font-bold">{viewProperty.soil_type || 'N/A'}</span></div>
+                            <div className="flex flex-col"><span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Water Table</span><span className="font-bold">{viewProperty.water_availability ? 'Sufficient' : 'None'}</span></div>
+                            <div className="flex flex-col"><span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Irrigation</span><span className="font-bold">{viewProperty.irrigation_type || 'N/A'}</span></div>
+                            <div className="flex flex-col"><span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Highway Dist.</span><span className="font-bold">{viewProperty.distance_from_highway ? `${viewProperty.distance_from_highway} km` : 'N/A'}</span></div>
+                         </div>
+                       ) : (
+                         <div className="grid grid-cols-2 gap-x-8 gap-y-4 text-sm">
+                            <div className="flex flex-col"><span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Plot Geometry</span><span className="font-bold">{viewProperty.plot_shape || 'N/A'}</span></div>
+                            <div className="flex flex-col"><span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Infrastr. Road</span><span className="font-bold">{viewProperty.road_width ? `${viewProperty.road_width} ft` : 'N/A'}</span></div>
+                            <div className="flex flex-col"><span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Vastu Facing</span><span className="font-bold">{viewProperty.facing || 'N/A'}</span></div>
+                            <div className="flex flex-col"><span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Gated Security</span><span className="font-bold">{viewProperty.gated_community ? 'Yes' : 'No'}</span></div>
+                         </div>
+                       )}
+                    </div>
+                  </section>
+               </div>
+
+               {/* Spatial Analytics (Credits) */}
+               <section>
+                  <h3 className="text-xs font-black text-gray-900 uppercase tracking-widest mb-6 flex items-center gap-2">
+                     <span className="w-2 h-2 bg-amber-500 rounded-full"></span> Spatial Analytics & Component Credits
+                  </h3>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                     {viewProperty.amenity_credits && Object.entries(viewProperty.amenity_credits).map(([key, val]) => (
+                        <div key={key} className="bg-white p-6 rounded-3xl border border-gray-200 shadow-sm text-center">
+                           <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">{key}</p>
+                           <p className="text-lg font-black text-emerald-600">+₹{Math.round(val).toLocaleString()}</p>
+                        </div>
+                     ))}
+                     {(!viewProperty.amenity_credits || Object.keys(viewProperty.amenity_credits).length === 0) && (
+                        <div className="col-span-full py-10 text-center text-gray-400 font-bold bg-gray-50 rounded-3xl">No spatial data available for credit calculation.</div>
+                     )}
+                  </div>
+               </section>
+
+               {/* Visual Verification */}
+               {viewProperty.media && viewProperty.media.length > 0 && (
+                  <section>
+                    <h3 className="text-xs font-black text-gray-900 uppercase tracking-widest mb-6 flex items-center gap-2">
+                       <span className="w-2 h-2 bg-purple-500 rounded-full"></span> Asset Documentation Media
+                    </h3>
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                      {viewProperty.media.map(m => (
+                        <div key={m.id} className="relative aspect-square rounded-[1.5rem] overflow-hidden group shadow-md">
+                          {m.type === 'video' ? (
+                            <video src={m.url.startsWith('http') ? m.url : `http://localhost:5000${m.url}`} className="w-full h-full object-cover" />
+                          ) : (
+                            <img src={m.url.startsWith('http') ? m.url : `http://localhost:5000${m.url}`} alt="Property" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                          )}
+                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                             <span className="text-[10px] font-black text-white uppercase tracking-widest">Expand</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+               )}
+            </div>
+
+            <div className="p-8 border-t border-gray-100 bg-gray-50 flex justify-end">
+                <button onClick={() => setViewModalOpen(false)} className="bg-blue-600 hover:bg-blue-700 text-white font-black px-10 py-4 rounded-2xl shadow-lg shadow-blue-500/30 transition-all active:scale-95 uppercase tracking-widest text-xs">Acknowledge & Close</button>
             </div>
           </div>
         </div>

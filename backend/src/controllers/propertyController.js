@@ -1,4 +1,5 @@
 const db = require('../config/database');
+const { computeCreditPrediction } = require('../utils/valuation');
 
 // Helper to get status ID by name
 const getStatusId = async (statusName) => {
@@ -167,9 +168,11 @@ exports.getProperties = async (req, res) => {
     let query = `
       SELECT p.id, p.title, p.description, p.price, p.area, p.district, p.village,
              p.land_type_id, l.name as land_type_name,
-             p.created_at, p.updated_at
+             p.created_at, p.updated_at,
+             m.url as primary_image_url
       FROM properties p
       JOIN land_types l ON p.land_type_id = l.id
+      LEFT JOIN media m ON p.id = m.property_id AND m.is_primary = true
       WHERE p.status_id = (SELECT id FROM property_status WHERE status = 'approved')
     `;
     const params = [];
@@ -242,6 +245,30 @@ exports.getPropertyById = async (req, res) => {
     const isAdmin = req.user && req.user.role === 'admin';
     property.is_owner = isOwner;
     property.is_admin = isAdmin;
+
+    // Add prediction and credit data if authorized
+    if (isOwner || isAdmin) {
+      const counts = {
+        schools: property.schools_1km_count || 0,
+        hospitals: property.hospitals_2km_count || 0,
+        bus_stops: property.bus_stops_1km_count || 0,
+        supermarkets: property.supermarkets_1km_count || 0,
+        parks: property.parks_1km_count || 0,
+        banks: property.banks_1km_count || 0
+      };
+      const distances = {
+        nearest_school_m: property.nearest_school_distance_m,
+        nearest_hospital_m: property.nearest_hospital_distance_m,
+        nearest_bus_m: property.nearest_bus_stop_distance_m,
+        nearest_supermarket_m: property.nearest_supermarket_distance_m,
+        nearest_park_m: property.nearest_park_distance_m,
+        nearest_bank_m: property.nearest_bank_distance_m
+      };
+      const pred = computeCreditPrediction(counts, distances, property);
+      property.predicted_price = pred.predicted_price;
+      property.amenity_credits = pred.breakdown;
+      property.amenity_bonus = pred.amenity_bonus;
+    }
 
     // Remove sensitive fields for non‑owner / non‑admin
     if (!isOwner && !isAdmin) {

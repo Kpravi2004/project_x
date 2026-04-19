@@ -78,12 +78,11 @@ const Properties = () => {
                 <input name="search" value={filters.search} onChange={handleFilterChange} className="w-full px-4 py-3 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-blue-500 font-bold" placeholder="Title, Village..." />
               </div>
               <div className="w-40">
-                <label className="block text-[10px] font-black text-gray-400 uppercase mb-2 ml-1">Land Type</label>
-                <select name="land_type_id" value={filters.land_type_id} onChange={handleFilterChange} className="w-full px-4 py-3 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-blue-500 font-bold appearance-none cursor-pointer">
-                  <option value="">All Types</option>
-                  <option value="1">Agricultural</option>
-                  <option value="2">Residential</option>
-                </select>
+                <label className="block text-[10px] font-black text-gray-400 uppercase mb-2 ml-1">Land Category</label>
+                <div className="w-full px-4 py-3 bg-blue-50 text-blue-600 rounded-2xl border-none font-bold flex items-center gap-2">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                  Residential Only
+                </div>
               </div>
             </div>
           </div>
@@ -101,8 +100,13 @@ const Properties = () => {
                 <div className="h-64 bg-gray-200 relative overflow-hidden">
                   <div className="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
                   <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-                    <img src="/hero-bg.png" alt="Property" className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700 opacity-60" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
+                    <img 
+                      src={p.primary_image_url && !p.primary_image_url.includes('placeholder') ? `http://localhost:5000${p.primary_image_url}` : `https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800&sig=${p.id}`} 
+                      alt={p.title} 
+                      onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1524813686514-a57563d77965?auto=format&fit=crop&q=80&w=800"; }}
+                      className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700 opacity-90 shadow-inner" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
                   </div>
                   <div className="absolute top-6 left-6 z-20">
                     <span className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-xl border border-white/20 ${p.land_type_id === 1 ? 'bg-emerald-500 text-white' : 'bg-blue-600 text-white'}`}>

@@ -1,0 +1,3423 @@
+[
+  {
+    "id": 1,
+    "basic_information": {
+      "title": "1200 sqft East-Facing Plot in Sundaravelpuram",
+      "description": "A well-located residential plot of 1200 sqft in the peaceful Sundaravelpuram locality of Tiruchendur. Situated on a 20-feet wide tar road with clear patta documents. Ideal for constructing a 2BHK house. Ground water available at 25 feet depth. Close to Murugan Temple and bus stand.",
+      "price": 1800000,
+      "area": 1200,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "3rd Cross Street, Sundaravelpuram, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5012,
+      "longitude": 78.1185
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "20 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2021/0341",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "300m from Sundaravelpuram Bus Stop, 1.2km from Subramania Swamy Temple"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 1.2,
+      "nearest_bus_stop_km": 0.3,
+      "nearest_railway_station_km": 2.1,
+      "nearest_school_km": 0.6,
+      "nearest_hospital_km": 0.8,
+      "nearest_park_km": 0.5,
+      "nearest_supermarket_km": 0.4,
+      "nearest_water_body_km": 0.9,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 3,
+      "restaurants_within_1km": 5,
+      "banks_within_1km": 2,
+      "user_provided_amenities": "Near Selvaraj Grocery, Close to Tamil Nadu Govt School"
+    },
+    "contact": {
+      "name": "Murugesan K",
+      "phone": "+91-94430-XXXXX",
+      "email": "murugesan.property@gmail.com",
+      "address": "14, Sundaravelpuram Main Road, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "plot_sundaravelpuram_1.jpg",
+        "plot_sundaravelpuram_2.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "fmb_sketch_sundaravelpuram.pdf"
+      ],
+      "primary_cover_photo": "plot_sundaravelpuram_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2021-04821",
+      "survey_number": "312",
+      "subdivision_number": "3A",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 2,
+    "basic_information": {
+      "title": "1500 sqft North-Facing Corner Plot near Tiruchendur Bus Stand",
+      "description": "Prime corner residential plot of 1500 sqft near the main bus stand of Tiruchendur. Two road access with 24-feet and 18-feet wide roads. DTCP approved with clear title. Excellent water table at 20 feet. Suitable for residential or small commercial use.",
+      "price": 2800000,
+      "area": 1500,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Bungalow Street, Near Bus Stand, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.4987,
+      "longitude": 78.1222
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "24 feet",
+      "facing": "North",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2020/0215",
+      "gated_community": "No",
+      "corner_plot": "Yes",
+      "landmarks": "100m from Tiruchendur New Bus Stand, 500m from Murugan Temple Beach"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 0.5,
+      "nearest_bus_stop_km": 0.1,
+      "nearest_railway_station_km": 1.8,
+      "nearest_school_km": 0.4,
+      "nearest_hospital_km": 0.6,
+      "nearest_park_km": 0.3,
+      "nearest_supermarket_km": 0.2,
+      "nearest_water_body_km": 0.6,
+      "schools_within_1km": 3,
+      "hospitals_within_2km": 4,
+      "restaurants_within_1km": 8,
+      "banks_within_1km": 4,
+      "user_provided_amenities": "Indian Bank ATM adjacent, Medical shops nearby"
+    },
+    "contact": {
+      "name": "Selvakumar R",
+      "phone": "+91-98421-XXXXX",
+      "email": "selva.lands@yahoo.com",
+      "address": "22, Bungalow Street, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "bus_stand_corner_plot_1.jpg",
+        "bus_stand_corner_plot_2.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_copy.pdf",
+        "fmb_sketch.pdf"
+      ],
+      "primary_cover_photo": "bus_stand_corner_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2020-03115",
+      "survey_number": "87",
+      "subdivision_number": "1B",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 3,
+    "basic_information": {
+      "title": "800 sqft Plot in Anbu Nagar, Tiruchendur",
+      "description": "Compact 800 sqft residential plot in Anbu Nagar colony near Tiruchendur-Tirunelveli Highway. Ideal starter plot for budget homebuilders. Patta land with clear documents. Water available at 30 feet. On tar road.",
+      "price": 1000000,
+      "area": 800,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Anbu Nagar, 2nd Street, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5028,
+      "longitude": 78.1145
+    },
+    "residential_features": {
+      "plot_shape": "Square",
+      "road_width": "18 feet",
+      "facing": "West",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/TCH/2019/0098",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Anbu Nagar Water Tank, 2.5km from Tiruchendur Railway Station"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 2.5,
+      "nearest_bus_stop_km": 0.5,
+      "nearest_railway_station_km": 2.5,
+      "nearest_school_km": 0.7,
+      "nearest_hospital_km": 1.2,
+      "nearest_park_km": 1,
+      "nearest_supermarket_km": 0.6,
+      "nearest_water_body_km": 1.8,
+      "schools_within_1km": 1,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 3,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Near NH-7 Highway access, Cashew plantation surroundings"
+    },
+    "contact": {
+      "name": "Palanisamy T",
+      "phone": "+91-96001-XXXXX",
+      "email": "palanisamy.land@gmail.com",
+      "address": "7, Anbu Nagar 1st Street, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "anbu_nagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_copy_anbu.pdf"
+      ],
+      "primary_cover_photo": "anbu_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2019-01988",
+      "survey_number": "204",
+      "subdivision_number": "7C",
+      "village": "Anbu Nagar",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 4,
+    "basic_information": {
+      "title": "2178 sqft (5 Cent) Plot in Thoppur, Tiruchendur",
+      "description": "Residential plot of 5 cents (2178 sqft) in Thoppur locality of Tiruchendur. On 30-feet wide main road. Suitable for constructing a large family home or a small apartment. Clear patta, east facing. Good water availability.",
+      "price": 1500000,
+      "area": 2178,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Thoppur Main Road, Thoppur, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5055,
+      "longitude": 78.1098
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "30 feet",
+      "facing": "East",
+      "water_connection": "No",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/THO/2022/0044",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Thoppur Govt School, 4km from Tiruchendur Temple"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 4,
+      "nearest_bus_stop_km": 0.4,
+      "nearest_railway_station_km": 4.5,
+      "nearest_school_km": 0.3,
+      "nearest_hospital_km": 2,
+      "nearest_park_km": 1.5,
+      "nearest_supermarket_km": 0.8,
+      "nearest_water_body_km": 2,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 1,
+      "restaurants_within_1km": 2,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Agricultural surroundings, Red soil area"
+    },
+    "contact": {
+      "name": "Arumugam S",
+      "phone": "+91-97898-XXXXX",
+      "email": "arumugam.thoppur@gmail.com",
+      "address": "12, Thoppur Village, Tiruchendur TK - 628215"
+    },
+    "media": {
+      "images": [
+        "thoppur_plot_1.jpg",
+        "thoppur_plot_2.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "fmb_thoppur.pdf"
+      ],
+      "primary_cover_photo": "thoppur_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2022-05044",
+      "survey_number": "156",
+      "subdivision_number": "2D",
+      "village": "Thoppur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 5,
+    "basic_information": {
+      "title": "1306 sqft Plot near Tiruchendur Railway Station",
+      "description": "Residential plot of 1306 sqft located 500m from Tiruchendur Railway Station. On a 20-feet tar road. DTCP approved layout. North facing. Surrounded by developed residential properties. Ideal for immediate construction.",
+      "price": 2200000,
+      "area": 1306,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Railway Station Road, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5005,
+      "longitude": 78.1238
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "20 feet",
+      "facing": "North",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2022/0189",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "500m from Tiruchendur Railway Station, Near Murugan Stores"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 1.5,
+      "nearest_bus_stop_km": 0.4,
+      "nearest_railway_station_km": 0.5,
+      "nearest_school_km": 0.6,
+      "nearest_hospital_km": 0.9,
+      "nearest_park_km": 0.7,
+      "nearest_supermarket_km": 0.5,
+      "nearest_water_body_km": 1.2,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 3,
+      "restaurants_within_1km": 6,
+      "banks_within_1km": 3,
+      "user_provided_amenities": "Close to Railway Station, Easy commute to Tirunelveli"
+    },
+    "contact": {
+      "name": "Venkatesan M",
+      "phone": "+91-99401-XXXXX",
+      "email": "venkat.realty@gmail.com",
+      "address": "45, Station Road, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "railway_road_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_approval.pdf"
+      ],
+      "primary_cover_photo": "railway_road_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2022-04589",
+      "survey_number": "99",
+      "subdivision_number": "5A",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 6,
+    "basic_information": {
+      "title": "4356 sqft (10 Cent) Layout Plot in Megnanapuram",
+      "description": "Large 10-cent residential plot in Megnanapuram area of Tiruchendur. Clear patta documents, sweet water available, near Govt Higher Secondary School. Suitable for large bungalow or multi-unit construction. East facing with wide road access.",
+      "price": 3000000,
+      "area": 4356,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Megnanapuram Main Street, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.496,
+      "longitude": 78.1175
+    },
+    "residential_features": {
+      "plot_shape": "Irregular",
+      "road_width": "25 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2018/0077",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Adjacent to Megnanapuram Govt School, 12km from Tiruchendur Railway Station"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 3.5,
+      "nearest_bus_stop_km": 0.6,
+      "nearest_railway_station_km": 12,
+      "nearest_school_km": 0.1,
+      "nearest_hospital_km": 1.8,
+      "nearest_park_km": 1.2,
+      "nearest_supermarket_km": 0.9,
+      "nearest_water_body_km": 1.5,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 1,
+      "restaurants_within_1km": 2,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Sweet water, Coconut grove nearby"
+    },
+    "contact": {
+      "name": "Karthikeyan P",
+      "phone": "+91-93841-XXXXX",
+      "email": "karthik.land@rediffmail.com",
+      "address": "9, Megnanapuram Street, Tiruchendur TK - 628215"
+    },
+    "media": {
+      "images": [
+        "megnanapuram_plot_1.jpg",
+        "megnanapuram_plot_2.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_megnanapuram.pdf",
+        "fmb.pdf"
+      ],
+      "primary_cover_photo": "megnanapuram_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2018-00977",
+      "survey_number": "271",
+      "subdivision_number": "1A",
+      "village": "Megnanapuram",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 7,
+    "basic_information": {
+      "title": "1200 sqft South-Facing Plot in Kurunjinagar, Tiruchendur",
+      "description": "Residential plot of 1200 sqft in Kurunjinagar, Tiruchendur. Patta land with clear title. South facing on a 20-feet road. Electricity pole in front. Water available at 25 feet. Peaceful locality with good neighborhood.",
+      "price": 1400000,
+      "area": 1200,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Kurunjinagar 3rd Street, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5038,
+      "longitude": 78.1202
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "20 feet",
+      "facing": "South",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/KNJ/2021/0111",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Behind Kurunjinagar Community Hall, 1km from Tiruchendur Town"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 1,
+      "nearest_bus_stop_km": 0.5,
+      "nearest_railway_station_km": 2,
+      "nearest_school_km": 0.5,
+      "nearest_hospital_km": 0.9,
+      "nearest_park_km": 0.8,
+      "nearest_supermarket_km": 0.5,
+      "nearest_water_body_km": 1.1,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 3,
+      "restaurants_within_1km": 4,
+      "banks_within_1km": 2,
+      "user_provided_amenities": "Near Kurunjinagar Water Tank, Share auto available"
+    },
+    "contact": {
+      "name": "Deivanai A",
+      "phone": "+91-97900-XXXXX",
+      "email": "deivanai.plots@gmail.com",
+      "address": "5, Kurunjinagar 1st Street, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "kurunjinagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_kurunjinagar.pdf"
+      ],
+      "primary_cover_photo": "kurunjinagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2021-04111",
+      "survey_number": "188",
+      "subdivision_number": "4B",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 8,
+    "basic_information": {
+      "title": "9.5 Cent Plot Near Govindammal Aditanar College, Tiruchendur",
+      "description": "Spacious 9.5 cent (4138 sqft) plot near Govindammal Aditanar College for Women, Tiruchendur. Ideal for PG hostel construction or family residence. East facing. Good ground water and electricity. All documents clear.",
+      "price": 3800000,
+      "area": 4138,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "College Road, Near Aditanar College, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5018,
+      "longitude": 78.122
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "30 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2019/0302",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Adjacent to Govindammal Aditanar College, Near Kanchi Sri Sankara Matham"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 1.8,
+      "nearest_bus_stop_km": 0.3,
+      "nearest_railway_station_km": 2.2,
+      "nearest_school_km": 0.2,
+      "nearest_hospital_km": 0.8,
+      "nearest_park_km": 0.4,
+      "nearest_supermarket_km": 0.4,
+      "nearest_water_body_km": 0.8,
+      "schools_within_1km": 3,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 5,
+      "banks_within_1km": 2,
+      "user_provided_amenities": "Near Aditanar College, Good rental demand area"
+    },
+    "contact": {
+      "name": "Subramanian V",
+      "phone": "+91-98430-XXXXX",
+      "email": "subramanian.v.property@gmail.com",
+      "address": "College Road, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "college_road_plot_1.jpg",
+        "college_road_plot_2.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_doc.pdf"
+      ],
+      "primary_cover_photo": "college_road_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2019-03022",
+      "survey_number": "103",
+      "subdivision_number": "2A",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 9,
+    "basic_information": {
+      "title": "1800 sqft East-Facing Gated Community Plot in Tiruchendur",
+      "description": "1800 sqft residential plot in a small gated layout near Tiruchendur town. The layout has internal concrete roads, compound wall, and common water connection. DTCP approved. Ideal for building a comfortable family home.",
+      "price": 2500000,
+      "area": 1800,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Sri Vinayaga Nagar Layout, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.4995,
+      "longitude": 78.116
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "23 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2023/0055",
+      "gated_community": "Yes",
+      "corner_plot": "No",
+      "landmarks": "2km from Tiruchendur Temple, Near Sri Vinayaga Koil"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 2.2,
+      "nearest_bus_stop_km": 0.6,
+      "nearest_railway_station_km": 2.8,
+      "nearest_school_km": 0.8,
+      "nearest_hospital_km": 1.1,
+      "nearest_park_km": 0.7,
+      "nearest_supermarket_km": 0.6,
+      "nearest_water_body_km": 1.3,
+      "schools_within_1km": 1,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 3,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Gated community with compound wall, 24/7 water"
+    },
+    "contact": {
+      "name": "Manikandan B",
+      "phone": "+91-95001-XXXXX",
+      "email": "manikandan.builder@gmail.com",
+      "address": "Sri Vinayaga Nagar Layout Office, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "sri_vinayaga_plot_1.jpg",
+        "sri_vinayaga_plot_layout.jpg"
+      ],
+      "videos": [
+        "layout_walkthrough.mp4"
+      ],
+      "documents": [
+        "dtcp_vinayaga.pdf"
+      ],
+      "primary_cover_photo": "sri_vinayaga_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2023-05555",
+      "survey_number": "234",
+      "subdivision_number": "6C",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 10,
+    "basic_information": {
+      "title": "22 Cent Prime Plot in Rajiv Gandhi Nagar, Tiruchendur",
+      "description": "22-cent (9583 sqft) large residential plot in Rajiv Gandhi Nagar, Tiruchendur. Suitable for apartment construction or institutional use. Clear patta. 30-feet road frontage. Very affordable at ₹20 Lakhs.",
+      "price": 2000000,
+      "area": 9583,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Rajiv Gandhi Nagar, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5045,
+      "longitude": 78.1135
+    },
+    "residential_features": {
+      "plot_shape": "Irregular",
+      "road_width": "30 feet",
+      "facing": "North",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/RGN/2020/0067",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Behind RGN Community Hall, 3km from Tiruchendur Temple"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 3,
+      "nearest_bus_stop_km": 0.7,
+      "nearest_railway_station_km": 3.2,
+      "nearest_school_km": 0.6,
+      "nearest_hospital_km": 1.5,
+      "nearest_park_km": 1,
+      "nearest_supermarket_km": 0.8,
+      "nearest_water_body_km": 1.5,
+      "schools_within_1km": 1,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 2,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Large plot, good for multi-family construction"
+    },
+    "contact": {
+      "name": "Rajendran C",
+      "phone": "+91-94440-XXXXX",
+      "email": "rajendran.c.lands@yahoo.co.in",
+      "address": "32, Rajiv Gandhi Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "rgn_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_rgn.pdf"
+      ],
+      "primary_cover_photo": "rgn_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2020-02067",
+      "survey_number": "319",
+      "subdivision_number": "1E",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 11,
+    "basic_information": {
+      "title": "1200 sqft Plot near Tiruchendur Beach Road",
+      "description": "Attractive residential plot of 1200 sqft on a lane off the Tiruchendur Beach Road. Sea breeze proximity, East facing. DTCP approved. Electricity connected. Suitable for holiday home or permanent residence.",
+      "price": 3200000,
+      "area": 1200,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Beach Road Lane, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.4965,
+      "longitude": 78.1275
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "18 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2021/04421",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "800m from Tiruchendur Beach, 600m from Subramania Swamy Temple"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 0.6,
+      "nearest_bus_stop_km": 0.2,
+      "nearest_railway_station_km": 1.9,
+      "nearest_school_km": 0.5,
+      "nearest_hospital_km": 0.7,
+      "nearest_park_km": 0.2,
+      "nearest_supermarket_km": 0.3,
+      "nearest_water_body_km": 0.8,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 3,
+      "restaurants_within_1km": 7,
+      "banks_within_1km": 3,
+      "user_provided_amenities": "Close to sea, Tourism area"
+    },
+    "contact": {
+      "name": "Chelladurai N",
+      "phone": "+91-98440-XXXXX",
+      "email": "chelladurai.property@gmail.com",
+      "address": "7, Beach Road, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "beach_road_plot_1.jpg",
+        "beach_road_plot_2.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_beach_road.pdf"
+      ],
+      "primary_cover_photo": "beach_road_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2021-04421",
+      "survey_number": "58",
+      "subdivision_number": "3B",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 12,
+    "basic_information": {
+      "title": "2400 sqft Plot in Chettiyapathu, Tiruchendur",
+      "description": "2400 sqft residential plot in Chettiyapathu area of Tiruchendur taluk. North facing. Patta land. Located 5 mins from Tiruchendur Railway Station. Good ground water and drinking water supply. Clear title.",
+      "price": 1800000,
+      "area": 2400,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Chettiyapathu Village Road, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.507,
+      "longitude": 78.1255
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "20 feet",
+      "facing": "North",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/CHP/2020/02033",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "5 min from Tiruchendur Railway Station, Near Murugan Kovil"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 2.8,
+      "nearest_bus_stop_km": 0.6,
+      "nearest_railway_station_km": 1.5,
+      "nearest_school_km": 0.7,
+      "nearest_hospital_km": 1.3,
+      "nearest_park_km": 1.1,
+      "nearest_supermarket_km": 0.7,
+      "nearest_water_body_km": 1.6,
+      "schools_within_1km": 1,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 3,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Near Railway Station, Good transport"
+    },
+    "contact": {
+      "name": "Ganesan K",
+      "phone": "+91-96559-XXXXX",
+      "email": "ganesan.k.property@gmail.com",
+      "address": "Chettiyapathu, Tiruchendur TK - 628215"
+    },
+    "media": {
+      "images": [
+        "chettiyapathu_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_chettiyapathu.pdf"
+      ],
+      "primary_cover_photo": "chettiyapathu_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2020-02033",
+      "survey_number": "412",
+      "subdivision_number": "2C",
+      "village": "Chettiyapathu",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 13,
+    "basic_information": {
+      "title": "1000 sqft Plot in 1st Gate Area, Tiruchendur",
+      "description": "1000 sqft residential plot near the 1st Gate area of Tiruchendur Murugan Temple. North facing on a 24-feet road. DTCP approved. High demand pilgrim area. Suitable for homestay or personal residence.",
+      "price": 2800000,
+      "area": 1000,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Bungalow Street, Near 1st Gate, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.4978,
+      "longitude": 78.123
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "24 feet",
+      "facing": "North",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2020/02999",
+      "gated_community": "No",
+      "corner_plot": "Yes",
+      "landmarks": "In front of KTM Lodge, 400m from Tiruchendur Murugan Temple"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 0.4,
+      "nearest_bus_stop_km": 0.2,
+      "nearest_railway_station_km": 1.9,
+      "nearest_school_km": 0.4,
+      "nearest_hospital_km": 0.5,
+      "nearest_park_km": 0.2,
+      "nearest_supermarket_km": 0.2,
+      "nearest_water_body_km": 0.5,
+      "schools_within_1km": 3,
+      "hospitals_within_2km": 4,
+      "restaurants_within_1km": 10,
+      "banks_within_1km": 4,
+      "user_provided_amenities": "Prime temple town location, High footfall area"
+    },
+    "contact": {
+      "name": "Sivashankar D",
+      "phone": "+91-94430-XXXXX",
+      "email": "sivashankar.d@gmail.com",
+      "address": "Bungalow Street, Near 1st Gate, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "1st_gate_plot_1.jpg",
+        "1st_gate_plot_2.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_1stgate.pdf"
+      ],
+      "primary_cover_photo": "1st_gate_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2020-02999",
+      "survey_number": "72",
+      "subdivision_number": "1C",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 14,
+    "basic_information": {
+      "title": "1600 sqft Plot in Vallivilai, Tiruchendur",
+      "description": "Patta land of 1600 sqft in Vallivilai village within Tiruchendur taluk. Affordable price with clear documents. East facing. Water and electricity available. Quiet residential locality good for a peaceful home.",
+      "price": 1500000,
+      "area": 1600,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Vallivilai Main Road, Tiruchendur TK",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.508,
+      "longitude": 78.107
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "20 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/VLV/2021/02801",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Vallivilai Panchayat Office, 9 Cent Patta Land"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 5,
+      "nearest_bus_stop_km": 0.5,
+      "nearest_railway_station_km": 5.5,
+      "nearest_school_km": 0.5,
+      "nearest_hospital_km": 2.5,
+      "nearest_park_km": 2,
+      "nearest_supermarket_km": 1.2,
+      "nearest_water_body_km": 1.8,
+      "schools_within_1km": 1,
+      "hospitals_within_2km": 1,
+      "restaurants_within_1km": 1,
+      "banks_within_1km": 0,
+      "user_provided_amenities": "Village atmosphere, Low cost construction area"
+    },
+    "contact": {
+      "name": "Sagaya Mary J",
+      "phone": "+91-98651-XXXXX",
+      "email": "sagayamary.property@gmail.com",
+      "address": "Vallivilai, Tiruchendur TK - 628215"
+    },
+    "media": {
+      "images": [
+        "vallivilai_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_vallivilai.pdf"
+      ],
+      "primary_cover_photo": "vallivilai_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2021-02801",
+      "survey_number": "507",
+      "subdivision_number": "4A",
+      "village": "Vallivilai",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 15,
+    "basic_information": {
+      "title": "3000 sqft Plot in TVK Nagar, Tiruchendur",
+      "description": "3000 sqft residential plot in TVK Nagar, Tiruchendur. DTCP approved layout with 30-feet internal road. West facing. Gated community with compound wall. Bore well water and TNEB connection available. Ideal for immediate construction.",
+      "price": 3500000,
+      "area": 3000,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "TVK Nagar 4th Street, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5022,
+      "longitude": 78.117
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "30 feet",
+      "facing": "West",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2022/04401",
+      "gated_community": "Yes",
+      "corner_plot": "No",
+      "landmarks": "Near TVK Party Office, 2.5km from Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 2.5,
+      "nearest_bus_stop_km": 0.7,
+      "nearest_railway_station_km": 2.9,
+      "nearest_school_km": 0.6,
+      "nearest_hospital_km": 1,
+      "nearest_park_km": 0.5,
+      "nearest_supermarket_km": 0.5,
+      "nearest_water_body_km": 1.4,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 3,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Gated community, 24-hr water"
+    },
+    "contact": {
+      "name": "Thiyagarajan L",
+      "phone": "+91-90031-XXXXX",
+      "email": "thiyagu.land@gmail.com",
+      "address": "TVK Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "tvk_nagar_plot_1.jpg",
+        "tvk_nagar_layout.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_tvknagar.pdf"
+      ],
+      "primary_cover_photo": "tvk_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2022-04401",
+      "survey_number": "141",
+      "subdivision_number": "8B",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 16,
+    "basic_information": {
+      "title": "1450 sqft Plot near Govt Hospital, Tiruchendur",
+      "description": "1450 sqft plot located 200m from Tiruchendur Government Hospital. North facing. DTCP approved. Clear patta. Medical professionals or families seeking hospital proximity preferred. Water and electricity connected.",
+      "price": 2600000,
+      "area": 1450,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Hospital Road, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5001,
+      "longitude": 78.1215
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "25 feet",
+      "facing": "North",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2021/05112",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "200m from Tiruchendur Govt Hospital, Near PHC"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 1,
+      "nearest_bus_stop_km": 0.3,
+      "nearest_railway_station_km": 1.8,
+      "nearest_school_km": 0.5,
+      "nearest_hospital_km": 0.2,
+      "nearest_park_km": 0.5,
+      "nearest_supermarket_km": 0.3,
+      "nearest_water_body_km": 0.9,
+      "schools_within_1km": 3,
+      "hospitals_within_2km": 4,
+      "restaurants_within_1km": 6,
+      "banks_within_1km": 3,
+      "user_provided_amenities": "Steps from Govt Hospital, Ideal for healthcare workers"
+    },
+    "contact": {
+      "name": "Moorthy P",
+      "phone": "+91-97877-XXXXX",
+      "email": "moorthy.p.realty@gmail.com",
+      "address": "Hospital Road, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "hospital_road_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_hospitalroad.pdf"
+      ],
+      "primary_cover_photo": "hospital_road_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2021-05112",
+      "survey_number": "116",
+      "subdivision_number": "3C",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 17,
+    "basic_information": {
+      "title": "2000 sqft Plot in Gangaikondan Colony, Tiruchendur",
+      "description": "Well-located 2000 sqft residential plot in Gangaikondan Colony, Tiruchendur. Tar road access. East facing. Patta land. Suitable for 3BHK construction. Water available. All amenities nearby.",
+      "price": 2200000,
+      "area": 2000,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Gangaikondan Colony, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.503,
+      "longitude": 78.1195
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "20 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/GKC/2020/02145",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Gangaikondan Colony Water Tank, 2km from Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 2,
+      "nearest_bus_stop_km": 0.5,
+      "nearest_railway_station_km": 2.5,
+      "nearest_school_km": 0.5,
+      "nearest_hospital_km": 1,
+      "nearest_park_km": 0.8,
+      "nearest_supermarket_km": 0.5,
+      "nearest_water_body_km": 1.3,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 4,
+      "banks_within_1km": 2,
+      "user_provided_amenities": "Well-developed colony, Quiet residential area"
+    },
+    "contact": {
+      "name": "Periasamy G",
+      "phone": "+91-98760-XXXXX",
+      "email": "periasamy.g@rediffmail.com",
+      "address": "Gangaikondan Colony, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "gangaikondan_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_gangaikondan.pdf"
+      ],
+      "primary_cover_photo": "gangaikondan_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2020-02145",
+      "survey_number": "225",
+      "subdivision_number": "5D",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 18,
+    "basic_information": {
+      "title": "1100 sqft Plot in Nehru Nagar, Tiruchendur",
+      "description": "Compact 1100 sqft plot in Nehru Nagar residential area, Tiruchendur. South facing. DTCP approved. All utilities connected. Developed neighborhood. Suitable for a compact 2BHK home.",
+      "price": 1700000,
+      "area": 1100,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Nehru Nagar 2nd Street, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.4993,
+      "longitude": 78.1208
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "18 feet",
+      "facing": "South",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2020/01777",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Nehru Nagar Play Ground, 1.5km from Temple"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 1.5,
+      "nearest_bus_stop_km": 0.4,
+      "nearest_railway_station_km": 2,
+      "nearest_school_km": 0.5,
+      "nearest_hospital_km": 0.8,
+      "nearest_park_km": 0.3,
+      "nearest_supermarket_km": 0.4,
+      "nearest_water_body_km": 1,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 3,
+      "restaurants_within_1km": 5,
+      "banks_within_1km": 2,
+      "user_provided_amenities": "Near Nehru Nagar Park, Developed area"
+    },
+    "contact": {
+      "name": "Annamalai C",
+      "phone": "+91-99402-XXXXX",
+      "email": "annamalai.c.property@gmail.com",
+      "address": "Nehru Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "nehru_nagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_nehrunagar.pdf"
+      ],
+      "primary_cover_photo": "nehru_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2020-01777",
+      "survey_number": "94",
+      "subdivision_number": "2B",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 19,
+    "basic_information": {
+      "title": "1320 sqft Plot in Dr. Ambedkar Nagar, Tiruchendur",
+      "description": "1320 sqft residential plot in Dr. Ambedkar Nagar, Tiruchendur. East facing. DTCP approved. Clean title. Electricity connected. Water available. Located in a well-maintained residential colony.",
+      "price": 1900000,
+      "area": 1320,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Dr. Ambedkar Nagar, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5008,
+      "longitude": 78.119
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "20 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2021/03888",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Ambedkar Statue Junction, 1.8km from Tiruchendur Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 1.8,
+      "nearest_bus_stop_km": 0.5,
+      "nearest_railway_station_km": 2.2,
+      "nearest_school_km": 0.6,
+      "nearest_hospital_km": 0.9,
+      "nearest_park_km": 0.6,
+      "nearest_supermarket_km": 0.5,
+      "nearest_water_body_km": 1.2,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 4,
+      "banks_within_1km": 2,
+      "user_provided_amenities": "Social housing area, Community park nearby"
+    },
+    "contact": {
+      "name": "Elumalai T",
+      "phone": "+91-99420-XXXXX",
+      "email": "elumalai.t.lands@gmail.com",
+      "address": "Dr. Ambedkar Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "ambedkar_nagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_ambedkarnagar.pdf"
+      ],
+      "primary_cover_photo": "ambedkar_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2021-03888",
+      "survey_number": "178",
+      "subdivision_number": "6A",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 20,
+    "basic_information": {
+      "title": "2178 sqft (5 Cent) Plot in Kamaraj Nagar, Tiruchendur",
+      "description": "5-cent (2178 sqft) residential plot in Kamaraj Nagar, Tiruchendur. North facing. DTCP approved. Compound wall on two sides. Bore well water. TNEB connected. Ready for construction.",
+      "price": 2800000,
+      "area": 2178,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Kamaraj Nagar Main Road, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5016,
+      "longitude": 78.118
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "25 feet",
+      "facing": "North",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2022/02655",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Kamaraj Statue, 1.5km from Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 1.5,
+      "nearest_bus_stop_km": 0.4,
+      "nearest_railway_station_km": 2,
+      "nearest_school_km": 0.5,
+      "nearest_hospital_km": 0.8,
+      "nearest_park_km": 0.5,
+      "nearest_supermarket_km": 0.4,
+      "nearest_water_body_km": 1.1,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 3,
+      "restaurants_within_1km": 5,
+      "banks_within_1km": 2,
+      "user_provided_amenities": "Developed residential area, Good road condition"
+    },
+    "contact": {
+      "name": "Saravanan B",
+      "phone": "+91-94896-XXXXX",
+      "email": "saravanan.b.property@gmail.com",
+      "address": "Kamaraj Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "kamaraj_nagar_plot_1.jpg",
+        "kamaraj_nagar_plot_2.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_kamarajnagar.pdf"
+      ],
+      "primary_cover_photo": "kamaraj_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2022-02655",
+      "survey_number": "131",
+      "subdivision_number": "4C",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 21,
+    "basic_information": {
+      "title": "1000 sqft Plot in Gandhi Nagar, Tiruchendur",
+      "description": "1000 sqft residential plot in Gandhi Nagar, Tiruchendur. East facing on 18-feet road. Patta document. Electricity connected. Ideal for a small 2BHK. Price negotiable.",
+      "price": 1400000,
+      "area": 1000,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Gandhi Nagar 5th Street, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5035,
+      "longitude": 78.1162
+    },
+    "residential_features": {
+      "plot_shape": "Square",
+      "road_width": "18 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/GDN/2019/02040",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Gandhi Statue, 2km from Murugan Temple"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 2,
+      "nearest_bus_stop_km": 0.5,
+      "nearest_railway_station_km": 2.5,
+      "nearest_school_km": 0.6,
+      "nearest_hospital_km": 1,
+      "nearest_park_km": 0.7,
+      "nearest_supermarket_km": 0.5,
+      "nearest_water_body_km": 1.3,
+      "schools_within_1km": 1,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 3,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Affordable area, Good community"
+    },
+    "contact": {
+      "name": "Prakash T",
+      "phone": "+91-73050-XXXXX",
+      "email": "prakash.t.land@gmail.com",
+      "address": "Gandhi Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "gandhi_nagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_gandhinagar.pdf"
+      ],
+      "primary_cover_photo": "gandhi_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2019-02040",
+      "survey_number": "261",
+      "subdivision_number": "3D",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 22,
+    "basic_information": {
+      "title": "1650 sqft Plot in Moolakkarai, Tiruchendur",
+      "description": "Residential plot of 1650 sqft in Moolakkarai area, Tiruchendur taluk. Patta land. East facing. Surrounded by houses. Water and electricity available. Close to Tiruchendur-Tirunelveli Highway.",
+      "price": 1600000,
+      "area": 1650,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Moolakkarai Village, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.506,
+      "longitude": 78.1115
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "20 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/MLK/2021/00190",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Moolakkarai Kovil, 3km from Tiruchendur Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 3,
+      "nearest_bus_stop_km": 0.5,
+      "nearest_railway_station_km": 3.5,
+      "nearest_school_km": 0.7,
+      "nearest_hospital_km": 1.5,
+      "nearest_park_km": 1.2,
+      "nearest_supermarket_km": 0.8,
+      "nearest_water_body_km": 1.7,
+      "schools_within_1km": 1,
+      "hospitals_within_2km": 1,
+      "restaurants_within_1km": 2,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Semi-rural peaceful area, Low traffic"
+    },
+    "contact": {
+      "name": "Chelvi R",
+      "phone": "+91-94432-XXXXX",
+      "email": "chelvi.r.property@gmail.com",
+      "address": "Moolakkarai, Tiruchendur TK - 628215"
+    },
+    "media": {
+      "images": [
+        "moolakkarai_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_moolakkarai.pdf"
+      ],
+      "primary_cover_photo": "moolakkarai_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2021-00190",
+      "survey_number": "388",
+      "subdivision_number": "1D",
+      "village": "Moolakkarai",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 23,
+    "basic_information": {
+      "title": "2500 sqft North-East Corner Plot in Palayam, Tiruchendur",
+      "description": "Premium 2500 sqft north-east corner plot in Palayam area of Tiruchendur. Corner plots command higher value. DTCP approved. Two road frontage. Water and electricity available. Ready for immediate construction.",
+      "price": 3800000,
+      "area": 2500,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Palayam Road, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.4972,
+      "longitude": 78.1192
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "24 feet",
+      "facing": "North-East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2021/06000",
+      "gated_community": "No",
+      "corner_plot": "Yes",
+      "landmarks": "Palayam Junction, 1km from Tiruchendur Temple"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 1,
+      "nearest_bus_stop_km": 0.3,
+      "nearest_railway_station_km": 1.8,
+      "nearest_school_km": 0.4,
+      "nearest_hospital_km": 0.7,
+      "nearest_park_km": 0.4,
+      "nearest_supermarket_km": 0.3,
+      "nearest_water_body_km": 0.9,
+      "schools_within_1km": 3,
+      "hospitals_within_2km": 3,
+      "restaurants_within_1km": 7,
+      "banks_within_1km": 3,
+      "user_provided_amenities": "Premium corner plot, Two road frontage"
+    },
+    "contact": {
+      "name": "Muthulakshmi S",
+      "phone": "+91-99409-XXXXX",
+      "email": "muthu.s.plots@gmail.com",
+      "address": "Palayam, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "palayam_corner_plot_1.jpg",
+        "palayam_corner_plot_2.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_palayam.pdf"
+      ],
+      "primary_cover_photo": "palayam_corner_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2021-06000",
+      "survey_number": "66",
+      "subdivision_number": "2E",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 24,
+    "basic_information": {
+      "title": "1400 sqft Plot in Manakkulam, Tiruchendur",
+      "description": "1400 sqft residential plot in Manakkulam locality of Tiruchendur. North facing. Patta land. Water at 25 feet. 20-feet tar road access. Surrounding plots are all developed homes.",
+      "price": 1700000,
+      "area": 1400,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Manakkulam Street, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5042,
+      "longitude": 78.1188
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "20 feet",
+      "facing": "North",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/MNK/2020/00880",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Manakkulam Temple, 2km from Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 2,
+      "nearest_bus_stop_km": 0.5,
+      "nearest_railway_station_km": 2.3,
+      "nearest_school_km": 0.6,
+      "nearest_hospital_km": 1,
+      "nearest_park_km": 0.8,
+      "nearest_supermarket_km": 0.5,
+      "nearest_water_body_km": 1.2,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 3,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "All surrounding plots developed, Safe area"
+    },
+    "contact": {
+      "name": "Balakrishnan S",
+      "phone": "+91-90920-XXXXX",
+      "email": "bala.s.plot@gmail.com",
+      "address": "Manakkulam, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "manakkulam_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_manakkulam.pdf"
+      ],
+      "primary_cover_photo": "manakkulam_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2020-00880",
+      "survey_number": "197",
+      "subdivision_number": "5B",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 25,
+    "basic_information": {
+      "title": "1750 sqft Plot in Swamy Nagar, Tiruchendur",
+      "description": "Residential plot of 1750 sqft in Swamy Nagar, a quiet locality in Tiruchendur. East facing on 22-feet wide road. DTCP approved. Water and electricity connected. Ideal for 3BHK construction.",
+      "price": 2300000,
+      "area": 1750,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Swamy Nagar, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.502,
+      "longitude": 78.1155
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "22 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2022/03440",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Swamy Nagar Vinayagar Temple, 1.8km from Railway Station"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 1.8,
+      "nearest_bus_stop_km": 0.5,
+      "nearest_railway_station_km": 1.8,
+      "nearest_school_km": 0.6,
+      "nearest_hospital_km": 0.9,
+      "nearest_park_km": 0.7,
+      "nearest_supermarket_km": 0.5,
+      "nearest_water_body_km": 1.2,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 4,
+      "banks_within_1km": 2,
+      "user_provided_amenities": "Near temple, Peaceful surroundings"
+    },
+    "contact": {
+      "name": "Vijayakumar N",
+      "phone": "+91-97866-XXXXX",
+      "email": "vijay.n.lands@gmail.com",
+      "address": "Swamy Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "swamy_nagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_swamynagar.pdf"
+      ],
+      "primary_cover_photo": "swamy_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2022-03440",
+      "survey_number": "152",
+      "subdivision_number": "7A",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 26,
+    "basic_information": {
+      "title": "3600 sqft Plot in Arunachalam Nagar, Tiruchendur",
+      "description": "3600 sqft plot in Arunachalam Nagar of Tiruchendur taluk. Suitable for an independent bungalow. Patta land. West facing. Good road access with 30-feet tar road. Water and electricity available.",
+      "price": 3200000,
+      "area": 3600,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Arunachalam Nagar, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5048,
+      "longitude": 78.1128
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "30 feet",
+      "facing": "West",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/ARN/2021/00555",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Arunachaleswarar Kovil, 2.8km from Tiruchendur Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 2.8,
+      "nearest_bus_stop_km": 0.7,
+      "nearest_railway_station_km": 3,
+      "nearest_school_km": 0.8,
+      "nearest_hospital_km": 1.2,
+      "nearest_park_km": 1,
+      "nearest_supermarket_km": 0.7,
+      "nearest_water_body_km": 1.5,
+      "schools_within_1km": 1,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 2,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Large spacious plot, Palm tree lined roads"
+    },
+    "contact": {
+      "name": "Meenakshisundaram P",
+      "phone": "+91-98434-XXXXX",
+      "email": "meena.p.realty@gmail.com",
+      "address": "Arunachalam Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "arunachalam_nagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_arunachalamnnagar.pdf"
+      ],
+      "primary_cover_photo": "arunachalam_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2021-00555",
+      "survey_number": "344",
+      "subdivision_number": "1F",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 27,
+    "basic_information": {
+      "title": "1350 sqft Plot in Perumal Nagar, Tiruchendur",
+      "description": "1350 sqft residential plot in Perumal Nagar near Tiruchendur centre. South-East facing. DTCP approved layout. All utilities connected. Boundary wall on one side. Quiet street.",
+      "price": 2000000,
+      "area": 1350,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Perumal Nagar, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.4985,
+      "longitude": 78.12
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "20 feet",
+      "facing": "South-East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2020/03990",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Perumal Kovil, Central Tiruchendur location"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 0.8,
+      "nearest_bus_stop_km": 0.3,
+      "nearest_railway_station_km": 1.7,
+      "nearest_school_km": 0.4,
+      "nearest_hospital_km": 0.6,
+      "nearest_park_km": 0.4,
+      "nearest_supermarket_km": 0.3,
+      "nearest_water_body_km": 0.9,
+      "schools_within_1km": 3,
+      "hospitals_within_2km": 4,
+      "restaurants_within_1km": 8,
+      "banks_within_1km": 3,
+      "user_provided_amenities": "Central location, Easy access to all facilities"
+    },
+    "contact": {
+      "name": "Amudha K",
+      "phone": "+91-94431-XXXXX",
+      "email": "amudha.k.property@gmail.com",
+      "address": "Perumal Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "perumal_nagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_perumalnagar.pdf"
+      ],
+      "primary_cover_photo": "perumal_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2020-03990",
+      "survey_number": "83",
+      "subdivision_number": "4D",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 28,
+    "basic_information": {
+      "title": "2000 sqft Plot in Murugan Nagar Layout, Tiruchendur",
+      "description": "DTCP approved 2000 sqft plot in Murugan Nagar Layout, Tiruchendur. East facing. 23-feet concrete internal road. Bore water and TNEB connection. Compound wall on 3 sides. Ideal for immediate construction.",
+      "price": 2700000,
+      "area": 2000,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Murugan Nagar Layout, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5,
+      "longitude": 78.1175
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "23 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2023/00880",
+      "gated_community": "Yes",
+      "corner_plot": "No",
+      "landmarks": "Near Murugan Nagar Vinayagar Kovil, 2km from Tiruchendur Temple"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 2,
+      "nearest_bus_stop_km": 0.5,
+      "nearest_railway_station_km": 2.3,
+      "nearest_school_km": 0.6,
+      "nearest_hospital_km": 1,
+      "nearest_park_km": 0.6,
+      "nearest_supermarket_km": 0.5,
+      "nearest_water_body_km": 1.2,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 3,
+      "restaurants_within_1km": 4,
+      "banks_within_1km": 2,
+      "user_provided_amenities": "Gated layout, Compound wall 3 sides"
+    },
+    "contact": {
+      "name": "Rajan A",
+      "phone": "+91-96599-XXXXX",
+      "email": "rajan.a.realty@gmail.com",
+      "address": "Murugan Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "murugan_nagar_plot_1.jpg",
+        "murugan_nagar_layout.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_murugannagar.pdf"
+      ],
+      "primary_cover_photo": "murugan_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2023-00880",
+      "survey_number": "119",
+      "subdivision_number": "6B",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 29,
+    "basic_information": {
+      "title": "1250 sqft Plot in Siva Nagar, Tiruchendur",
+      "description": "1250 sqft residential plot in Siva Nagar locality, Tiruchendur. East facing. Patta land. 20-feet tar road. Water at 30 feet. Electricity pole in front. Clear legal title.",
+      "price": 1600000,
+      "area": 1250,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Siva Nagar 3rd Street, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5032,
+      "longitude": 78.1145
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "20 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/SVN/2020/01220",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Siva Nagar Sivan Kovil, 2.5km from Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 2.5,
+      "nearest_bus_stop_km": 0.6,
+      "nearest_railway_station_km": 2.8,
+      "nearest_school_km": 0.7,
+      "nearest_hospital_km": 1.2,
+      "nearest_park_km": 0.9,
+      "nearest_supermarket_km": 0.6,
+      "nearest_water_body_km": 1.4,
+      "schools_within_1km": 1,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 3,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Calm residential street, Good neighbors"
+    },
+    "contact": {
+      "name": "Kumaresan V",
+      "phone": "+91-98422-XXXXX",
+      "email": "kumaresan.v@gmail.com",
+      "address": "Siva Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "siva_nagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_sivanagar.pdf"
+      ],
+      "primary_cover_photo": "siva_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2020-01220",
+      "survey_number": "243",
+      "subdivision_number": "3E",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 30,
+    "basic_information": {
+      "title": "1800 sqft Plot in Thervai Colony, Tiruchendur",
+      "description": "1800 sqft residential plot in Thervai Colony, Tiruchendur taluk. Panchayat approved. North facing. Surrounded by houses. Water available. 22-feet road access. Suitable for a comfortable family home.",
+      "price": 1900000,
+      "area": 1800,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Thervai Colony, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5055,
+      "longitude": 78.115
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "22 feet",
+      "facing": "North",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/THV/2021/00870",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Thervai Nadhar Kovil, 3km from Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 3,
+      "nearest_bus_stop_km": 0.7,
+      "nearest_railway_station_km": 3.5,
+      "nearest_school_km": 0.8,
+      "nearest_hospital_km": 1.5,
+      "nearest_park_km": 1.2,
+      "nearest_supermarket_km": 0.8,
+      "nearest_water_body_km": 1.6,
+      "schools_within_1km": 1,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 2,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Temple town outskirts, Low cost area"
+    },
+    "contact": {
+      "name": "Sundaram K",
+      "phone": "+91-99433-XXXXX",
+      "email": "sundaram.k.lands@gmail.com",
+      "address": "Thervai Colony, Tiruchendur TK - 628215"
+    },
+    "media": {
+      "images": [
+        "thervai_colony_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_thervaicolony.pdf"
+      ],
+      "primary_cover_photo": "thervai_colony_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2021-00870",
+      "survey_number": "367",
+      "subdivision_number": "2F",
+      "village": "Thervai",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 31,
+    "basic_information": {
+      "title": "1500 sqft Plot in Saravanapuram, Tiruchendur",
+      "description": "1500 sqft residential plot in Saravanapuram area, Tiruchendur. DTCP approved. East facing on 20-feet road. Water and electricity connected. Good locality with mixed residential and commercial development nearby.",
+      "price": 2100000,
+      "area": 1500,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Saravanapuram, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.4998,
+      "longitude": 78.1218
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "20 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2022/01970",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Saravanapuram Bus Stop, 1.2km from Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 1.2,
+      "nearest_bus_stop_km": 0.2,
+      "nearest_railway_station_km": 1.8,
+      "nearest_school_km": 0.5,
+      "nearest_hospital_km": 0.8,
+      "nearest_park_km": 0.5,
+      "nearest_supermarket_km": 0.3,
+      "nearest_water_body_km": 1,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 3,
+      "restaurants_within_1km": 5,
+      "banks_within_1km": 2,
+      "user_provided_amenities": "Central area, Bus stop walking distance"
+    },
+    "contact": {
+      "name": "Jayakumar S",
+      "phone": "+91-97411-XXXXX",
+      "email": "jayakumar.s.property@gmail.com",
+      "address": "Saravanapuram, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "saravanapuram_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_saravanapuram.pdf"
+      ],
+      "primary_cover_photo": "saravanapuram_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2022-01970",
+      "survey_number": "107",
+      "subdivision_number": "5C",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 32,
+    "basic_information": {
+      "title": "1000 sqft Budget Plot in Mariamman Kovil Street, Tiruchendur",
+      "description": "Budget 1000 sqft residential plot on Mariamman Kovil Street, Tiruchendur. East facing. Patta land with clear title. 18-feet road. Electricity connected. Well water available. Very affordable.",
+      "price": 1200000,
+      "area": 1000,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Mariamman Kovil Street, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5025,
+      "longitude": 78.1225
+    },
+    "residential_features": {
+      "plot_shape": "Square",
+      "road_width": "18 feet",
+      "facing": "East",
+      "water_connection": "No",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/MMK/2019/01890",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Mariamman Kovil, 1.5km from Tiruchendur Centre"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 1.5,
+      "nearest_bus_stop_km": 0.4,
+      "nearest_railway_station_km": 2.1,
+      "nearest_school_km": 0.5,
+      "nearest_hospital_km": 0.9,
+      "nearest_park_km": 0.7,
+      "nearest_supermarket_km": 0.4,
+      "nearest_water_body_km": 1.1,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 4,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Budget plot, Near temple, Quiet lane"
+    },
+    "contact": {
+      "name": "Krishnamoorthy E",
+      "phone": "+91-94431-XXXXX",
+      "email": "krishna.e.land@gmail.com",
+      "address": "Mariamman Kovil Street, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "mariamman_st_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_mariammankovil.pdf"
+      ],
+      "primary_cover_photo": "mariamman_st_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2019-01890",
+      "survey_number": "218",
+      "subdivision_number": "4E",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 33,
+    "basic_information": {
+      "title": "2200 sqft Plot in Teachers Colony, Tiruchendur",
+      "description": "2200 sqft residential plot in Teachers Colony, a well-known planned residential area in Tiruchendur. North facing. DTCP approved. All utilities connected. Very established locality with good connectivity.",
+      "price": 3100000,
+      "area": 2200,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Teachers Colony, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.501,
+      "longitude": 78.1205
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "30 feet",
+      "facing": "North",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2019/05120",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Tiruchendur Higher Secondary School, Established colony"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 1.3,
+      "nearest_bus_stop_km": 0.3,
+      "nearest_railway_station_km": 2,
+      "nearest_school_km": 0.2,
+      "nearest_hospital_km": 0.7,
+      "nearest_park_km": 0.4,
+      "nearest_supermarket_km": 0.3,
+      "nearest_water_body_km": 1,
+      "schools_within_1km": 3,
+      "hospitals_within_2km": 3,
+      "restaurants_within_1km": 5,
+      "banks_within_1km": 3,
+      "user_provided_amenities": "Prestige locality, Educated community"
+    },
+    "contact": {
+      "name": "Subbulakshmi M",
+      "phone": "+91-94440-XXXXX",
+      "email": "subbulakshmi.m.property@gmail.com",
+      "address": "Teachers Colony, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "teachers_colony_plot_1.jpg",
+        "teachers_colony_plot_2.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_teacherscolony.pdf"
+      ],
+      "primary_cover_photo": "teachers_colony_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2019-05120",
+      "survey_number": "76",
+      "subdivision_number": "1G",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 34,
+    "basic_information": {
+      "title": "1050 sqft Plot near Tiruchendur Market, Tiruchendur",
+      "description": "1050 sqft plot behind the vegetable market, Tiruchendur. South facing. Walking distance to market, medical shops and banks. Clear patta. Electricity connected. Good for rental home investment.",
+      "price": 1900000,
+      "area": 1050,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Market Street Backside, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.499,
+      "longitude": 78.1232
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "16 feet",
+      "facing": "South",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/MKT/2020/02010",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Behind Tiruchendur Vegetable Market, Near SBI Bank"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 0.3,
+      "nearest_bus_stop_km": 0.1,
+      "nearest_railway_station_km": 1.7,
+      "nearest_school_km": 0.3,
+      "nearest_hospital_km": 0.5,
+      "nearest_park_km": 0.3,
+      "nearest_supermarket_km": 0.1,
+      "nearest_water_body_km": 0.8,
+      "schools_within_1km": 4,
+      "hospitals_within_2km": 5,
+      "restaurants_within_1km": 10,
+      "banks_within_1km": 5,
+      "user_provided_amenities": "Walking distance to market, Central location"
+    },
+    "contact": {
+      "name": "Nirmala P",
+      "phone": "+91-96003-XXXXX",
+      "email": "nirmala.p.property@gmail.com",
+      "address": "Market Street, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "market_area_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_marketarea.pdf"
+      ],
+      "primary_cover_photo": "market_area_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2020-02010",
+      "survey_number": "62",
+      "subdivision_number": "3F",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 35,
+    "basic_information": {
+      "title": "1900 sqft Plot in MGR Nagar, Tiruchendur",
+      "description": "1900 sqft residential plot in MGR Nagar, Tiruchendur. East facing on 22-feet road. DTCP approved. Electricity and water connected. Quiet residential colony. Good for a family home.",
+      "price": 2400000,
+      "area": 1900,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "MGR Nagar, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5015,
+      "longitude": 78.1168
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "22 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2021/04780",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near MGR Statue, 2km from Tiruchendur Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 2,
+      "nearest_bus_stop_km": 0.5,
+      "nearest_railway_station_km": 2.4,
+      "nearest_school_km": 0.6,
+      "nearest_hospital_km": 1,
+      "nearest_park_km": 0.7,
+      "nearest_supermarket_km": 0.5,
+      "nearest_water_body_km": 1.3,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 4,
+      "banks_within_1km": 2,
+      "user_provided_amenities": "Colony with streetlights, Good road"
+    },
+    "contact": {
+      "name": "Chandiran K",
+      "phone": "+91-98760-XXXXX",
+      "email": "chandiran.k.land@gmail.com",
+      "address": "MGR Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "mgr_nagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_mgrnagar.pdf"
+      ],
+      "primary_cover_photo": "mgr_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2021-04780",
+      "survey_number": "163",
+      "subdivision_number": "7B",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 36,
+    "basic_information": {
+      "title": "1350 sqft Plot in Jothi Nagar, Tiruchendur",
+      "description": "1350 sqft residential plot in Jothi Nagar area of Tiruchendur. North facing. DTCP approved. 20-feet road. Clear patta. Electricity and water connected. Ideal for a 2BHK home.",
+      "price": 1850000,
+      "area": 1350,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Jothi Nagar, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5038,
+      "longitude": 78.1178
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "20 feet",
+      "facing": "North",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2020/03200",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Jothi Nagar Vinayagar Kovil, 2.2km from Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 2.2,
+      "nearest_bus_stop_km": 0.5,
+      "nearest_railway_station_km": 2.6,
+      "nearest_school_km": 0.7,
+      "nearest_hospital_km": 1.1,
+      "nearest_park_km": 0.8,
+      "nearest_supermarket_km": 0.5,
+      "nearest_water_body_km": 1.3,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 3,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Peaceful colony, Nearby Kovil"
+    },
+    "contact": {
+      "name": "Thilagam R",
+      "phone": "+91-97895-XXXXX",
+      "email": "thilagam.r.property@gmail.com",
+      "address": "Jothi Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "jothi_nagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_jothinagar.pdf"
+      ],
+      "primary_cover_photo": "jothi_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2020-03200",
+      "survey_number": "209",
+      "subdivision_number": "5E",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 37,
+    "basic_information": {
+      "title": "2000 sqft Plot in Kalaimagal Nagar, Tiruchendur",
+      "description": "2000 sqft plot in Kalaimagal Nagar, Tiruchendur. East facing. Panchayat approved. Clear title. Electricity and water available. Surrounded by completed houses. 22-feet approach road.",
+      "price": 2200000,
+      "area": 2000,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Kalaimagal Nagar, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5048,
+      "longitude": 78.1195
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "22 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/KLM/2021/00990",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Kalaimagal Arts College Road, 2.5km from Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 2.5,
+      "nearest_bus_stop_km": 0.6,
+      "nearest_railway_station_km": 2.8,
+      "nearest_school_km": 0.6,
+      "nearest_hospital_km": 1.2,
+      "nearest_park_km": 0.9,
+      "nearest_supermarket_km": 0.6,
+      "nearest_water_body_km": 1.4,
+      "schools_within_1km": 1,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 3,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Developed surroundings, All houses built"
+    },
+    "contact": {
+      "name": "Pushpalatha D",
+      "phone": "+91-98431-XXXXX",
+      "email": "pushpalatha.d@gmail.com",
+      "address": "Kalaimagal Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "kalaimagal_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_kalaimagalnagar.pdf"
+      ],
+      "primary_cover_photo": "kalaimagal_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2021-00990",
+      "survey_number": "291",
+      "subdivision_number": "2G",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 38,
+    "basic_information": {
+      "title": "1600 sqft Plot in Ilango Nagar, Tiruchendur",
+      "description": "1600 sqft residential plot in Ilango Nagar area, Tiruchendur. North facing. DTCP approved. 20-feet road. Bore water and TNEB connection. Suitable for 3BHK construction.",
+      "price": 2050000,
+      "area": 1600,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Ilango Nagar, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5025,
+      "longitude": 78.1155
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "20 feet",
+      "facing": "North",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2022/02990",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Ilango Nagar Community Hall, 2km from Railway Station"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 2,
+      "nearest_bus_stop_km": 0.5,
+      "nearest_railway_station_km": 2,
+      "nearest_school_km": 0.6,
+      "nearest_hospital_km": 1,
+      "nearest_park_km": 0.7,
+      "nearest_supermarket_km": 0.5,
+      "nearest_water_body_km": 1.2,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 4,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Good road condition, Residential neighborhood"
+    },
+    "contact": {
+      "name": "Manoharan S",
+      "phone": "+91-94430-XXXXX",
+      "email": "manoharan.s.land@yahoo.com",
+      "address": "Ilango Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "ilango_nagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_ilangonagar.pdf"
+      ],
+      "primary_cover_photo": "ilango_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2022-02990",
+      "survey_number": "147",
+      "subdivision_number": "6D",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 39,
+    "basic_information": {
+      "title": "3200 sqft Plot in Anna Nagar, Tiruchendur",
+      "description": "3200 sqft residential plot in Anna Nagar, Tiruchendur. DTCP approved. East facing with 30-feet road frontage. All utilities connected. Suitable for large bungalow or commercial-residential combined construction. Clear documents.",
+      "price": 4500000,
+      "area": 3200,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Anna Nagar Main Road, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5005,
+      "longitude": 78.1198
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "30 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2018/01550",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Anna Nagar Main Road, 1.5km from Tiruchendur Temple"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 1.5,
+      "nearest_bus_stop_km": 0.3,
+      "nearest_railway_station_km": 2,
+      "nearest_school_km": 0.4,
+      "nearest_hospital_km": 0.8,
+      "nearest_park_km": 0.5,
+      "nearest_supermarket_km": 0.3,
+      "nearest_water_body_km": 1.1,
+      "schools_within_1km": 3,
+      "hospitals_within_2km": 3,
+      "restaurants_within_1km": 6,
+      "banks_within_1km": 3,
+      "user_provided_amenities": "Prime locality, Wide road frontage"
+    },
+    "contact": {
+      "name": "Gowrishankar P",
+      "phone": "+91-99400-XXXXX",
+      "email": "gowrishankar.p.property@gmail.com",
+      "address": "Anna Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "anna_nagar_plot_1.jpg",
+        "anna_nagar_plot_2.jpg"
+      ],
+      "videos": [
+        "anna_nagar_walkthrough.mp4"
+      ],
+      "documents": [
+        "dtcp_annanagar.pdf",
+        "fmb_annanagar.pdf"
+      ],
+      "primary_cover_photo": "anna_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2018-01550",
+      "survey_number": "91",
+      "subdivision_number": "1H",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 40,
+    "basic_information": {
+      "title": "1500 sqft Plot in Sakthi Nagar, Tiruchendur",
+      "description": "1500 sqft residential plot in Sakthi Nagar, Tiruchendur. South-East facing. Patta land. 20-feet road. Electricity connected. Water available at 28 feet. Ready for construction. Documents clear.",
+      "price": 1950000,
+      "area": 1500,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Sakthi Nagar, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.504,
+      "longitude": 78.1172
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "20 feet",
+      "facing": "South-East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/SKN/2020/01780",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Sakthi Nagar Amman Kovil, 2km from Tiruchendur Town"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 2,
+      "nearest_bus_stop_km": 0.5,
+      "nearest_railway_station_km": 2.5,
+      "nearest_school_km": 0.7,
+      "nearest_hospital_km": 1.1,
+      "nearest_park_km": 0.8,
+      "nearest_supermarket_km": 0.5,
+      "nearest_water_body_km": 1.3,
+      "schools_within_1km": 1,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 3,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Nearby Amman Kovil, Good neighbourhood"
+    },
+    "contact": {
+      "name": "Lakshmi A",
+      "phone": "+91-94438-XXXXX",
+      "email": "lakshmi.a.plots@gmail.com",
+      "address": "Sakthi Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "sakthi_nagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_sakthinnagar.pdf"
+      ],
+      "primary_cover_photo": "sakthi_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2020-01780",
+      "survey_number": "255",
+      "subdivision_number": "4F",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 41,
+    "basic_information": {
+      "title": "2178 sqft (5 Cent) Plot near Tirunelveli Highway, Sonaganvilai",
+      "description": "5-cent residential plot near the Tiruchendur-Tirunelveli Highway in Sonaganvilai area. 5km from Tiruchendur city. Ideal for house or small shop. Price negotiable. Patta land. Water and electricity available.",
+      "price": 1200000,
+      "area": 2178,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Sonaganvilai, Tiruchendur TK",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.511,
+      "longitude": 78.104
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "40 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/SNG/2022/00120",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "On Tiruchendur-Tirunelveli Main Road, 5km from Tiruchendur"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 5,
+      "nearest_bus_stop_km": 0.2,
+      "nearest_railway_station_km": 5.5,
+      "nearest_school_km": 1,
+      "nearest_hospital_km": 3,
+      "nearest_park_km": 2.5,
+      "nearest_supermarket_km": 1.5,
+      "nearest_water_body_km": 2.5,
+      "schools_within_1km": 1,
+      "hospitals_within_2km": 0,
+      "restaurants_within_1km": 2,
+      "banks_within_1km": 0,
+      "user_provided_amenities": "Highway frontage, Commercial potential"
+    },
+    "contact": {
+      "name": "Tamilarasi N",
+      "phone": "+91-96010-XXXXX",
+      "email": "tamilarasi.n@gmail.com",
+      "address": "Sonaganvilai, Tiruchendur TK - 628215"
+    },
+    "media": {
+      "images": [
+        "sonaganvilai_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_sonaganvilai.pdf"
+      ],
+      "primary_cover_photo": "sonaganvilai_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2022-00120",
+      "survey_number": "489",
+      "subdivision_number": "1B",
+      "village": "Sonaganvilai",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 42,
+    "basic_information": {
+      "title": "1700 sqft Plot in Bharathi Nagar, Tiruchendur",
+      "description": "1700 sqft residential plot in Bharathi Nagar, Tiruchendur. DTCP approved. North facing. 22-feet tar road. All utilities connected. Good residential colony. Suitable for 3BHK construction.",
+      "price": 2350000,
+      "area": 1700,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Bharathi Nagar, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5018,
+      "longitude": 78.1185
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "22 feet",
+      "facing": "North",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2022/04110",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Bharathi Statue, 1.8km from Tiruchendur Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 1.8,
+      "nearest_bus_stop_km": 0.5,
+      "nearest_railway_station_km": 2.3,
+      "nearest_school_km": 0.5,
+      "nearest_hospital_km": 0.9,
+      "nearest_park_km": 0.6,
+      "nearest_supermarket_km": 0.4,
+      "nearest_water_body_km": 1.2,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 3,
+      "restaurants_within_1km": 4,
+      "banks_within_1km": 2,
+      "user_provided_amenities": "Well-maintained colony, Good road"
+    },
+    "contact": {
+      "name": "Veeramani G",
+      "phone": "+91-98424-XXXXX",
+      "email": "veeramani.g.land@gmail.com",
+      "address": "Bharathi Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "bharathi_nagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_bharathinagar.pdf"
+      ],
+      "primary_cover_photo": "bharathi_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2022-04110",
+      "survey_number": "138",
+      "subdivision_number": "8C",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 43,
+    "basic_information": {
+      "title": "1300 sqft Plot in Rajaji Nagar, Tiruchendur",
+      "description": "1300 sqft plot in Rajaji Nagar, Tiruchendur. East facing. Panchayat approved. 18-feet road. Electricity and water connected. Surrounded by well-built homes. Affordable price.",
+      "price": 1700000,
+      "area": 1300,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Rajaji Nagar, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5055,
+      "longitude": 78.1185
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "18 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/RJJ/2021/00650",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Rajaji Nagar Junction, 2.8km from Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 2.8,
+      "nearest_bus_stop_km": 0.6,
+      "nearest_railway_station_km": 3,
+      "nearest_school_km": 0.8,
+      "nearest_hospital_km": 1.3,
+      "nearest_park_km": 1,
+      "nearest_supermarket_km": 0.7,
+      "nearest_water_body_km": 1.5,
+      "schools_within_1km": 1,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 2,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Affordable outskirts plot, Quiet area"
+    },
+    "contact": {
+      "name": "Dhanapathy R",
+      "phone": "+91-94435-XXXXX",
+      "email": "dhanapathy.r@gmail.com",
+      "address": "Rajaji Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "rajaji_nagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_rajajanagar.pdf"
+      ],
+      "primary_cover_photo": "rajaji_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2021-00650",
+      "survey_number": "328",
+      "subdivision_number": "3G",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 44,
+    "basic_information": {
+      "title": "1850 sqft Plot in Nehru Salai, Tiruchendur",
+      "description": "1850 sqft residential plot on Nehru Salai, Tiruchendur. DTCP approved. West facing on 25-feet wide road. Electricity and water connected. Mature residential area. Ready to register.",
+      "price": 2900000,
+      "area": 1850,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Nehru Salai, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.4982,
+      "longitude": 78.121
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "25 feet",
+      "facing": "West",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2019/04080",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Nehru Salai main road, 1km from Tiruchendur Town Hall"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 1,
+      "nearest_bus_stop_km": 0.3,
+      "nearest_railway_station_km": 1.8,
+      "nearest_school_km": 0.4,
+      "nearest_hospital_km": 0.6,
+      "nearest_park_km": 0.4,
+      "nearest_supermarket_km": 0.3,
+      "nearest_water_body_km": 0.9,
+      "schools_within_1km": 3,
+      "hospitals_within_2km": 3,
+      "restaurants_within_1km": 7,
+      "banks_within_1km": 3,
+      "user_provided_amenities": "Prime salai frontage, Central location"
+    },
+    "contact": {
+      "name": "Subha P",
+      "phone": "+91-94430-XXXXX",
+      "email": "subha.p.property@gmail.com",
+      "address": "Nehru Salai, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "nehru_salai_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_nehrusalai.pdf"
+      ],
+      "primary_cover_photo": "nehru_salai_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2019-04080",
+      "survey_number": "79",
+      "subdivision_number": "2H",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 45,
+    "basic_information": {
+      "title": "1450 sqft Plot in Pandian Nagar, Tiruchendur",
+      "description": "1450 sqft residential plot in Pandian Nagar, Tiruchendur. East facing. DTCP approved. 20-feet road. Electricity pole in front. Bore water available. Good residential colony.",
+      "price": 2000000,
+      "area": 1450,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Pandian Nagar, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.503,
+      "longitude": 78.1162
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "20 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2021/05510",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Pandian Nagar Temple, 2km from Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 2,
+      "nearest_bus_stop_km": 0.5,
+      "nearest_railway_station_km": 2.5,
+      "nearest_school_km": 0.6,
+      "nearest_hospital_km": 1,
+      "nearest_park_km": 0.7,
+      "nearest_supermarket_km": 0.5,
+      "nearest_water_body_km": 1.3,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 3,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Good residential colony, Near temple"
+    },
+    "contact": {
+      "name": "Alagappan V",
+      "phone": "+91-97877-XXXXX",
+      "email": "alagappan.v.lands@gmail.com",
+      "address": "Pandian Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "pandian_nagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_pandiannagar.pdf"
+      ],
+      "primary_cover_photo": "pandian_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2021-05510",
+      "survey_number": "172",
+      "subdivision_number": "5F",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 46,
+    "basic_information": {
+      "title": "900 sqft Affordable Plot in Senthil Nagar, Tiruchendur",
+      "description": "900 sqft affordable residential plot in Senthil Nagar, Tiruchendur. North facing. Panchayat approved. 18-feet road. Electricity connected. Ideal for first-time homebuilders on a budget.",
+      "price": 1100000,
+      "area": 900,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Senthil Nagar, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.506,
+      "longitude": 78.1175
+    },
+    "residential_features": {
+      "plot_shape": "Square",
+      "road_width": "18 feet",
+      "facing": "North",
+      "water_connection": "No",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/SNL/2020/02110",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Senthil Nagar Bus Stop, 3km from Tiruchendur Town"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 3,
+      "nearest_bus_stop_km": 0.3,
+      "nearest_railway_station_km": 3.5,
+      "nearest_school_km": 0.8,
+      "nearest_hospital_km": 1.5,
+      "nearest_park_km": 1.2,
+      "nearest_supermarket_km": 0.8,
+      "nearest_water_body_km": 1.7,
+      "schools_within_1km": 1,
+      "hospitals_within_2km": 1,
+      "restaurants_within_1km": 2,
+      "banks_within_1km": 0,
+      "user_provided_amenities": "Budget plot, Developing area"
+    },
+    "contact": {
+      "name": "Pandi G",
+      "phone": "+91-99439-XXXXX",
+      "email": "pandi.g.plot@gmail.com",
+      "address": "Senthil Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "senthil_nagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_senthilnagar.pdf"
+      ],
+      "primary_cover_photo": "senthil_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2020-02110",
+      "survey_number": "351",
+      "subdivision_number": "4G",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 47,
+    "basic_information": {
+      "title": "2050 sqft Plot in Thiruvalluvar Nagar, Tiruchendur",
+      "description": "2050 sqft residential plot in Thiruvalluvar Nagar, Tiruchendur. East facing on 22-feet road. DTCP approved. Electricity and bore water connected. Ideal for 3BHK or duplex home.",
+      "price": 2600000,
+      "area": 2050,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Thiruvalluvar Nagar, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.501,
+      "longitude": 78.1178
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "22 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2022/03880",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Thiruvalluvar Statue, 1.5km from Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 1.5,
+      "nearest_bus_stop_km": 0.4,
+      "nearest_railway_station_km": 2,
+      "nearest_school_km": 0.5,
+      "nearest_hospital_km": 0.9,
+      "nearest_park_km": 0.6,
+      "nearest_supermarket_km": 0.4,
+      "nearest_water_body_km": 1.1,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 3,
+      "restaurants_within_1km": 5,
+      "banks_within_1km": 2,
+      "user_provided_amenities": "Developed colony, Good streetlights"
+    },
+    "contact": {
+      "name": "Selvi D",
+      "phone": "+91-94432-XXXXX",
+      "email": "selvi.d.property@gmail.com",
+      "address": "Thiruvalluvar Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "thiruvalluvar_nagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_thiruvalluvar.pdf"
+      ],
+      "primary_cover_photo": "thiruvalluvar_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2022-03880",
+      "survey_number": "124",
+      "subdivision_number": "6E",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 48,
+    "basic_information": {
+      "title": "1150 sqft Plot in Nellai Road Colony, Tiruchendur",
+      "description": "1150 sqft plot on a lane off Nellai (Tirunelveli) Road, Tiruchendur. North facing. Patta land. 20-feet road. Electricity and water connected. Good connectivity to Tirunelveli highway.",
+      "price": 1750000,
+      "area": 1150,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Nellai Road Colony, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.505,
+      "longitude": 78.1108
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "20 feet",
+      "facing": "North",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "Panchayat Approved",
+      "approval_number": "PAN/NRC/2021/00370",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Tiruchendur-Tirunelveli Road, 3.5km from Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 3.5,
+      "nearest_bus_stop_km": 0.5,
+      "nearest_railway_station_km": 3.8,
+      "nearest_school_km": 0.9,
+      "nearest_hospital_km": 1.8,
+      "nearest_park_km": 1.5,
+      "nearest_supermarket_km": 0.9,
+      "nearest_water_body_km": 1.8,
+      "schools_within_1km": 1,
+      "hospitals_within_2km": 1,
+      "restaurants_within_1km": 2,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "Highway adjacent, Easy commute"
+    },
+    "contact": {
+      "name": "Ramalingam V",
+      "phone": "+91-95434-XXXXX",
+      "email": "ramalingam.v@yahoo.co.in",
+      "address": "Nellai Road Colony, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "nellai_road_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "patta_nellairoadcolony.pdf"
+      ],
+      "primary_cover_photo": "nellai_road_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2021-00370",
+      "survey_number": "403",
+      "subdivision_number": "1C",
+      "village": "Nellai Road Colony",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 49,
+    "basic_information": {
+      "title": "2200 sqft Plot in Elango Nagar Extension, Tiruchendur",
+      "description": "2200 sqft residential plot in Elango Nagar Extension, Tiruchendur. DTCP approved layout. East facing. 23-feet road. Bore water and electricity connected. New developing colony with good road connectivity.",
+      "price": 2750000,
+      "area": 2200,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Elango Nagar Extension, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5028,
+      "longitude": 78.1148
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "23 feet",
+      "facing": "East",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2023/01220",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Elango Nagar Extension Water Tank, 2.5km from Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 2.5,
+      "nearest_bus_stop_km": 0.6,
+      "nearest_railway_station_km": 2.8,
+      "nearest_school_km": 0.7,
+      "nearest_hospital_km": 1.2,
+      "nearest_park_km": 0.9,
+      "nearest_supermarket_km": 0.6,
+      "nearest_water_body_km": 1.4,
+      "schools_within_1km": 1,
+      "hospitals_within_2km": 2,
+      "restaurants_within_1km": 3,
+      "banks_within_1km": 1,
+      "user_provided_amenities": "New DTCP layout, Growing area"
+    },
+    "contact": {
+      "name": "Natarajan P",
+      "phone": "+91-98423-XXXXX",
+      "email": "natarajan.p.land@gmail.com",
+      "address": "Elango Nagar Ext, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "elango_nagar_ext_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_elangonagarext.pdf"
+      ],
+      "primary_cover_photo": "elango_nagar_ext_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2023-01220",
+      "survey_number": "159",
+      "subdivision_number": "7D",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  },
+  {
+    "id": 50,
+    "basic_information": {
+      "title": "1700 sqft Plot in Chidambara Nagar, Tiruchendur",
+      "description": "1700 sqft residential plot in Chidambara Nagar, Tiruchendur. North facing. DTCP approved. 20-feet tar road. All utilities connected. Well-established neighbourhood. Documents ready for immediate registration.",
+      "price": 2300000,
+      "area": 1700,
+      "area_unit": "sqft"
+    },
+    "location": {
+      "address": "Chidambara Nagar, Tiruchendur",
+      "city": "Tiruchendur",
+      "district": "Thoothukudi",
+      "state": "Tamil Nadu",
+      "latitude": 8.5022,
+      "longitude": 78.12
+    },
+    "residential_features": {
+      "plot_shape": "Rectangular",
+      "road_width": "20 feet",
+      "facing": "North",
+      "water_connection": "Yes",
+      "electricity_connection": "Yes",
+      "approval_status": "DTCP Approved",
+      "approval_number": "DTCP/THK/2021/06290",
+      "gated_community": "No",
+      "corner_plot": "No",
+      "landmarks": "Near Chidambara Nagar Shiva Temple, 1.6km from Bus Stand"
+    },
+    "amenities_distances": {
+      "distance_to_city_center_km": 1.6,
+      "nearest_bus_stop_km": 0.4,
+      "nearest_railway_station_km": 2.1,
+      "nearest_school_km": 0.5,
+      "nearest_hospital_km": 0.8,
+      "nearest_park_km": 0.5,
+      "nearest_supermarket_km": 0.4,
+      "nearest_water_body_km": 1.1,
+      "schools_within_1km": 2,
+      "hospitals_within_2km": 3,
+      "restaurants_within_1km": 5,
+      "banks_within_1km": 2,
+      "user_provided_amenities": "Ready to register, All documents clear"
+    },
+    "contact": {
+      "name": "Kamaladevi R",
+      "phone": "+91-94887-XXXXX",
+      "email": "kamaladevi.r.property@gmail.com",
+      "address": "Chidambara Nagar, Tiruchendur - 628215"
+    },
+    "media": {
+      "images": [
+        "chidambara_nagar_plot_1.jpg"
+      ],
+      "videos": [],
+      "documents": [
+        "dtcp_chidambaranagar.pdf"
+      ],
+      "primary_cover_photo": "chidambara_nagar_plot_1.jpg"
+    },
+    "patta_info": {
+      "patta_number": "THK-P-2021-06290",
+      "survey_number": "144",
+      "subdivision_number": "3H",
+      "village": "Tiruchendur",
+      "taluk": "Tiruchendur"
+    }
+  }
+]

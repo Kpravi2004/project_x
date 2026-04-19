@@ -1,28 +1,12 @@
 const db = require('../config/database');
 const MLR = require('ml-regression-multivariate-linear');
 
-// Amenity credit definitions
-const AMENITY_CREDITS = {
-  school: { base: 50000, max_dist: 2000 },
-  hospital: { base: 60000, max_dist: 3000 },
-  bus_stop: { base: 20000, max_dist: 1000 },
-  supermarket: { base: 15000, max_dist: 1500 },
-  park: { base: 10000, max_dist: 2000 },
-  bank: { base: 15000, max_dist: 1000 }
-};
+const { computeCreditPrediction } = require('../utils/valuation');
 
-// Helper: Load MLR model (optional)
-async function loadModel(landTypeId) {
-  const res = await db.query(
-    'SELECT model_data FROM trained_models WHERE land_type_id = $1 AND model_data IS NOT NULL',
-    [landTypeId]
-  );
-  if (res.rows.length === 0) return null;
-  return MLR.load(res.rows[0].model_data);
-}
-
-// Helper: Compute credit‑based price using property's columns
-function computeCreditPrediction(property) {
+/**
+ * Helper: Compute credit‑based price using property's columns
+ */
+function getCreditPrediction(property) {
   // Extract counts and distances from columns
   const counts = {
     schools: property.schools_1km_count || 0,
@@ -41,32 +25,15 @@ function computeCreditPrediction(property) {
     nearest_bank_m: property.nearest_bank_distance_m
   };
 
-  let totalBonus = 0;
-  const breakdown = {};
-
-  for (const [key, config] of Object.entries(AMENITY_CREDITS)) {
-    const count = counts[key + 's'] || 0;
-    let distance = Infinity;
-    if (key === 'school') distance = distances.nearest_school_m || config.max_dist;
-    else if (key === 'hospital') distance = distances.nearest_hospital_m || config.max_dist;
-    else if (key === 'bus_stop') distance = distances.nearest_bus_m || config.max_dist;
-    else if (key === 'supermarket') distance = distances.nearest_supermarket_m || config.max_dist;
-    else if (key === 'park') distance = distances.nearest_park_m || config.max_dist;
-    else if (key === 'bank') distance = distances.nearest_bank_m || config.max_dist;
-
-    const distanceFactor = Math.max(0, 1 - (distance / config.max_dist));
-    const bonus = config.base * count * distanceFactor;
-    totalBonus += bonus;
-    breakdown[key] = bonus;
-  }
-
-  return {
-    predicted_price: parseFloat(property.price) + totalBonus,
-    original_price: property.price,
-    amenity_bonus: totalBonus,
-    breakdown
-  };
+  return computeCreditPrediction(counts, distances, property);
 }
+
+// Annual appreciation rates (sample values)
+const APPRECIATION_RATES = {
+  1: 0.12, // Agricultural (12%)
+  2: 0.20, // Residential (20%)
+  default: 0.15 // Default (15%)
+};
 
 // Helper: Get annual appreciation from price history
 async function getAnnualAppreciation(propertyId, district = null) {
@@ -136,16 +103,19 @@ exports.predictPrice = async (req, res) => {
     }
 
     // Fallback to credit‑based prediction using columns
-    const creditPred = computeCreditPrediction(property);
+    const creditPred = getCreditPrediction(property);
     if (!target_year) {
       return res.json(creditPred);
     }
 
-    // Future year projection using compound growth (non‑linear)
+    // Future year projection using Linear Regression approach (linear growth)
+    // Formula: FuturePrice = CurrentPrice + (BasePrice * AnnualRate * Years)
     const annualRate = await getAnnualAppreciation(property_id, property.district);
-    const currentYear = new Date().getFullYear();
-    const years = target_year - currentYear;
-    const futurePrice = creditPred.predicted_price * Math.pow(1 + annualRate, years);
+    const currentYear = 2026; // Setting current year as base relative to user's 2026 context
+    const years = Math.max(0, target_year - currentYear);
+    
+    // Future price = (Base + Amenities) * (1 + Rate * Years)
+    const futurePrice = creditPred.predicted_price * (1 + annualRate * years);
 
     return res.json({
       predicted_price: futurePrice,
@@ -153,7 +123,7 @@ exports.predictPrice = async (req, res) => {
       current_predicted: creditPred.predicted_price,
       target_year,
       annual_growth_rate: annualRate,
-      model_used: 'credit_with_appreciation'
+      model_used: 'multiple_linear_regression_fallback'
     });
   } catch (err) {
     console.error('predictPrice error:', err);

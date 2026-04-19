@@ -19,7 +19,7 @@ const PropertyDetail = () => {
   const navigate = useNavigate();
   const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [targetYear, setTargetYear] = useState(new Date().getFullYear());
+  const [targetYear, setTargetYear] = useState(2027);
   const [futurePrediction, setFuturePrediction] = useState(null);
 
   useEffect(() => {
@@ -64,11 +64,15 @@ const PropertyDetail = () => {
       {/* Hero Header */}
       <div className="relative h-[60vh] bg-gray-900 overflow-hidden">
         <div className="absolute inset-0 bg-blue-900/20 z-10"></div>
-        <img src="/hero-bg.png" alt="Property Header" className="w-full h-full object-cover opacity-60 scale-105" />
+        <img 
+          src={property.media && property.media.length > 0 ? `http://localhost:5000${property.media[0].url}` : "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200"} 
+          alt="Property Header" 
+          className="w-full h-full object-cover opacity-60 scale-105" 
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-20"></div>
         <div className="absolute bottom-0 left-0 w-full p-12 z-30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <span className={`px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${property.land_type_id === 1 ? 'bg-emerald-500 text-white' : 'bg-blue-600 text-white'}`}>
+            <span className="px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-blue-600 text-white">
               {property.land_type_name}
             </span>
             <h1 className="text-5xl md:text-7xl font-black text-gray-900 mt-4 tracking-tighter uppercase leading-none">{property.title}</h1>
@@ -91,7 +95,7 @@ const PropertyDetail = () => {
               </div>
               <div className="bg-gray-50 p-6 rounded-[2rem] border border-gray-100 flex flex-col justify-center">
                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Total Scale</p>
-                <p className="text-2xl font-black text-gray-900 uppercase">{property.area} {property.land_type_id === 1 ? 'Acres' : 'Sq Ft'}</p>
+                <p className="text-2xl font-black text-gray-900 uppercase">{property.area} Sq Ft</p>
               </div>
               <div className="bg-gray-50 p-6 rounded-[2rem] border border-gray-100 flex flex-col justify-center">
                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Type</p>
@@ -134,61 +138,34 @@ const PropertyDetail = () => {
               <section>
                 <h3 className="text-3xl font-black text-gray-900 border-l-8 border-indigo-600 pl-6 mb-8 uppercase tracking-tighter">Technical Specifications</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                  {property.land_type_id === 1 ? (
-                    <>
-                      <div className="bg-emerald-50 p-5 rounded-2xl border border-emerald-100 flex flex-col">
-                        <span className="text-emerald-600 font-black uppercase text-[10px] mb-1">Soil Type</span>
-                        <span className="font-black text-gray-900">{property.soil_type || 'N/A'}</span>
-                      </div>
-                      <div className="bg-emerald-50 p-5 rounded-2xl border border-emerald-100 flex flex-col">
-                        <span className="text-emerald-600 font-black uppercase text-[10px] mb-1">Soil Depth</span>
-                        <span className="font-black text-gray-900">{property.soil_depth ? `${property.soil_depth} ft` : 'N/A'}</span>
-                      </div>
-                      <div className="bg-emerald-50 p-5 rounded-2xl border border-emerald-100 flex flex-col">
-                        <span className="text-emerald-600 font-black uppercase text-[10px] mb-1">Road Access</span>
-                        <span className="font-black text-gray-900">{property.road_access_type || 'N/A'}</span>
-                      </div>
-                      <div className="bg-emerald-50 p-5 rounded-2xl border border-emerald-100 flex flex-col">
-                        <span className="text-emerald-600 font-black uppercase text-[10px] mb-1">Highway Dist</span>
-                        <span className="font-black text-gray-900">{property.distance_from_highway ? `${property.distance_from_highway} km` : 'N/A'}</span>
-                      </div>
-                      <div className="bg-emerald-50 p-5 rounded-2xl border border-emerald-100 flex flex-col col-span-2">
-                        <span className="text-emerald-600 font-black uppercase text-[10px] mb-1">Fencing Details</span>
-                        <span className="font-black text-gray-900">{property.fencing_details || 'N/A'}</span>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100 flex flex-col">
-                        <span className="text-blue-600 font-black uppercase text-[10px] mb-1">Approval #</span>
-                        <span className="font-black text-gray-900">{property.approval_number || 'N/A'}</span>
-                      </div>
-                      <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100 flex flex-col">
-                        <span className="text-blue-600 font-black uppercase text-[10px] mb-1">Plot Shape</span>
-                        <span className="font-black text-gray-900">{property.plot_shape || 'N/A'}</span>
-                      </div>
-                      <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100 flex flex-col">
-                        <span className="text-blue-600 font-black uppercase text-[10px] mb-1">Road Width</span>
-                        <span className="font-black text-gray-900">{property.road_width ? `${property.road_width} ft` : 'N/A'}</span>
-                      </div>
-                      <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100 flex flex-col">
-                        <span className="text-blue-600 font-black uppercase text-[10px] mb-1">Facing</span>
-                        <span className="font-black text-gray-900">{property.facing || 'N/A'}</span>
-                      </div>
-                      <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100 flex flex-col">
-                        <span className="text-blue-600 font-black uppercase text-[10px] mb-1">Corner Plot</span>
-                        <span className="font-black text-gray-900">{property.corner_plot ? 'Yes' : 'No'}</span>
-                      </div>
-                      <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100 flex flex-col">
-                        <span className="text-blue-600 font-black uppercase text-[10px] mb-1">Gated Community</span>
-                        <span className="font-black text-gray-900">{property.gated_community ? 'Yes' : 'No'}</span>
-                      </div>
-                      <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100 flex flex-col col-span-2">
-                        <span className="text-blue-600 font-black uppercase text-[10px] mb-1">Nearby Landmarks</span>
-                        <span className="font-black text-gray-900">{property.landmarks || 'N/A'}</span>
-                      </div>
-                    </>
-                  )}
+                  <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100 flex flex-col">
+                    <span className="text-blue-600 font-black uppercase text-[10px] mb-1">Approval #</span>
+                    <span className="font-black text-gray-900">{property.approval_number || 'N/A'}</span>
+                  </div>
+                  <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100 flex flex-col">
+                    <span className="text-blue-600 font-black uppercase text-[10px] mb-1">Plot Shape</span>
+                    <span className="font-black text-gray-900">{property.plot_shape || 'N/A'}</span>
+                  </div>
+                  <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100 flex flex-col">
+                    <span className="text-blue-600 font-black uppercase text-[10px] mb-1">Road Width</span>
+                    <span className="font-black text-gray-900">{property.road_width ? `${property.road_width} ft` : 'N/A'}</span>
+                  </div>
+                  <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100 flex flex-col">
+                    <span className="text-blue-600 font-black uppercase text-[10px] mb-1">Facing</span>
+                    <span className="font-black text-gray-900">{property.facing || 'N/A'}</span>
+                  </div>
+                  <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100 flex flex-col">
+                    <span className="text-blue-600 font-black uppercase text-[10px] mb-1">Corner Plot</span>
+                    <span className="font-black text-gray-900">{property.corner_plot ? 'Yes' : 'No'}</span>
+                  </div>
+                  <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100 flex flex-col">
+                    <span className="text-blue-600 font-black uppercase text-[10px] mb-1">Gated Community</span>
+                    <span className="font-black text-gray-900">{property.gated_community ? 'Yes' : 'No'}</span>
+                  </div>
+                  <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100 flex flex-col col-span-2">
+                    <span className="text-blue-600 font-black uppercase text-[10px] mb-1">Nearby Landmarks</span>
+                    <span className="font-black text-gray-900">{property.landmarks || 'N/A'}</span>
+                  </div>
                 </div>
               </section>
 
@@ -202,7 +179,9 @@ const PropertyDetail = () => {
                         <th className="px-6 py-3 text-left text-xs font-black text-gray-500 uppercase tracking-wider">Amenity</th>
                         <th className="px-6 py-3 text-left text-xs font-black text-gray-500 uppercase tracking-wider">Count (within 1‑2km)</th>
                         <th className="px-6 py-3 text-left text-xs font-black text-gray-500 uppercase tracking-wider">Nearest Distance</th>
-                        <th className="px-6 py-3 text-left text-xs font-black text-gray-500 uppercase tracking-wider">Credit Added</th>
+                        {property.is_admin && (
+                          <th className="px-6 py-3 text-left text-xs font-black text-gray-500 uppercase tracking-wider">Credit Added</th>
+                        )}
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">
@@ -224,61 +203,20 @@ const PropertyDetail = () => {
                             <td className="px-6 py-4 whitespace-nowrap text-gray-700">
                               {distance ? `${Math.round(distance)} m` : 'Not available'}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              {credit > 0 ? (
-                                <span className="text-emerald-600 font-black">+₹{Math.round(credit).toLocaleString()}</span>
-                              ) : (
-                                <span className="text-gray-400">—</span>
-                              )}
-                            </td>
+                            {property.is_admin && (
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                {credit > 0 ? (
+                                  <span className="text-emerald-600 font-black">+₹{Math.round(credit).toLocaleString()}</span>
+                                ) : (
+                                  <span className="text-gray-400">—</span>
+                                )}
+                              </td>
+                            )}
                           </tr>
                         );
                       })}
                     </tbody>
                   </table>
-                </div>
-              </section>
-
-              {/* Price Prediction & Credits */}
-              <section className="bg-gray-900 p-12 rounded-[3.5rem] shadow-2xl relative overflow-hidden">
-                <div className="absolute inset-0 bg-blue-600 opacity-5 mix-blend-overlay"></div>
-                <div className="relative z-10">
-                  <div className="flex flex-col md:flex-row items-center justify-between mb-8">
-                    <div>
-                      <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-2">Price Prediction</h3>
-                      <p className="text-blue-200 font-medium max-w-sm">Market valuation powered by amenity credit-based prediction engine.</p>
-                    </div>
-                    <div className="mt-8 md:mt-0 text-right">
-                      {property.predicted_price ? (
-                        <div>
-                          <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-2">Market Valuation</p>
-                          <p className="text-5xl font-black text-white tracking-widest">₹{parseFloat(property.predicted_price).toLocaleString('en-IN')}</p>
-                          <p className="text-xs text-blue-300 mt-2 font-medium">Base: ₹{parseFloat(property.price).toLocaleString('en-IN')} + Amenity Credits</p>
-                        </div>
-                      ) : (
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white font-black px-12 py-5 rounded-3xl transition-all shadow-2xl shadow-blue-600/30 hover:scale-105 active:scale-95 uppercase tracking-widest text-sm">
-                          Calculate Prediction
-                        </button>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Amenity Credit Breakdown */}
-                  {Object.keys(credits).length > 0 && (
-                    <div className="border-t border-white/10 pt-8">
-                      <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-4">Amenity Credit Breakdown</p>
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        {Object.entries(credits).map(([key, value]) => (
-                          <div key={key} className="bg-white/5 backdrop-blur-sm border border-white/10 p-4 rounded-2xl">
-                            <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1">{key}</p>
-                            <p className={`text-lg font-black ${value > 0 ? 'text-emerald-400' : 'text-gray-500'}`}>
-                              {value > 0 ? `+₹${Math.round(value).toLocaleString('en-IN')}` : '₹0'}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
                 </div>
               </section>
 
@@ -290,7 +228,7 @@ const PropertyDetail = () => {
                     <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">Target Year</label>
                     <input
                       type="number"
-                      min={new Date().getFullYear()}
+                      min={2027}
                       max={2050}
                       value={targetYear}
                       onChange={(e) => setTargetYear(parseInt(e.target.value))}

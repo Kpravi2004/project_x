@@ -7,13 +7,12 @@ const AddProperty = () => {
   const [step, setStep] = useState(1);
   const [propertyId, setPropertyId] = useState(null);
   const [formData, setFormData] = useState({
-    title: '', description: '', land_type_id: 1, price: '', area: '',
+    title: '', description: '', land_type_id: 2, price: '', area: '',
     address: '', city: '', district: '', state: 'Tamil Nadu',
     survey_number: '', subdivision_number: '', village: '', taluk: '',
     contact_person_name: '', contact_phone: '', contact_email: '', contact_address: '',
     plot_shape: '', road_width: '', facing: '', water_connection: false, electricity_connection: false, approval_status: '',
     approval_number: '', gated_community: false, corner_plot: false, landmarks: '',
-    soil_type: '', water_availability: false, irrigation_type: '', electricity_available: false, tree_type: '', tree_stage: '',
     soil_depth: '', road_access_type: '', distance_from_highway: '', fencing_details: ''
   });
   const [media, setMedia] = useState([]);
@@ -81,16 +80,9 @@ const AddProperty = () => {
       return;
     }
     if (step === 4) {
-      if (formData.land_type_id === 2) {
-        if (!formData.plot_shape || !formData.road_width || !formData.facing || !formData.approval_status) {
-          alert('Please fill plot shape, road width, facing, and approval status.');
-          return;
-        }
-      } else {
-        if (!formData.soil_type || !formData.irrigation_type) {
-          alert('Please fill soil type and irrigation type.');
-          return;
-        }
+      if (!formData.plot_shape || !formData.road_width || !formData.facing || !formData.approval_status) {
+        alert('Please fill plot shape, road width, facing, and approval status.');
+        return;
       }
     }
     await saveCurrentPhase();
@@ -181,7 +173,7 @@ const AddProperty = () => {
               {step === 1 && "Basic Details"}
               {step === 2 && "Location & Survey"}
               {step === 3 && "Contact Details"}
-              {step === 4 && (formData.land_type_id === 1 ? "Agricultural Features" : "Residential Features")}
+              {step === 4 && "Residential Features"}
               {step === 5 && "Media Upload"}
             </h2>
             <p className="text-gray-500 font-medium text-sm">Phase {step} of 5 – your data is saved after each step</p>
@@ -201,11 +193,8 @@ const AddProperty = () => {
                   <textarea name="description" value={formData.description} rows="4" required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-medium" placeholder="Land use, access, water, utilities, etc." onChange={handleChange}></textarea>
                 </div>
                 <div>
-                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Land Type</label>
-                  <select name="land_type_id" value={formData.land_type_id} className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold appearance-none cursor-pointer" onChange={handleChange}>
-                    <option value={1}>Agricultural</option>
-                    <option value={2}>Residential</option>
-                  </select>
+                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Land Category</label>
+                  <div className="w-full px-5 py-4 bg-blue-50 text-blue-600 rounded-2xl border-none font-bold">Residential Land</div>
                 </div>
                 <div>
                   <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Price (₹)</label>
@@ -213,7 +202,7 @@ const AddProperty = () => {
                 </div>
                 <div>
                   <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Area ({formData.land_type_id === 1 ? 'Acres' : 'Sq Ft / Cents'})</label>
-                  <input type="number" step="0.01" name="area" value={formData.area} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="2.5" onChange={handleChange} />
+                  <input type="number" step="0.01" name="area" value={formData.area} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="1200" onChange={handleChange} />
                 </div>
               </div>
             )}
@@ -270,102 +259,47 @@ const AddProperty = () => {
 
             {step === 4 && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                {formData.land_type_id === 2 ? (
-                  <>
-                    <div>
-                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Plot Shape</label>
-                      <select name="plot_shape" value={formData.plot_shape} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange}>
-                        <option value="">Select Shape</option>
-                        <option value="regular">Regular</option>
-                        <option value="irregular">Irregular</option>
-                        <option value="corner">Corner</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Road Width (feet)</label>
-                      <input type="number" name="road_width" value={formData.road_width} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="30" onChange={handleChange} />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Facing</label>
-                      <select name="facing" value={formData.facing} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange}>
-                        <option value="">Select Direction</option>
-                        <option value="north">North</option>
-                        <option value="south">South</option>
-                        <option value="east">East</option>
-                        <option value="west">West</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Approval Status</label>
-                      <select name="approval_status" value={formData.approval_status} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange}>
-                        <option value="">Select Type</option>
-                        <option value="approved">Approved</option>
-                        <option value="unapproved">Unapproved</option>
-                        <option value="dtcp">DTCP</option>
-                        <option value="cmda">CMDA</option>
-                      </select>
-                    </div>
-                    <div className="flex items-center space-x-4 p-5 bg-blue-50 rounded-2xl border border-blue-100">
-                      <input type="checkbox" name="water_connection" checked={formData.water_connection} className="w-6 h-6 rounded accent-blue-600" onChange={handleChange} />
-                      <label className="text-xs font-black text-blue-900 uppercase">Water Connection</label>
-                    </div>
-                    <div className="flex items-center space-x-4 p-5 bg-emerald-50 rounded-2xl border border-emerald-100">
-                      <input type="checkbox" name="electricity_connection" checked={formData.electricity_connection} className="w-6 h-6 rounded accent-emerald-600" onChange={handleChange} />
-                      <label className="text-xs font-black text-emerald-900 uppercase">Electricity Connection</label>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div>
-                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Soil Type</label>
-                      <select name="soil_type" value={formData.soil_type} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange}>
-                        <option value="">Select Soil</option>
-                        <option value="black">Black</option>
-                        <option value="red">Red</option>
-                        <option value="sandy">Sandy</option>
-                        <option value="loamy">Loamy</option>
-                        <option value="clay">Clay</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Irrigation Type</label>
-                      <select name="irrigation_type" value={formData.irrigation_type} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange}>
-                        <option value="">Select Type</option>
-                        <option value="canal">Canal</option>
-                        <option value="borewell">Borewell</option>
-                        <option value="well">Well</option>
-                        <option value="rainfed">Rainfed</option>
-                        <option value="drip">Drip</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Tree Type (Optional)</label>
-                      <select name="tree_type" value={formData.tree_type} className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange}>
-                        <option value="">None</option>
-                        <option value="coconut">Coconut</option>
-                        <option value="mango">Mango</option>
-                        <option value="mixed">Mixed</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Tree Stage (Optional)</label>
-                      <select name="tree_stage" value={formData.tree_stage} className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange}>
-                        <option value="none">None</option>
-                        <option value="young">Young</option>
-                        <option value="half_grown">Half Grown</option>
-                        <option value="full_grown">Full Grown</option>
-                      </select>
-                    </div>
-                    <div className="flex items-center space-x-4 p-5 bg-blue-50 rounded-2xl border border-blue-100">
-                      <input type="checkbox" name="water_availability" checked={formData.water_availability} className="w-6 h-6 rounded accent-blue-600" onChange={handleChange} />
-                      <label className="text-xs font-black text-blue-900 uppercase">Water Available</label>
-                    </div>
-                    <div className="flex items-center space-x-4 p-5 bg-emerald-50 rounded-2xl border border-emerald-100">
-                      <input type="checkbox" name="electricity_available" checked={formData.electricity_available} className="w-6 h-6 rounded accent-emerald-600" onChange={handleChange} />
-                      <label className="text-xs font-black text-emerald-900 uppercase">Electricity Available</label>
-                    </div>
-                  </>
-                )}
+                <div>
+                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Plot Shape</label>
+                  <select name="plot_shape" value={formData.plot_shape} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange}>
+                    <option value="">Select Shape</option>
+                    <option value="regular">Regular</option>
+                    <option value="irregular">Irregular</option>
+                    <option value="corner">Corner</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Road Width (feet)</label>
+                  <input type="number" name="road_width" value={formData.road_width} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" placeholder="30" onChange={handleChange} />
+                </div>
+                <div>
+                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Facing</label>
+                  <select name="facing" value={formData.facing} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange}>
+                    <option value="">Select Direction</option>
+                    <option value="north">North</option>
+                    <option value="south">South</option>
+                    <option value="east">East</option>
+                    <option value="west">West</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Approval Status</label>
+                  <select name="approval_status" value={formData.approval_status} required className="block w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-900 font-bold" onChange={handleChange}>
+                    <option value="">Select Type</option>
+                    <option value="approved">Approved</option>
+                    <option value="unapproved">Unapproved</option>
+                    <option value="dtcp">DTCP</option>
+                    <option value="cmda">CMDA</option>
+                  </select>
+                </div>
+                <div className="flex items-center space-x-4 p-5 bg-blue-50 rounded-2xl border border-blue-100">
+                  <input type="checkbox" name="water_connection" checked={formData.water_connection} className="w-6 h-6 rounded accent-blue-600" onChange={handleChange} />
+                  <label className="text-xs font-black text-blue-900 uppercase">Water Connection</label>
+                </div>
+                <div className="flex items-center space-x-4 p-5 bg-emerald-50 rounded-2xl border border-emerald-100">
+                  <input type="checkbox" name="electricity_connection" checked={formData.electricity_connection} className="w-6 h-6 rounded accent-emerald-600" onChange={handleChange} />
+                  <label className="text-xs font-black text-emerald-900 uppercase">Electricity Connection</label>
+                </div>
               </div>
             )}
 
